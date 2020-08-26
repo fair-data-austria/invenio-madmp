@@ -19,7 +19,6 @@ from flask import Flask
 from flask_babelex import Babel
 
 from invenio_madmp import InveniomaDMP
-from invenio_madmp.views import blueprint
 
 
 @pytest.fixture(scope='module')
@@ -39,6 +38,5 @@ def create_app(instance_path):
         app.config.update(**config)
         Babel(app)
         InveniomaDMP(app)
-        app.register_blueprint(blueprint)
         return app
     return factory

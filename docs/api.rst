@@ -11,8 +11,3 @@ API Docs
 .. automodule:: invenio_madmp.ext
    :members:
 
-Views
------
-
-.. automodule:: invenio_madmp.views
-   :members:
