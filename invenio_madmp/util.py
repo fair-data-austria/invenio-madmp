@@ -3,23 +3,19 @@
 #       Invenio metadata model configurable
 #       (because invenio doesn't necessarily use the current
 #        Invenio-RDM-Records metadata model)
-""".."""
+"""Utility functions for mapping RDA maDMPs to Invenio records."""
 
 from datetime import datetime
 from typing import List
 
-HOST_URL = "https://data.research.tuwien.ac.at"
-HOST_TITLE = "GitHub"
-DEFAULT_LANGUAGE = "eng"  # TODO check vocabulary
-DEFAULT_CONTACT = "info@invenio.org"
-DEFAULT_DATA_ACCESS = "open"
+from flask import current_app as app
 
 
 def distribution_matches_us(distribution_dict):
     """Check if the 'host' of the distribution matches our repository."""
     host = distribution_dict.get("host", {})
-    url_matches = (host.get("url", None) == HOST_URL)
-    title_matches = (host.get("title", None) == HOST_TITLE)
+    url_matches = (host.get("url", None) == app.config['MADMP_HOST_URL'])
+    title_matches = (host.get("title", None) == app.config['MADMP_HOST_TITLE'])
     return url_matches or title_matches
 
 
@@ -35,12 +31,15 @@ def get_matching_distributions(dataset_dict):
 
 def map_access_right(distribution_dict):
     """Get the 'access_right' from the distribution."""
-    return distribution_dict.get("data_access", DEFAULT_DATA_ACCESS)
+    return distribution_dict.get(
+        "data_access",
+        app.config['MADMP_DEFAULT_DATA_ACCESS']
+    )
 
 
 def map_contact(contact_dict):
     """Get the contact person's e-mail address."""
-    return contact_dict.get("mbox", DEFAULT_CONTACT)
+    return contact_dict.get("mbox", app.config['MADMP_DEFAULT_CONTACT'])
 
 
 def map_resource_type(dataset_type_dict):
@@ -77,7 +76,10 @@ def map_title(dataset_dict):
     return {
         "title": dataset_dict.get("title", "[No Title]"),
         "type": "MainTitle",  # TODO check vocabulary
-        "lang": dataset_dict.get("language", DEFAULT_LANGUAGE),
+        "lang": dataset_dict.get(
+            "language",
+            app.config['MADMP_DEFAULT_LANGUAGE']
+        ),
     }
 
 
@@ -103,7 +105,7 @@ def map_contributor(contributor_dict, role_idx=0):
 
 def map_language(dataset_dict):
     """Map the dataset's language to the record's language."""
-    return dataset_dict.get("language", DEFAULT_LANGUAGE)
+    return dataset_dict.get("language", app.config['MADMP_DEFAULT_LANGUAGE'])
 
 
 def map_license(license_dict):
@@ -124,7 +126,10 @@ def map_description(dataset_dict):
     return {
         "description": dataset_dict.get("description", "[No Description]"),
         "type": "Other",  # TODO check vocabulary
-        "lang": dataset_dict.get("language", DEFAULT_LANGUAGE),
+        "lang": dataset_dict.get(
+            "language",
+            app.config['MADMP_DEFAULT_LANGUAGE']
+        ),
     }
 
 
