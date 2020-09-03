@@ -16,6 +16,9 @@ history = open('CHANGES.rst').read()
 
 tests_require = [
     'pytest-invenio>=1.3.2',
+    'invenio-pidstore>=1.2.1',
+    'invenio-records>=1.3.2',
+    'invenio-db>=1.0.0'
 ]
 
 extras_require = {
@@ -79,6 +82,9 @@ setup(
         'invenio_i18n.translations': [
             'messages = invenio_madmp',
         ],
+        'invenio_db.models': [
+            'invenio_madmp = invenio_madmp.models'
+        ]
         # TODO: Edit these entry points to fit your needs.
         # 'invenio_access.actions': [],
         # 'invenio_admin.actions': [],
