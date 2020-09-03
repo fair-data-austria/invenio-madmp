@@ -10,30 +10,13 @@
 import uuid
 
 from invenio_db import db
-from invenio_records.models import RecordMetadata
+from invenio_pidstore.models import PersistentIdentifier
+from invenio_records.models import RecordMetadata, RecordMetadataBase
 from sqlalchemy import event
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy_utils.types import UUIDType
-
-# we need to explicitly define a mutilated version of the otherwise
-# auto-generated table that links DMPs with record versions,
-# b/c otherwise, we are likely to run into a lot of 'unique violation' or
-# 'foreign key violation' errors, because invenio creates a new
-# record version every time we add a record to a DMP
-dmp_datamanagementplan_records_version = db.Table(
-    "dmp_datamanagementplan_records_version",
-    db.Column("dmp_id", UUIDType, db.ForeignKey("dmp_datamanagementplan.id")),
-    db.Column("record_id", UUIDType),
-    db.Column("transaction_id", db.BigInteger),
-    db.Column("end_transaction_id", db.BigInteger),
-    db.Column("operation_type", db.SmallInteger),
-)
-
-dmp_datamanagementplan_records = db.Table(
-    "dmp_datamanagementplan_records",
-    db.Column("dmp_id", UUIDType, db.ForeignKey("dmp_datamanagementplan.id")),
-    db.Column("record_id", UUIDType, db.ForeignKey("records_metadata.id"))
-)
+from typing import Iterable
 
 
 class DataManagementPlan(db.Model):
@@ -43,6 +26,7 @@ class DataManagementPlan(db.Model):
     """
 
     __tablename__ = "dmp_datamanagementplan"
+    __versioned__ = {"versioning": False}
 
     id = db.Column(
         UUIDType,
@@ -55,12 +39,99 @@ class DataManagementPlan(db.Model):
         unique=True,
     )
 
-    records = db.relationship(
-        RecordMetadata,
-        secondary=dmp_datamanagementplan_records,
-        lazy="dynamic",
-        backref=db.backref(
-            "dmps",
-            lazy="dynamic",
-        )
+    @classmethod
+    def query_by_record(cls, record) -> Iterable["DataManagementPlanRecord"]:
+        pid = PersistentIdentifier.query.filter(
+            PersistentIdentifier.object_uuid == record.id
+        ).first()
+
+        if pid is None:
+            return None
+
+        return cls.query_by_record_pid(pid)
+
+    @classmethod
+    def query_by_record_pid(cls, record_pid) -> Iterable["DataManagementPlan"]:
+        return [dmp_rec.dmp for dmp_rec in DataManagementPlanRecord.query_by_record_pid(record_pid, return_list=False)]
+
+
+class DataManagementPlanRecord(db.Model, RecordMetadataBase):
+    """Relationship model between DataManagementPlans and Records."""
+
+    __tablename__ = "dmp_datamanagementplan_record"
+    __table_args__ = (
+        db.Index(
+            "uidx_datamanagementplan_record_pid",
+            "dmp_id", "record_pid_id",
+            unique=True
+        ),
+        {"extend_existing": True},
     )
+    __versioned__ = {"versioning": False}
+
+    dmp_id = db.Column(
+        UUIDType,
+        db.ForeignKey(DataManagementPlan.id),
+        nullable=False,
+    )
+
+    record_pid_id = db.Column(
+        db.Integer,
+        db.ForeignKey(PersistentIdentifier.id),
+        nullable=False
+    )
+
+    dmp = db.relationship(
+        DataManagementPlan,
+        foreign_keys=[dmp_id],
+    )
+
+    record_pid = db.relationship(
+        PersistentIdentifier,
+        foreign_keys=[record_pid_id],
+    )
+
+    @property
+    def record(self):
+        return RecordMetadata.query.get(self.record_pid.get_assigned_object())
+
+    @classmethod
+    def query_by_record(cls, record) -> Iterable["DataManagementPlanRecord"]:
+        pid = PersistentIdentifier.query.filter(
+            PersistentIdentifier.object_uuid == record.id
+        ).first()
+
+        if pid is None:
+            return None
+
+        return cls.query_by_record_pid(pid)
+
+    @classmethod
+    def query_by_record_pid(cls, record_pid, return_list: bool = True) -> Iterable["DataManagementPlanRecord"]:
+        if isinstance(record_pid, PersistentIdentifier):
+            record_pid_id = record_pid.id
+        else:
+            record_pid_id = record_pid
+
+        query = cls.query.filter(cls.record_pid_id == record_pid_id)
+
+        return query.all() if return_list else query
+
+    @classmethod
+    def create(cls, dmp_id, record_pid_id):
+        obj = None
+
+        try:
+            with db.session.begin_nested():
+                obj = cls(dmp_id=dmp_id, record_pid_id=record_pid_id)
+                db.session.add(obj)
+        except IntegrityError:
+            # TODO
+            raise
+
+        return obj
+
+    @classmethod
+    def delete(cls, dmp_record):
+        with db.session.begin_nested():
+            db.session.delete(dmp_record)
