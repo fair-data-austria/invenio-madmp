@@ -16,9 +16,8 @@ history = open('CHANGES.rst').read()
 
 tests_require = [
     'pytest-invenio>=1.3.2',
-    'invenio-pidstore>=1.2.1',
-    'invenio-records>=1.3.2',
-    'invenio-db>=1.0.0'
+    'invenio-rdm-records>=0.19.0',
+    'invenio-search[elasticsearch7]>=1.3.1',
 ]
 
 extras_require = {
@@ -48,7 +47,11 @@ setup_requires = [
 
 install_requires = [
     'Flask-BabelEx>=0.9.4',
-    'invenio-records>=1.3.2,<2.0.0'
+    'invenio-records>=1.3.2,<2.0.0',
+    'invenio-pidstore>=1.2.1',
+    'invenio-records>=1.3.2',
+    'invenio-db>=1.0.0',
+    'invenio-accounts>=1.3.0',
 ]
 
 packages = find_packages()
