@@ -23,10 +23,10 @@ class InveniomaDMP(object):
     def init_app(self, app):
         """Flask application initialization."""
         self.init_config(app)
-        app.extensions['invenio-madmp'] = self
+        app.extensions["invenio-madmp"] = self
 
     def init_config(self, app):
         """Initialize configuration."""
         for k in dir(config):
-            if k.startswith('MADMP_'):
+            if k.startswith("MADMP_"):
                 app.config.setdefault(k, getattr(config, k))

@@ -1,136 +1,33 @@
-#!/usr/bin/env python3
-# TODO: make the functions used for mapping RDA Common Standard to
-#       Invenio metadata model configurable
-#       (because invenio doesn't necessarily use the current
-#        Invenio-RDM-Records metadata model)
-"""Utility functions for mapping RDA maDMPs to Invenio records."""
+"""Helper functions for Invenio-maDMP."""
 
+import re
+import uuid
 from datetime import datetime
-from typing import List
+from typing import Dict
 
 from flask import current_app as app
+from invenio_accounts.models import User
+from invenio_pidstore.models import PersistentIdentifier as PID
+from invenio_rdm_records.marshmallow import MetadataSchemaV1
+from invenio_rdm_records.models import BibliographicRecordDraft
+from invenio_rdm_records.pid_manager import BibliographicPIDManager
+from invenio_records.models import RecordMetadata
+from invenio_records_resources.services import MarshmallowDataValidator
+from werkzeug.utils import import_string
+
+from .licenses import License
+
+default_data_validator = MarshmallowDataValidator(schema=MetadataSchemaV1)
+default_pid_manager = BibliographicPIDManager()
+
+url_identifier_pattern = re.compile(r"https?://.*?/(.*)")
+name_pattern_1 = re.compile(r"([^\s]+)\s+([^\s]+)")
+name_pattern_2 = re.compile(r"([^\s]+),\s+([^\s]+)")
 
 
-def distribution_matches_us(distribution_dict):
-    """Check if the 'host' of the distribution matches our repository."""
-    host = distribution_dict.get("host", {})
-    url_matches = (host.get("url", None) == app.config['MADMP_HOST_URL'])
-    title_matches = (host.get("title", None) == app.config['MADMP_HOST_TITLE'])
-    return url_matches or title_matches
-
-
-def get_matching_distributions(dataset_dict):
-    """Fetch all matching distributions from the dataset."""
-    dists = []
-    for dist in dataset_dict.get("distribution", []):
-        if distribution_matches_us(dist):
-            dists.append(dist)
-
-    return dists
-
-
-def map_access_right(distribution_dict):
-    """Get the 'access_right' from the distribution."""
-    return distribution_dict.get(
-        "data_access",
-        app.config['MADMP_DEFAULT_DATA_ACCESS']
-    )
-
-
-def map_contact(contact_dict):
-    """Get the contact person's e-mail address."""
-    return contact_dict.get("mbox", app.config['MADMP_DEFAULT_CONTACT'])
-
-
-def map_resource_type(dataset_type_dict):
-    """Map the resource type of the dataset."""
-    # TODO mapping logic
-    return {
-        "type": "Other",  # TODO check vocabulary
-        "subtype": dataset_type_dict.get("name", "Other")  # TODO check vocab
-    }
-
-
-def map_creator(creator_dict):
-    """Map the DMP's creator(s) to the record's creator(s)."""
-    # TODO creator = uploader?
-    cid = creator_dict["contributor_id"]
-    identifiers = {cid["type"]: cid["identifier"]}
-
-    affiliations = []
-
-    creator = {
-        "name": creator_dict["name"],
-        "type": "Personal",  # TODO ?
-        # "given_name": None,  # TODO heuristics?
-        # "family_name": None,  # TODO heuristics?
-        "identifiers": identifiers,
-        "affiliations": affiliations,
-    }
-
-    return creator
-
-
-def map_title(dataset_dict):
-    """Map the dataset's title to the record's title."""
-    return {
-        "title": dataset_dict.get("title", "[No Title]"),
-        "type": "MainTitle",  # TODO check vocabulary
-        "lang": dataset_dict.get(
-            "language",
-            app.config['MADMP_DEFAULT_LANGUAGE']
-        ),
-    }
-
-
-def map_contributor(contributor_dict, role_idx=0):
-    """Map the DMP's contributor(s) to the record's contributor(s)."""
-    cid = contributor_dict["contributor_id"]
-    identifiers = {cid["type"]: cid["identifier"]}
-
-    affiliations = []
-
-    contributor = {
-        "name": contributor_dict["name"],
-        "type": "Personal",  # TODO ?
-        # "given_name": None,  # TODO heuristics?
-        # "family_name": None,  # TODO heuristics?
-        "identifiers": identifiers,
-        "affiliations": affiliations,
-        "role": contributor_dict["role"][role_idx],
-    }
-
-    return contributor
-
-
-def map_language(dataset_dict):
-    """Map the dataset's language to the record's language."""
-    return dataset_dict.get("language", app.config['MADMP_DEFAULT_LANGUAGE'])
-
-
-def map_license(license_dict):
-    """Map the distribution's license to the record's license."""
-    short_name = "BSD-3"  # TODO
-    license_ = {
-        "license": license_dict["name"],
-        "uri": license_dict["license_ref"],
-        "identifier": short_name,
-        "scheme": short_name,
-    }
-
-    return license_
-
-
-def map_description(dataset_dict):
-    """Map the dataset's description to the record's description."""
-    return {
-        "description": dataset_dict.get("description", "[No Description]"),
-        "type": "Other",  # TODO check vocabulary
-        "lang": dataset_dict.get(
-            "language",
-            app.config['MADMP_DEFAULT_LANGUAGE']
-        ),
-    }
+def is_identifier_type_allowed(id_type: str, contributor_dict: Dict = None):
+    """Check if the identifier type is allowed for contributors."""
+    return id_type in ["Orcid", "ror"]
 
 
 def parse_date(date_str):
@@ -143,101 +40,157 @@ def format_date(date):
     return date.isoformat()
 
 
-def convert(madmp_dict) -> List:
-    """Map the maDMP's dictionary to a number of Invenio RDM Records."""
-    records = []
-
-    contact = map_contact(madmp_dict.get("contact", {}))
-    contribs = list(map(map_contributor, madmp_dict.get("contributor", [])))
-    creators = list(map(map_creator, madmp_dict.get("contributor", [])))
-
-    for dataset in madmp_dict.get("dataset", []):
-
-        distribs = get_matching_distributions(dataset)
-        if not distribs:
-            # our repository is not listed as host for any of the distributions
-
-            if not dataset["distribution"]:
-                # the dataset doesn't have any distributions specified... weird
-                # TODO how do we want to handle this case?
-                pass
-
-            else:
-                # there are distributions, but just not in our repo: ignore
-                pass
-
-        else:
-            for distrib in distribs:
-                # iterate over all dataset[].distribution[] elements that match
-                # our repository, and create a record for each distribution
-                # note: is expected to be at most one item, but if there are
-                #       multiple matching items this is probably assumed
-                #       (e.g. same dataset saved in our repo, in different
-                #        formats)
-
-                resource_type = None
-                types = dataset.get("type", [])
-                if types:
-                    resource_type = map_resource_type(types[0])
-
-                access_right = map_access_right(distrib)
-                titles = [map_title(dataset)]
-                language = map_language(dataset)
-                licenses = list(map(map_license, distrib.get("license", [])))
-                descriptions = [map_description(dataset)]
-                dates = []
-
-                earliest_license_start = None
-                for lic in distrib.get("license"):
-                    lic_start = parse_date(lic["start_date"])
-
-                    if earliest_license_start is None or \
-                       lic_start < earliest_license_start:
-
-                        earliest_license_start = lic_start
-
-                record = {
-                    "access_right": access_right,
-                    "contact": contact,
-                    "resource_type": resource_type,
-                    "creators": creators,
-                    "titles": titles,
-                    "contributors": contribs,
-                    "dates": dates,
-                    "language": language,
-                    "licenses": licenses,
-                    "descriptions": descriptions,
-                }
-
-                if earliest_license_start is None or \
-                   datetime.utcnow() < earliest_license_start:
-
-                    # the earliest license start date is in the future:
-                    # that means there's an embargo
-                    fmt_date = format_date(earliest_license_start)
-                    record["embargo_date"] = fmt_date
-
-                # TODO
-                record["_access"] = {
-                    "files_restricted": False,
-                    "metadata_restricted": False,
-                }
-                record["_owners"] = [1]
-                record["_created_by"] = 1
-
-                records.append(record)
-
-    return records
+def distribution_matches_us(distribution_dict):
+    """Check if the 'host' of the distribution matches our repository."""
+    host = distribution_dict.get("host", {})
+    url_matches = host.get("url", None) == app.config["MADMP_HOST_URL"]
+    title_matches = host.get("title", None) == app.config["MADMP_HOST_TITLE"]
+    return url_matches or title_matches
 
 
-if __name__ == "__main__":
-    import json
-    import sys
+def translate_dataset_type(dataset_dict):
+    """Map the maDMP dataset type using the configured dictionaries."""
+    type_ = dataset_dict.get("type", None)
+    trans_d = app.config["MADMP_RESOURCE_TYPE_TRANSLATION_DICT"] or {}
+    sub_trans_d = app.config["MADMP_RESOURCE_SUBTYPE_TRANSLATION_DICT"] or {}
 
-    if len(sys.argv) > 1:
-        with open(sys.argv[1], "r") as dmap_json_file:
-            dmap_dict = json.load(dmap_json_file)
+    resource_type = {
+        "type": trans_d.get(type_, "other"),  # TODO check vocabulary
+        "subtype": sub_trans_d.get(type_, ""),  # TODO check vocab
+    }
 
-        records = convert(dmap_dict["dmp"])
-        records_json = json.dumps(records)
-        print(records_json)
+    return resource_type
+
+
+def translate_license(license_dict):
+    """Try to find the referenced license in the list of known licenses."""
+    licenses = app.config["MADMP_LICENSES"]
+
+    matching_licenses = [
+        lic for lic in licenses if lic.matches(*license_dict.values())
+    ]
+
+    if matching_licenses:
+        lic = matching_licenses[0]
+    else:
+        lic = License("Other", "Other", "", "Other")
+
+    return lic.to_dict()
+
+
+def translate_person_details(person_dict: Dict) -> Dict:
+    """Try to find out additional information for a person.
+
+    Tries to separate the person's full name into a given and family name by
+    applying simple patterns.
+    :param person_dict: [description]
+    :type person_dict: dict
+    :return: A dictionary with additional information about the person.
+    :rtype: dict
+    """
+    additional_infos = {}
+    name = person_dict.get("name", None)
+
+    if name:
+        m1 = name_pattern_1.match(name)
+        m2 = name_pattern_2.match(name)
+        if m1:
+            additional_infos["given_name"] = m1.group(1)
+            additional_infos["family_name"] = m1.group(2)
+        elif m2:
+            additional_infos["given_name"] = m2.group(2)
+            additional_infos["family_name"] = m2.group(1)
+
+    return additional_infos
+
+
+def create_new_record(
+    record_dict,
+    record_api_class=BibliographicRecordDraft,
+    data_validator=default_data_validator,
+    pid_manager=default_pid_manager,
+):
+    """Create a new record (draft) with the given metadata in record_dict.
+
+    :param record_dict: Dictionary with metadata to use for the new record
+    :type record_dict: dict
+    :param data_validator: The Marshmallow data validator to use
+    :param pid_manager: The PID manager to use
+    :return: The created record (draft)
+    """
+    # TODO check if the following is correct (and necessary):
+    # identity = Identity(1)
+    # identity.provides.add(any_user)
+    # require_permission(identity, "create")
+    data = data_validator.validate(record_dict, partial=True)
+    rec_uuid = uuid.uuid4()
+    pid_manager.mint(record_uuid=rec_uuid, data=data)
+    draft = record_api_class.create(data, id_=rec_uuid)
+
+    return draft
+
+
+def fetch_unassigned_record(dataset_identifier, distribution_access_url=None):
+    """Try to find a (yet unassigned) record via the specified identifiers.
+
+    Try to find a record with an associated PID that has the same value as the
+    specified dataset identifier.
+    If the distribution's (i.e. record's) access URL is specified, it will
+    take precedence over the dataset's identifier for the search.
+    :param dataset_identifier: The dataset's identifier
+    :type dataset_identifier: str
+    :param distribution_access_url: The URL endpoint for the Record
+    :type distribution_access_url: str
+    :return: The Record identified by the provided means
+    :rtype: Record
+    """
+    rec = None
+
+    if distribution_access_url:
+        # TODO use a better variant of getting the record via the access url
+        #      (=landing page)
+        p = r"https?://.*?/records/(.*)"
+        match = re.match(p, distribution_access_url)
+        if match:
+            recid = match.group(1)
+            pid = PID.get("recid", recid)
+            if pid is not None:
+                rec = RecordMetadata.query.get(
+                    pid.object_uuid
+                )  # TODO may also be a Draft?
+                if rec:
+                    return rec
+
+    # in case of a DOI, remove the possibly leading "https://doi.org/"
+    dataset_identifier = strip_identifier(dataset_identifier)
+
+    pid = PID.query.filter(PID.pid_value == dataset_identifier).one_or_none()
+    if pid is not None:
+        rec = RecordMetadata.query.get(pid.object_uuid)  # TODO may be a Draft?
+
+    return rec
+
+
+def find_user(email):
+    """Find a user by their e-mail address."""
+    user = User.query.filter(User.email == email).one_or_none()
+    return user
+
+
+def strip_identifier(identifier):
+    """Strip the URL prefix from PIDs (e.g.: https://doi.org/...)."""
+    match = url_identifier_pattern.match(identifier)
+    if match:
+        return match.group(1)
+
+    return identifier
+
+
+def get_or_import(value, default=None):
+    """Try an import if value is an endpoint string, or return value itself."""
+    if isinstance(value, str):
+        return import_string(value)
+    elif value:
+        return value
+
+    return default

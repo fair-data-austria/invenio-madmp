@@ -12,10 +12,10 @@ from typing import List
 
 from invenio_db import db
 from invenio_pidstore.models import PersistentIdentifier
-from invenio_records.models import RecordMetadata, RecordMetadataBase
-from sqlalchemy import event
+from invenio_rdm_records.models import BibliographicRecordDraft
+from invenio_records import Record
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy_utils.types import UUIDType
 
 datamanagementplan_dataset = db.Table(
@@ -50,14 +50,16 @@ class DataManagementPlan(db.Model):
     """The dmp_id used to identify the DMP in the DMP tool."""
 
     datasets = db.relationship(
-        "Dataset",
-        secondary=datamanagementplan_dataset,
-        back_populates="dmps"
+        "Dataset", secondary=datamanagementplan_dataset, back_populates="dmps"
     )
 
     @classmethod
-    def get_by_record(cls,
-                      record: RecordMetadata) -> List["DataManagementPlan"]:
+    def get_by_dmp_id(cls, dmp_id: str) -> "DataManagementPlan":
+        """Get the dataset with the given dmp_id."""
+        return cls.query.filter(cls.dmp_id == dmp_id).one_or_none()
+
+    @classmethod
+    def get_by_record(cls, record: Record) -> List["DataManagementPlan"]:
         """Get all DMPs using the given Record in a Dataset."""
         dataset = Dataset.get_by_record(record)
 
@@ -68,9 +70,8 @@ class DataManagementPlan(db.Model):
 
     @classmethod
     def get_by_record_pid(
-                cls,
-                record_pid: PersistentIdentifier
-            ) -> List["DataManagementPlan"]:
+        cls, record_pid: PersistentIdentifier
+    ) -> List["DataManagementPlan"]:
         """Get all DMPs using the Record with the given PID in a Dataset."""
         dataset = Dataset.get_by_record_pid(record_pid)
 
@@ -107,7 +108,7 @@ class Dataset(db.Model):
     dmps = db.relationship(
         "DataManagementPlan",
         secondary=datamanagementplan_dataset,
-        back_populates="datasets"
+        back_populates="datasets",
     )
 
     record_pid_id = db.Column(
@@ -123,12 +124,31 @@ class Dataset(db.Model):
     )
 
     @property
-    def record(self) -> RecordMetadata:
+    def record(self) -> Record:
         """Get the Record associated with this Dataset."""
-        return RecordMetadata.query.get(self.record_pid.get_assigned_object())
+        if self.record_pid is None:
+            return None
+
+        record = None
+        record_uuid = self.record_pid.get_assigned_object()
+        for api_cls in (Record, BibliographicRecordDraft):
+            try:
+                record = api_cls.get_record(record_uuid)
+            except NoResultFound:
+                continue
+            else:
+                # no exception means that we found a record
+                break
+
+        return record
 
     @classmethod
-    def get_by_record(cls, record: RecordMetadata) -> "Dataset":
+    def get_by_dataset_id(cls, dataset_id: str) -> "Dataset":
+        """Get the dataset with the given dataset_id."""
+        return cls.query.filter(cls.dataset_id == dataset_id).one_or_none()
+
+    @classmethod
+    def get_by_record(cls, record: Record) -> "Dataset":
         """Get the associated Dataset for the given Record."""
         # TODO: a record may have multiple PIDs, and the Dataset is only
         #       associated with one of these PIDs
@@ -152,10 +172,12 @@ class Dataset(db.Model):
         return cls.query.filter(cls.record_pid_id == record_pid_id).first()
 
     @classmethod
-    def create(cls,
-               dataset_id: str,
-               record_pid: PersistentIdentifier,
-               dmps: List[DataManagementPlan] = None) -> "Dataset":
+    def create(
+        cls,
+        dataset_id: str,
+        record_pid: PersistentIdentifier,
+        dmps: List[DataManagementPlan] = None,
+    ) -> "Dataset":
         """Create and store a Dataset with the given properties."""
         dataset = None
 
@@ -179,7 +201,7 @@ class Dataset(db.Model):
                 db.session.add(dataset)
 
         except IntegrityError:
-            # TODO
+            # TODO probably indicates a duplicate entry
             raise
 
         return dataset

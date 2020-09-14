@@ -7,8 +7,18 @@
 
 """Invenio module for maDMP integration."""
 
-MADMP_HOST_URL = "https://data.research.tuwien.ac.at"
-MADMP_HOST_TITLE = "GitHub"
-MADMP_DEFAULT_LANGUAGE = "eng"  # TODO check vocabulary
+from .licenses import KNOWN_LICENSES
+
+MADMP_HOST_URL = "https://data.tuwien.ac.at"
+MADMP_HOST_TITLE = "TU Data"
+
+MADMP_DEFAULT_LANGUAGE = "eng"
 MADMP_DEFAULT_CONTACT = "info@invenio.org"
 MADMP_DEFAULT_DATA_ACCESS = "open"
+
+MADMP_ALLOW_MULTIPLE_DISTRIBUTIONS = False
+
+MADMP_RESOURCE_TYPE_TRANSLATION_DICT = {}
+MADMP_RESOURCE_SUBTYPE_TRANSLATION_DICT = {}
+
+MADMP_LICENSES = KNOWN_LICENSES
