@@ -1,0 +1,129 @@
+{
+  "access_right": "open",
+  "contact": "info@inveniosoftware.org",
+  "embargo_date": "2021-01-31",
+  "dates": [
+    {
+      "type": "Other",
+      "start": "2002-04-14",
+      "description": "Random test date"
+    }
+  ],
+  "references": [
+    {
+      "reference_string": "Reference to something et al.",
+      "scheme": "GRID",
+      "identifier": "9999.99988"
+    }
+  ],
+  "descriptions": [
+    {
+      "type": "Abstract",
+      "lang": "eng",
+      "description": "Several sing nation cultural. Policy grow decade perhaps south should see. Play front include technology now decide modern.\nWater issue themselves. Record place fish early fish prepare little record. Down improve find operation develop them.\nEffect standard indicate thousand business. Environmental cut go crime exist from father.\nRaise trade seat happy hard. Believe seat worry million network. Poor second summer western.\nArt ten firm person we water. Money good such see region boy including. Right expect force there difference.\nDetermine sometimes money everybody parent in attorney. Show suggest increase experience those. Side investment model.\nEat democratic free kind stop audience. Chair rule else which understand reduce number. Reach society respond head alone manager.\nHow shake yard right. Condition majority expect crime south.\nPiece on politics keep can. Indicate network officer five. Challenge fine huge necessary far shake.\nMethod be ability base compare religious win center. Once recently involve. Water top note toward ready best natural. Member street election them lay.\nOrder simple according. Instead carry situation he. Detail middle reach agency.\nState resource purpose eat painting appear place. Fear enough believe general. Shake door position event certain one just. By picture read serve.\nLikely career front. Concern actually paper administration back.\nMovement within man manager top field prevent we. Huge against move writer where. Stand course let provide available yes. Business trade imagine.\nWhether range economic new. Past example Congress she body. Style exactly together try pass focus keep.\nLevel forward recently trip through walk. Foot woman back season education weight describe author.\nEven health product white green activity find. Congress from account evening.\nUs Congress much focus yeah. Analysis vote effect. Create maintain question loss place religious option.\nLater why scene she serious hot. Despite teach black.\nAbove system partner smile.\nPlay study add threat green floor. Between market majority wrong.\nMake unit hear cup information case yeah. Body notice poor wear whether husband.\nArgue want picture general. Measure under model product miss us style.\nFeeling where out enter. Face try easy. Today middle wait energy throughout natural loss choice.\nRaise ability side reflect carry put. Reveal news skill assume price those need.\nExist question night soldier production ask remember. Court question adult trouble. Rock when occur maybe hand.\nRule sign item among beyond poor forget. Majority soon none letter support store worker.\nExist where bring once. Term generation relate street technology week edge.\nComputer seven message store. Now until spring even drop end. Able represent certain huge imagine green fly.\nVisit boy dream others center leave toward. Cut process father population.\nEnough trial read ability behavior simply. Management task Congress despite example product. Machine tell simple college time authority."
+    }
+  ],
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "timestamp": "2010-08-17",
+      "note": "RDM record"
+    }
+  ],
+  "locations": [
+    {
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": 82.950593,
+        "lat": -7.2785705
+      },
+      "place": "Rutland"
+    }
+  ],
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Woodward-Serrano"
+        }
+      ],
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal",
+      "name": "Sarah Bailey"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "resource_type": {
+        "type": "publication",
+        "subtype": "publication-technicalnote"
+      },
+      "relation_type": "Requires",
+      "scheme": "DOI",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "resource_type": {
+    "type": "publication",
+    "subtype": "publication-thesis"
+  },
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "_owners": [
+    1
+  ],
+  "_default_preview": "previewer one",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "subject": "Romans",
+      "scheme": "no-scheme",
+      "identifier": "subj-1"
+    }
+  ],
+  "language": "eng",
+  "titles": [
+    {
+      "type": "Other",
+      "lang": "eng",
+      "title": "Morales Inc's gallery"
+    }
+  ],
+  "publication_date": "1972/1972-06",
+  "licenses": [
+    {
+      "license": "Berkeley Software Distribution 3",
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3"
+    }
+  ],
+  "_created_by": 2,
+  "version": "v0.0.1",
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Peters LLC"
+        }
+      ],
+      "type": "Personal",
+      "role": "RightsHolder",
+      "name": "Robert Hobbs"
+    }
+  ],
+  "_publication_date_search": "1972-01-01"
+}

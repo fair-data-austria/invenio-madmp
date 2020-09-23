@@ -1,0 +1,129 @@
+{
+  "access_right": "open",
+  "contact": "info@inveniosoftware.org",
+  "embargo_date": "2020-09-27",
+  "dates": [
+    {
+      "type": "Other",
+      "start": "1993-03-18",
+      "description": "Random test date"
+    }
+  ],
+  "references": [
+    {
+      "reference_string": "Reference to something et al.",
+      "scheme": "GRID",
+      "identifier": "9999.99988"
+    }
+  ],
+  "descriptions": [
+    {
+      "type": "Abstract",
+      "lang": "eng",
+      "description": "Institution speak else ten available image answer hear. Modern alone that final interesting season somebody hear. Around bed field federal of yet perform.\nNorth Democrat some reality student school condition. Authority miss wonder common skill. Word myself policy though artist itself way. Fly bed talk statement sure generation.\nBecause because sure new. Low day sell throw leave least.\nReach make environment interesting. Stock accept establish civil process air born.\nThreat language career. Century line employee at. Light lawyer paper help minute dog.\nWest how enter glass race resource PM. Season rock bank for thought. Change street today happen.\nMaybe ago role clear remember she. Exist light where friend.\nAppear see seek air home land concern. American leader red treatment evidence. Teach chance scene I strong become relate.\nCard way war rather analysis book. Personal agree cause suggest. Star indicate sea both dream fill various. School something social at.\nStuff example moment drug individual television full. Where senior owner three focus wrong ground. Red trip indicate ask because authority or.\nGeneration radio activity toward under. Age glass white mouth. Dream side mind. Try degree relationship group of.\nCareer exactly other event board feeling. Power respond professor. Right religious clear campaign perform.\nEffort box bar life. Thank hot site tend ask after. Camera suggest hotel whole listen.\nRecognize game effort weight next now. Threat quality choose. Other unit better outside to. Manager side since sound south.\nAlthough throw peace. Sometimes security check quickly change wear.\nOnto white necessary either and. Responsibility base social establish political place. Long cell follow cell unit develop.\nSay sometimes animal life career should. Power mouth blue art.\nMonth experience whether. Travel with tend what data. Enjoy cell free mother agency.\nManager open particularly clear series commercial. Medical to health country side change consumer.\nFeeling from reflect thing. Speech item skin relate close and. Major six yes direction.\nSport around last save popular just ability. No author drive unit ago name ability.\nField main money religious property. Accept discuss run. Media body beat line language lawyer.\nAppear wind best line there blue travel.\nOffer certain build vote policy. Attack happy little general really leader trouble. Machine into improve choice thank with detail perhaps. Court east skin officer pull happy piece.\nFuture alone one another resource imagine as.\nMachine month hospital around buy Republican. Open research newspaper pay science we rock.\nSeven son during skin professor phone. Talk boy trouble cup story.\nPolice nice actually expert court wear Mr. How instead tough oil story. Charge eight meet second.\nSignificant leave prove. Stock yet spend within subject participant.\nAgain try option party. Oil behavior soldier.\nBecause occur likely air between yet rest. Sea energy street car case relate. Authority when soldier would."
+    }
+  ],
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "timestamp": "2011-05-22",
+      "note": "RDM record"
+    }
+  ],
+  "locations": [
+    {
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": 60.356201,
+        "lat": -26.0444275
+      },
+      "place": "Taozhuang"
+    }
+  ],
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Wilson, Martin and Wilcox"
+        }
+      ],
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal",
+      "name": "Lauren Tyler"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "resource_type": {
+        "type": "publication",
+        "subtype": "publication-thesis"
+      },
+      "relation_type": "Requires",
+      "scheme": "DOI",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "resource_type": {
+    "type": "image",
+    "subtype": "image-figure"
+  },
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "_owners": [
+    1
+  ],
+  "_default_preview": "previewer one",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "subject": "Romans",
+      "scheme": "no-scheme",
+      "identifier": "subj-1"
+    }
+  ],
+  "language": "eng",
+  "titles": [
+    {
+      "type": "Other",
+      "lang": "eng",
+      "title": "Powell Inc's gallery"
+    }
+  ],
+  "publication_date": "2000-12-11/2009-09-26",
+  "licenses": [
+    {
+      "license": "Berkeley Software Distribution 3",
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3"
+    }
+  ],
+  "_created_by": 2,
+  "version": "v0.0.1",
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Barnes-Schultz"
+        }
+      ],
+      "type": "Personal",
+      "role": "RightsHolder",
+      "name": "Christopher Walker"
+    }
+  ],
+  "_publication_date_search": "2000-12-11"
+}

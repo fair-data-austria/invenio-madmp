@@ -34,3 +34,6 @@ recursive-include docs Makefile
 recursive-include invenio_madmp *.html
 recursive-include invenio_madmp *.py
 recursive-include tests *.py
+
+# added by check_manifest.py
+recursive-include tests *.json

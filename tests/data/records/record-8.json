@@ -1,0 +1,129 @@
+{
+  "access_right": "open",
+  "contact": "info@inveniosoftware.org",
+  "embargo_date": "2021-02-26",
+  "dates": [
+    {
+      "type": "Other",
+      "start": "1991-08-10",
+      "description": "Random test date"
+    }
+  ],
+  "references": [
+    {
+      "reference_string": "Reference to something et al.",
+      "scheme": "GRID",
+      "identifier": "9999.99988"
+    }
+  ],
+  "descriptions": [
+    {
+      "type": "Abstract",
+      "lang": "eng",
+      "description": "Effort go with billion quite science. Ago though fact need color music.\nTend sound blue. Also world me why high space quickly remain.\nAdmit pass factor professional perform push subject. Relationship detail our. Beyond past poor east picture. We strategy contain cold TV anyone doctor they.\nNetwork imagine subject I. Stage form light save.\nForm home music prove character fear pattern hour. Serve reason unit research personal though property.\nImpact ball community line. Fly order list space. Generation class family must event everything than.\nLocal board above man. Less too traditional for listen next nature. Force interesting indicate per gas of.\nPass PM husband year. Southern religious daughter run recent star technology.\nResult kitchen determine issue tend watch.\nReason behind model different send evidence follow take. Whether financial visit music.\nDesign fire write night already list. Pay allow trouble group opportunity. Save model amount doctor might dark state together.\nSix how save night it conference continue. Interview worry rich western.\nIf strong in spend push. Know share at nature size cost foot. Data four teach term computer fine. Left north fact on music reflect manager.\nLot after civil interesting member. Positive produce peace medical specific level civil. Cost professional agreement generation around whose discussion.\nFriend yourself phone order debate great.\nSee school night suffer pick. Protect it high end structure. Time girl modern mouth pick rest admit.\nAllow artist voice wife us Mr. Want onto western seek line ball project. Experience particular ever commercial.\nAround should responsibility get choose car character sea. International show different these.\nDaughter program company feel especially call three. Than interesting notice everybody safe learn.\nPaper gas half thousand keep wait politics. Think before almost board next star push.\nBeautiful talk first open off. Your on then cut room.\nDemocrat officer those star little less three. Enough candidate care I from both.\nWhole east short marriage on role either. Tend plan range coach employee say southern when. Both side local particularly.\nMind page executive discuss bit traditional Democrat. Out community culture. Set everybody hit trade cold go.\nSpend voice difficult course administration inside school. Hour bed always southern sure.\nBorn final production treatment school. Learn side show institution.\nAlone policy message office thank. Institution sell accept tough base. Growth take meet sister man end.\nCompare scene development political.\nStay community ask rest likely. Then heart door.\nPlace where practice home bed. Around teacher everything major spring. Budget individual wind anyone right consider.\nPeace learn edge spring court personal. Energy product develop establish mind ahead keep major. Consumer thus bring.\nHave image value main. There herself these member hit boy others. Little population something quite light see little during. Enter process civil couple test."
+    }
+  ],
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "timestamp": "1975-03-31",
+      "note": "RDM record"
+    }
+  ],
+  "locations": [
+    {
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": -46.535733,
+        "lat": 68.34482
+      },
+      "place": "Boston"
+    }
+  ],
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Bowman, Mayer and Lewis"
+        }
+      ],
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal",
+      "name": "Christopher Phelps"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "resource_type": {
+        "type": "publication",
+        "subtype": "publication-taxonomictreatment"
+      },
+      "relation_type": "Requires",
+      "scheme": "DOI",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "resource_type": {
+    "type": "publication",
+    "subtype": "publication-annotationcollection"
+  },
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "_owners": [
+    1
+  ],
+  "_default_preview": "previewer one",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "subject": "Romans",
+      "scheme": "no-scheme",
+      "identifier": "subj-1"
+    }
+  ],
+  "language": "eng",
+  "titles": [
+    {
+      "type": "Other",
+      "lang": "eng",
+      "title": "Wood-Brown's gallery"
+    }
+  ],
+  "publication_date": "2013-10",
+  "licenses": [
+    {
+      "license": "Berkeley Software Distribution 3",
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3"
+    }
+  ],
+  "_created_by": 2,
+  "version": "v0.0.1",
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Cox and Sons"
+        }
+      ],
+      "type": "Personal",
+      "role": "RightsHolder",
+      "name": "Janice Moon"
+    }
+  ],
+  "_publication_date_search": "2013-10-01"
+}

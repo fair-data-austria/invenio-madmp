@@ -1,0 +1,129 @@
+{
+  "access_right": "open",
+  "contact": "info@inveniosoftware.org",
+  "embargo_date": "2020-10-23",
+  "dates": [
+    {
+      "type": "Other",
+      "start": "2010-11-22",
+      "description": "Random test date"
+    }
+  ],
+  "references": [
+    {
+      "reference_string": "Reference to something et al.",
+      "scheme": "GRID",
+      "identifier": "9999.99988"
+    }
+  ],
+  "descriptions": [
+    {
+      "type": "Abstract",
+      "lang": "eng",
+      "description": "Mouth walk teach explain today. My five cup start military.\nForeign local kind somebody. Last discover ready soon night.\nCommunity leave lose.\nWater become city individual hair should size. Serious its kitchen special. Join behavior never coach others gas lose police.\nPay once ball positive either rich war nearly. Mean Congress color fall I. Charge rule star around. Hair your star approach treat beautiful sort.\nView year agency. National church race woman. Particularly manager pattern movement home modern.\nLocal serious whatever son new.\nPossible other what court. Loss prevent accept guess sort old tonight. Environment another cultural something bag success.\nInformation admit arrive leg. Choice raise stay can room.\nCoach concern television history former fall near. Behavior TV item forget answer. Whatever face where.\nWater bed drive local. Box number whom worker.\nUpon ok morning. Spring degree they lose.\nBad budget season also drive blood say.\nWriter rock pressure I serious person. Rich believe with coach rock. Upon blue true color actually ever discover.\nActivity western range study later design have. Language later peace same member. Trip event list.\nFour process medical much price enough party help. Pick beyond turn drop approach other. Single serious thought budget wish character every.\nForce though allow main single seat however wait. Effect maybe difference article college billion. Example available analysis why.\nLeg specific election final health. Large choice party one order few.\nHappy pull voice quickly necessary. Off enter let election force feeling.\nBut culture which public. Do generation especially. Member parent may capital that garden.\nGreat lawyer laugh agreement TV. Open there sing letter wall require story.\nOfficer kind family beat full receive. Family nation lose spring cell choose on. Century drug finish population include.\nProduction as reflect system company. Relationship or wait them middle power. Show successful room ever.\nReady relationship have happen exactly. Like race both whatever lead figure prevent.\nMoney small indicate daughter movement really good. Fill discussion beat test however better yard. Do force care answer. Really prove write despite discover.\nYoung already recent language suffer measure remember specific. Local our within health. Room on audience kid.\nAir station go set cause raise travel. Foreign threat whole machine until. Company ball name defense plant figure smile small. Positive enter deep begin.\nDeep picture themselves your tell. Dream garden popular move. Huge career guess garden.\nHer spend friend her. Five away prepare degree hair. Or brother present Congress.\nSkill future subject administration occur receive size take. Study born technology maybe happy ground article.\nReality back year. Data tax which name or response major. Reduce spend where result.\nRich control group probably. Off participant staff.\nStage tax between population tough can. Who recently feeling."
+    }
+  ],
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "timestamp": "1980-08-21",
+      "note": "RDM record"
+    }
+  ],
+  "locations": [
+    {
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": 71.390963,
+        "lat": -89.7563495
+      },
+      "place": "Ada"
+    }
+  ],
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Marquez, Smith and Garcia"
+        }
+      ],
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal",
+      "name": "Katherine Levy"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "resource_type": {
+        "type": "publication",
+        "subtype": "publication-milestone"
+      },
+      "relation_type": "Requires",
+      "scheme": "DOI",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "resource_type": {
+    "type": "other",
+    "subtype": ""
+  },
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "_owners": [
+    1
+  ],
+  "_default_preview": "previewer one",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "subject": "Romans",
+      "scheme": "no-scheme",
+      "identifier": "subj-1"
+    }
+  ],
+  "language": "eng",
+  "titles": [
+    {
+      "type": "Other",
+      "lang": "eng",
+      "title": "Lynch-Hernandez's gallery"
+    }
+  ],
+  "publication_date": "2009-04-08",
+  "licenses": [
+    {
+      "license": "Berkeley Software Distribution 3",
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3"
+    }
+  ],
+  "_created_by": 2,
+  "version": "v0.0.1",
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Hernandez-Bauer"
+        }
+      ],
+      "type": "Personal",
+      "role": "RightsHolder",
+      "name": "Julie Olsen"
+    }
+  ],
+  "_publication_date_search": "2009-04-08"
+}

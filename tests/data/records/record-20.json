@@ -1,0 +1,129 @@
+{
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "note": "RDM record",
+      "timestamp": "1996-11-16"
+    }
+  ],
+  "licenses": [
+    {
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3",
+      "license": "Berkeley Software Distribution 3"
+    }
+  ],
+  "descriptions": [
+    {
+      "description": "Herself add commercial meet source card else. Want recent risk listen. Leader word more act.\nNone next factor nearly speech able hit management.\nEasy decade trial they cut soldier. Hot run official Mr reflect treatment. Final but citizen perform middle across conference.\nHuman blood study our job visit. Artist teacher piece moment set. Office knowledge cause.\nLocal we sort instead cup quality. Pretty action city offer poor. Especially continue cost interview others.\nMove soldier we black rest them. Sometimes space sing view together civil.\nLarge practice during wear stage meeting already. Culture manage middle speak.\nGo cause yourself physical real. Here manage left candidate matter enter.\nPressure film family born boy very. Through race responsibility to including I energy protect. Task industry where group learn result.\nAnalysis deal will first might. Share test reduce sometimes theory measure garden pay.\nCard similar realize especially natural recently north wear. Think water visit former leader. War return model second school.\nRemember soldier fight people wonder because. President if total when. Issue I word environmental other reveal class.\nField almost these never individual. Education leader ten field.\nOther accept play clear political scientist. Drop medical sometimes such road shake. Audience order scientist.\nMiddle American reality fish adult. Set minute similar car. Huge response turn.\nLike per top issue group. Room catch buy week all.\nCentral rise site list foreign first sport. Whole case base shake long seven.\nGroup forget imagine treatment enough detail guess address. Matter enter out security month dark approach process. Kind decade upon rest measure program. Run although issue television plant nor.\nRepresent audience professional onto tough by medical work. Baby that soldier meet. Read do suffer senior election.\nFinancial go before real always. Training enter him after president.\nSound exactly leader describe allow. Summer car factor especially.\nStar still example foot require. Resource house three near service key since close. Today country left individual audience actually investment speech.\nSupport good expect speech operation how decade. Defense live responsibility plant. Money bed million ever hospital player.\nNone fill will easy key image. Yet value pay rich. Spend design design but opportunity.\nStuff charge right body. Position claim ask politics heart risk half.\nBoard son factor moment. Character generation international can dark air.\nOccur sport test performance hotel heart worry focus. General book shoulder near stock. Born issue job director rather.\nShake when company consider end concern moment. Mother anyone later daughter available new.\nAttorney knowledge try would occur college. Her rock statement television open. Change defense marriage.\nThat consider morning ask set. Resource piece learn what economy safe with. Threat before religious draw model career.\nEat different chance toward your. Data price admit.",
+      "type": "Abstract",
+      "lang": "eng"
+    }
+  ],
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "version": "v0.0.1",
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "name": "Mendez Group",
+          "identifiers": {
+            "ror": "03yrm5c26"
+          }
+        }
+      ],
+      "name": "Mary Thomas",
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal"
+    }
+  ],
+  "dates": [
+    {
+      "description": "Random test date",
+      "start": "2001-04-19",
+      "type": "Other"
+    }
+  ],
+  "_default_preview": "previewer one",
+  "resource_type": {
+    "subtype": "image-drawing",
+    "type": "image"
+  },
+  "_created_by": 2,
+  "references": [
+    {
+      "scheme": "GRID",
+      "reference_string": "Reference to something et al.",
+      "identifier": "9999.99988"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "scheme": "DOI",
+      "resource_type": {
+        "subtype": "publication-datamanagementplan",
+        "type": "publication"
+      },
+      "relation_type": "Requires",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "publication_date": "1978-05-03",
+  "access_right": "open",
+  "titles": [
+    {
+      "title": "Ruiz-Harper's gallery",
+      "type": "Other",
+      "lang": "eng"
+    }
+  ],
+  "language": "eng",
+  "_owners": [
+    1
+  ],
+  "contact": "info@inveniosoftware.org",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "scheme": "no-scheme",
+      "subject": "Romans",
+      "identifier": "subj-1"
+    }
+  ],
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "name": "Barber PLC",
+          "identifiers": {
+            "ror": "03yrm5c26"
+          }
+        }
+      ],
+      "name": "George Chavez",
+      "role": "RightsHolder",
+      "type": "Personal"
+    }
+  ],
+  "embargo_date": "2020-09-27",
+  "locations": [
+    {
+      "place": "Rhosllanerchrugog",
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": -99.102935,
+        "lat": -39.83232
+      }
+    }
+  ],
+  "_publication_date_search": "1978-05-03"
+}

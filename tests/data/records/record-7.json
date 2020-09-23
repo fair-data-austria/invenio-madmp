@@ -1,0 +1,129 @@
+{
+  "access_right": "open",
+  "contact": "info@inveniosoftware.org",
+  "embargo_date": "2021-04-28",
+  "dates": [
+    {
+      "type": "Other",
+      "start": "1991-09-05",
+      "description": "Random test date"
+    }
+  ],
+  "references": [
+    {
+      "reference_string": "Reference to something et al.",
+      "scheme": "GRID",
+      "identifier": "9999.99988"
+    }
+  ],
+  "descriptions": [
+    {
+      "type": "Abstract",
+      "lang": "eng",
+      "description": "Image rise market some woman. Meeting five brother look phone someone issue leg.\nTell dark sign finally they person prove. I southern table prepare consider. Energy read industry money.\nJob school arm at. Couple same card whether against.\nExactly north little. Quality adult coach cover page affect study. Have southern source under imagine.\nBig pick suggest my situation long. Doctor food per power music. Base return suddenly without magazine what.\nLikely them past current. Already laugh note check say off such.\nMyself we hotel increase. Attack dinner adult focus couple add include.\nFinal concern your style board. Travel attention forget hard not.\nReturn husband enter head discover education. Able carry town soon art into fall.\nLose computer four. Back wish machine authority. Statement thousand person other.\nOption these box successful as. Data fly ever. Despite likely order sit born modern meeting study.\nTrade thought admit little. Suddenly wind owner physical point yes.\nAct pretty pay improve eye movie health. Foreign nothing here physical professor begin. Military figure writer rock. Remain thank exactly artist rather.\nSenior age find say grow dark. Dark future Mr pattern same fish writer. City hold year nothing. Air issue must administration more interview cut.\nNight record central add item. Letter call both level shoulder personal such.\nCharacter country gun worry discussion. Lay air language others ready develop although. Attention think forget far sport kitchen.\nHand lay house full life several born. Board happen support paper.\nUpon food under create amount. My cost year benefit still control.\nOn citizen here keep where federal series. Sometimes almost trade prove environment animal dog.\nRest hair mouth effort.\nPositive detail degree material recognize billion quality. Condition who sort large discover. Able continue scene cover easy me herself local.\nComputer admit organization. Half eight color have little attack have.\nEight see rather leader establish. Offer sister woman bit field.\nBoard admit recent. Professor even since wait end buy company use.\nFood health war information bank sister not. Later behavior book. No growth smile quickly face.\nFew receive Republican whole energy see. Contain hand describe visit explain manager rock visit. Sometimes more might wife south.\nThousand street indeed card worker. Task interest tend share form what minute central.\nThey never effect. Protect allow them thought only center benefit.\nResearch if religious peace beautiful kitchen spring member. Ok each current least Mr whatever question size.\nCitizen around side. Fine whom here. Good positive his customer let result law wall.\nBillion foreign machine sense then present town. Policy role those ever three big. Now list make city ability fund maybe similar.\nHit feel teach win in. Along television about say billion.\nFirm now think cut help might policy long. Soon remember nation without. Turn note hair send very."
+    }
+  ],
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "timestamp": "1998-05-19",
+      "note": "RDM record"
+    }
+  ],
+  "locations": [
+    {
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": 131.803521,
+        "lat": 84.8596525
+      },
+      "place": "Alipur"
+    }
+  ],
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Jackson-Nelson"
+        }
+      ],
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal",
+      "name": "Rodney Johnson"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "resource_type": {
+        "type": "publication",
+        "subtype": "publication-milestone"
+      },
+      "relation_type": "Requires",
+      "scheme": "DOI",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "resource_type": {
+    "type": "presentation",
+    "subtype": ""
+  },
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "_owners": [
+    1
+  ],
+  "_default_preview": "previewer one",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "subject": "Romans",
+      "scheme": "no-scheme",
+      "identifier": "subj-1"
+    }
+  ],
+  "language": "eng",
+  "titles": [
+    {
+      "type": "Other",
+      "lang": "eng",
+      "title": "Sanchez, Zamora and Adams's gallery"
+    }
+  ],
+  "publication_date": "1972",
+  "licenses": [
+    {
+      "license": "Berkeley Software Distribution 3",
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3"
+    }
+  ],
+  "_created_by": 2,
+  "version": "v0.0.1",
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Esparza, Smith and Lara"
+        }
+      ],
+      "type": "Personal",
+      "role": "RightsHolder",
+      "name": "Leah Cross"
+    }
+  ],
+  "_publication_date_search": "1972-01-01"
+}

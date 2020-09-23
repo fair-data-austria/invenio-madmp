@@ -1,0 +1,129 @@
+{
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Boyd, James and Krause"
+        }
+      ],
+      "name": "Pamela Hernandez",
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal"
+    }
+  ],
+  "_created_by": 2,
+  "_access": {
+    "metadata_restricted": false,
+    "files_restricted": false
+  },
+  "references": [
+    {
+      "scheme": "GRID",
+      "reference_string": "Reference to something et al.",
+      "identifier": "9999.99988"
+    }
+  ],
+  "licenses": [
+    {
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "scheme": "BSD-3",
+      "identifier": "BSD-3",
+      "license": "Berkeley Software Distribution 3"
+    }
+  ],
+  "subjects": [
+    {
+      "subject": "Romans",
+      "identifier": "subj-1",
+      "scheme": "no-scheme"
+    }
+  ],
+  "publication_date": "2013",
+  "_owners": [
+    1
+  ],
+  "related_identifiers": [
+    {
+      "scheme": "DOI",
+      "resource_type": {
+        "subtype": "publication-datamanagementplan",
+        "type": "publication"
+      },
+      "identifier": "10.9999/rdm.9999988",
+      "relation_type": "Requires"
+    }
+  ],
+  "locations": [
+    {
+      "point": {
+        "lon": 36.329075,
+        "lat": -77.269385
+      },
+      "place": "Magong",
+      "description": "Random place on land for random coordinates..."
+    }
+  ],
+  "resource_type": {
+    "subtype": "publication-thesis",
+    "type": "publication"
+  },
+  "language": "eng",
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "version": "v0.0.1",
+  "_default_preview": "previewer one",
+  "access_right": "open",
+  "dates": [
+    {
+      "description": "Random test date",
+      "start": "1992-02-03",
+      "type": "Other"
+    }
+  ],
+  "titles": [
+    {
+      "lang": "eng",
+      "type": "Other",
+      "title": "Lowe, Smith and Marquez's gallery"
+    }
+  ],
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Allen, Anderson and Wilkinson"
+        }
+      ],
+      "name": "Diana Barton",
+      "role": "RightsHolder",
+      "type": "Personal"
+    }
+  ],
+  "embargo_date": "2021-04-24",
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "timestamp": "2018-08-29",
+      "note": "RDM record"
+    }
+  ],
+  "descriptions": [
+    {
+      "lang": "eng",
+      "description": "Result send western election special. Page power over majority something. Able remember business environmental order forward event. Middle society fish shake option whom.\nAmount out pattern direction. Key them film behind professor different evening. Close behind address technology large. Push box family.\nAble dinner put coach when test. Nor back bed some become.\nHappy magazine statement environmental difficult.\nStandard energy within growth need hard. Enough accept tonight world bad result.\nPractice style day run save. Down everyone guess heart.\nListen truth myself whom main town important. Six forget nearly scene decade. Fine figure choice region.\nUp none former role most yard. Wear take author describe approach. Avoid area why blue.\nFederal he program skin. Nearly something continue draw according. Off world many benefit.\nHeart effect environment hear marriage. Send use consider top pretty establish. Analysis pick art tough attack. Same response agreement section agency age.\nWhatever lose entire else Mr authority at. Local pressure store recent.\nRaise find build pattern. Her purpose cause. Sport social deal certain.\nMain true suddenly mother gas. Ahead hold measure choice first firm west. Book glass sort apply present grow.\nOut imagine program six PM course. Executive attorney low small many operation film job. Tell green positive.\nLeft yet wide population not. Watch no Mrs style finally push within. Full significant many the near hard particular.\nQuestion which true former. Challenge early develop rock. Political answer good respond foot.\nCivil trip out north job officer. Set low site land bag although.\nNature debate ok pressure act end maintain.\nAttorney difficult not by arm recognize. View choose deal film alone. Stock character main study two figure.\nApproach baby beautiful article alone buy. Republican debate cup attorney rest someone character.\nKind design gas around blue. Determine brother pretty way son.\nExpect reach size not film say without. Work book she goal. Wall main see either.\nCentury yeah bring hot. Up building history employee either wait else. Onto white join on.\nDraw look sort process company leave. Nature provide song identify writer available firm manage. Require spring sister mean generation peace.\nFar page girl same. Author subject my series visit north condition. Glass citizen share wife stage.\nPower wife center thus week. Quality decade budget else deep class. Body professor house drop.\nBoard other though interview to happen open. Human star thus country police guy.\nWho institution shake tough magazine too rather. Series claim others name clear.\nAct answer treat crime. Price room rest. Partner risk late.\nBank fact change season.\nImagine dinner amount. Care condition information usually green way. Hundred bad senior individual today.\nSpend understand pull. Item step watch threat home community although. Lay past during to whether bar deal. Protect I name sit Congress town.",
+      "type": "Abstract"
+    }
+  ],
+  "contact": "info@inveniosoftware.org",
+  "_publication_date_search": "2013-01-01"
+}

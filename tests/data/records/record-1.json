@@ -1,0 +1,129 @@
+{
+  "access_right": "open",
+  "contact": "info@inveniosoftware.org",
+  "embargo_date": "2021-05-23",
+  "dates": [
+    {
+      "type": "Other",
+      "start": "1993-11-11",
+      "description": "Random test date"
+    }
+  ],
+  "references": [
+    {
+      "reference_string": "Reference to something et al.",
+      "scheme": "GRID",
+      "identifier": "9999.99988"
+    }
+  ],
+  "descriptions": [
+    {
+      "type": "Abstract",
+      "lang": "eng",
+      "description": "Threat smile recently indicate find. Cup generation build debate street establish. Million sport capital.\nWorry popular see interesting. Model enough avoid recognize pull man fear nation.\nUsually investment three movement.\nLot reduce once heart international city. Catch avoid join trial could always determine. Tonight community call both and they price.\nCulture still page. Condition plant process five avoid. Mention option represent sing every.\nHappen view write specific. Yard generation cold might but him provide.\nMagazine meet board true difference leg. Partner water beautiful bill. Mission laugh very experience local.\nHome future toward there so hotel. Forward news him pay pull current single.\nCertain my need push picture country behind. Better others argue head whatever career catch military. Hard price at near push mouth no.\nStill drop street much man guess boy. Box use worry point how more relationship cut. Would course something tend nature.\nReally front eight establish. Focus plant Mr style leg series.\nDevelopment language campaign argue drop. Know newspaper population.\nSuccess pressure play. Never series run organization audience key.\nOption hospital painting box discover card for road. Item carry top remain environment professor event. Network kid beyond full heavy fund idea clearly.\nFine city hundred plan. Various main dinner there. Yeah newspaper business raise.\nFriend side yard nice. Four reach entire hair bag finally player.\nThousand be economy any discover. Population student wrong lot then trip technology.\nCentury change property dinner international. Visit tell kind.\nDecision as meeting time reason. However relate north pass. Account bag similar house democratic.\nSame however artist no north some. Half prevent piece strong store brother. True realize than.\nIts both there south. Another already character.\nTown benefit wish short including push. Above tax memory represent center figure. Require each career kitchen maybe area.\nWatch new simple inside animal. He house sport to end company Republican paper. Site with bit memory you involve.\nAdult when necessary form help. Population ever list talk. Heart from such discuss daughter.\nMiss partner peace rather right. Tend alone decade listen not attention way. Account least social born talk morning no board.\nFriend yourself recent middle task present grow. Participant wonder pay school bill. Bar less war fall pass after.\nSimple term most economy become learn culture. His sister environmental. Nor camera various say. Practice account police my.\nDiscuss would poor government serve either finish often. Act election fund deal produce.\nEnd enough door voice difference fear ever.\nAnyone sister page interview manager late they. I public study theory reflect test. Trade ball tree sit responsibility majority bar.\nRace green then soldier represent cover base sell. Hour miss affect watch face so husband."
+    }
+  ],
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "timestamp": "2006-11-14",
+      "note": "RDM record"
+    }
+  ],
+  "locations": [
+    {
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": -124.862113,
+        "lat": -11.441399
+      },
+      "place": "Motomachi"
+    }
+  ],
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Arnold Ltd"
+        }
+      ],
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal",
+      "name": "Joshua Martin"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "resource_type": {
+        "type": "publication",
+        "subtype": "publication-milestone"
+      },
+      "relation_type": "Requires",
+      "scheme": "DOI",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "resource_type": {
+    "type": "publication",
+    "subtype": "publication-thesis"
+  },
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "_owners": [
+    1
+  ],
+  "_default_preview": "previewer one",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "subject": "Romans",
+      "scheme": "no-scheme",
+      "identifier": "subj-1"
+    }
+  ],
+  "language": "eng",
+  "titles": [
+    {
+      "type": "Other",
+      "lang": "eng",
+      "title": "Bauer-Jones's gallery"
+    }
+  ],
+  "publication_date": "2001-12-29",
+  "licenses": [
+    {
+      "license": "Berkeley Software Distribution 3",
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3"
+    }
+  ],
+  "_created_by": 2,
+  "version": "v0.0.1",
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "identifiers": {
+            "ror": "03yrm5c26"
+          },
+          "name": "Escobar, Thompson and Franklin"
+        }
+      ],
+      "type": "Personal",
+      "role": "RightsHolder",
+      "name": "Robert Jenkins"
+    }
+  ],
+  "_publication_date_search": "2001-12-29"
+}

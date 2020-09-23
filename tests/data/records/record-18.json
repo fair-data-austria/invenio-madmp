@@ -1,0 +1,129 @@
+{
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "note": "RDM record",
+      "timestamp": "2010-12-18"
+    }
+  ],
+  "licenses": [
+    {
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3",
+      "license": "Berkeley Software Distribution 3"
+    }
+  ],
+  "descriptions": [
+    {
+      "description": "Different page stuff president name threat against. Yes role respond. Need star up today phone help. Pass key several federal necessary.\nMy remember range idea day. Note show notice despite. Middle hair west while hair onto.\nBegin always training scientist produce able.\nOther easy season move war. Decision plant street box lawyer hotel. Majority state national bad.\nHistory figure whose score six. Many example crime. Source hand movie ahead.\nFar better design yes how. Leave board together husband allow. Ever sing bank story often bed.\nBaby song speech. Edge it since move decision player. Benefit whatever task serve agreement body pull.\nMuch dinner threat natural century among first especially. Matter international wind explain yourself rock edge daughter. Finally expert myself fact very safe term floor.\nOperation southern money last. College bill set wind. Rest forward certainly situation fire.\nEspecially response two. Situation drug traditional total such phone. Relate yourself behavior suddenly southern.\nInterest buy according however appear. Soldier make level summer fall green. Appear smile step news.\nThreat yourself chair different center rule memory. Site watch lot report.\nPm security education attorney debate.\nWord Mr you able movement exist here. Tax system suddenly hundred too. Relate future present provide eight.\nOnly white former bank. Turn attorney big.\nWhite back figure send able east traditional. Whose shake recognize south way whatever receive.\nCatch common result view free put girl. Three peace why ago guess voice fine. Serve step forget fly later state.\nIssue energy number measure size establish history billion. Fight cell science dinner medical matter minute.\nDown friend improve into camera young agree low. Good toward general money might. Heavy interview fire remain bill pass rich stop. Available society move protect beautiful item become cell.\nPolitics article life shoulder. New note maintain act value. Wear we technology church one professional him. Today street account care do tonight.\nCell free over single answer. Test news data model clearly fear outside. Lawyer help million hit argue notice.\nFollow compare factor simple soon tax onto. Allow live open share candidate stock.\nCustomer cultural stay whole television. Character early activity away. Important almost must foreign.\nAllow affect including oil smile cause fire. Area hit yes cold pressure.\nChange a travel bar end condition leave between. Artist something certain draw total step fine.\nEast security close garden woman job sing. Pm risk collection own me be likely. Others focus wonder.\nEffort budget daughter everything available. Paper others natural talk employee. Upon agreement during local firm. With pressure I not clear.\nSeek such according anything. Husband free yes reduce leader. Sea election threat west your.\nMeasure garden store analysis continue. Official student art picture gas buy both score.",
+      "type": "Abstract",
+      "lang": "eng"
+    }
+  ],
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "version": "v0.0.1",
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "name": "Short, Marshall and Davidson",
+          "identifiers": {
+            "ror": "03yrm5c26"
+          }
+        }
+      ],
+      "name": "Sarah Hampton",
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal"
+    }
+  ],
+  "dates": [
+    {
+      "description": "Random test date",
+      "start": "2004-09-09",
+      "type": "Other"
+    }
+  ],
+  "_default_preview": "previewer one",
+  "resource_type": {
+    "subtype": "publication-deliverable",
+    "type": "publication"
+  },
+  "_created_by": 2,
+  "references": [
+    {
+      "scheme": "GRID",
+      "reference_string": "Reference to something et al.",
+      "identifier": "9999.99988"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "scheme": "DOI",
+      "resource_type": {
+        "subtype": "",
+        "type": "lesson"
+      },
+      "relation_type": "Requires",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "publication_date": "1972-11/1981",
+  "access_right": "open",
+  "titles": [
+    {
+      "title": "Callahan, Camacho and Pearson's gallery",
+      "type": "Other",
+      "lang": "eng"
+    }
+  ],
+  "language": "eng",
+  "_owners": [
+    1
+  ],
+  "contact": "info@inveniosoftware.org",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "scheme": "no-scheme",
+      "subject": "Romans",
+      "identifier": "subj-1"
+    }
+  ],
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "name": "Miller-Allison",
+          "identifiers": {
+            "ror": "03yrm5c26"
+          }
+        }
+      ],
+      "name": "Amanda Montoya",
+      "role": "RightsHolder",
+      "type": "Personal"
+    }
+  ],
+  "embargo_date": "2020-10-09",
+  "locations": [
+    {
+      "place": "Ciudad Guayana",
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": 51.422019,
+        "lat": 63.7740975
+      }
+    }
+  ],
+  "_publication_date_search": "1972-11-01"
+}

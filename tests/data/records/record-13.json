@@ -1,0 +1,129 @@
+{
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "note": "RDM record",
+      "timestamp": "1974-11-24"
+    }
+  ],
+  "licenses": [
+    {
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3",
+      "license": "Berkeley Software Distribution 3"
+    }
+  ],
+  "descriptions": [
+    {
+      "description": "Build physical trip future. Great what project direction right top. Since and option spend data Democrat item.\nOption debate arrive professional society.\nLine court find new whom. Structure campaign cover design.\nMorning woman management surface sort pressure point. Benefit if few network staff color. Contain whose current training real management. Truth nearly poor central yard professional.\nLong fill no. Appear vote southern so series. Feeling according hope form movie game performance. Although tonight election at.\nCamera professor nothing seat more write. Arm education over final along cover. Ago room stock special development increase compare.\nWrite common beautiful sell hundred western nature sing. Century majority I employee.\nStyle even understand determine section. Light they office day movement market which within. Bar program city think international.\nBack base professional public. Authority theory ball mother. Send color hit someone treat.\nAdministration admit accept animal sport move.\nProcess recent large model between field local leg. Change foot commercial market. Save blue especially election according.\nAnything kitchen voice western. Security chance scientist poor resource speech. Past morning against picture.\nPhone anything decade under at alone south. Southern rate child eight two yard. Amount chair drive buy front.\nNor quite movie perform social recent perform. Indicate cut certain huge next. Audience knowledge information see past.\nFamily onto true low half. Both analysis southern avoid certainly little get. Sense military only ahead culture difficult very more. Make find media dinner.\nInterest always stock in live international hot lead. Executive image chance many trade agent. Never some conference service indicate its.\nPartner protect worker think TV one. Dark oil create bed. Tv game task indeed deep threat.\nNetwork free program technology into need public. College floor rise lay level. Boy machine old near short whatever.\nWithin both physical attack. Just through suggest tell them strong.\nLarge character source gas news teacher. Conference magazine window decade reflect similar up democratic.\nTogether born better week throw final myself those. Leg million day local entire charge ever.\nCard newspaper site bring win wind shoulder door. While statement season morning series court. Know common better fight put.\nEast including develop name vote heavy behind. Card director thousand she course address table. Meet one down individual fly some adult theory. Power writer they young support why.\nUnderstand tonight analysis make benefit. Than price cup business.\nVoice sell nothing strong pick team. Risk customer believe station likely key.\nBecome develop inside cost. Certainly time response able. Pretty relationship morning through high.\nRaise those three pretty six. School position quite long. Finally hope network certain technology.\nDegree catch option administration expect. Result space card feel. Art body happy join member get.",
+      "type": "Abstract",
+      "lang": "eng"
+    }
+  ],
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "version": "v0.0.1",
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "name": "Mcdaniel, Flores and Meyer",
+          "identifiers": {
+            "ror": "03yrm5c26"
+          }
+        }
+      ],
+      "name": "Tracy Smith",
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal"
+    }
+  ],
+  "dates": [
+    {
+      "description": "Random test date",
+      "start": "1983-09-18",
+      "type": "Other"
+    }
+  ],
+  "_default_preview": "previewer one",
+  "resource_type": {
+    "subtype": "",
+    "type": "other"
+  },
+  "_created_by": 2,
+  "references": [
+    {
+      "scheme": "GRID",
+      "reference_string": "Reference to something et al.",
+      "identifier": "9999.99988"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "scheme": "DOI",
+      "resource_type": {
+        "subtype": "",
+        "type": "presentation"
+      },
+      "relation_type": "Requires",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "publication_date": "1997-03-25",
+  "access_right": "open",
+  "titles": [
+    {
+      "title": "Burgess-Long's gallery",
+      "type": "Other",
+      "lang": "eng"
+    }
+  ],
+  "language": "eng",
+  "_owners": [
+    1
+  ],
+  "contact": "info@inveniosoftware.org",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "scheme": "no-scheme",
+      "subject": "Romans",
+      "identifier": "subj-1"
+    }
+  ],
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "name": "Conrad, Boyer and Phillips",
+          "identifiers": {
+            "ror": "03yrm5c26"
+          }
+        }
+      ],
+      "name": "Roger Olson",
+      "role": "RightsHolder",
+      "type": "Personal"
+    }
+  ],
+  "embargo_date": "2020-12-09",
+  "locations": [
+    {
+      "place": "Karlovy Vary",
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": 23.929056,
+        "lat": -23.5762525
+      }
+    }
+  ],
+  "_publication_date_search": "1997-03-25"
+}

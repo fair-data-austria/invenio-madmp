@@ -1,0 +1,129 @@
+{
+  "_internal_notes": [
+    {
+      "user": "inveniouser",
+      "note": "RDM record",
+      "timestamp": "2001-07-15"
+    }
+  ],
+  "licenses": [
+    {
+      "scheme": "BSD-3",
+      "uri": "https://opensource.org/licenses/BSD-3-Clause",
+      "identifier": "BSD-3",
+      "license": "Berkeley Software Distribution 3"
+    }
+  ],
+  "descriptions": [
+    {
+      "description": "Record thousand open couple capital off. Money result down my itself. Same thing among whether.\nCivil moment present. Radio production eye hope issue not week. Seek myself follow long civil population both.\nSupport particular public I bad perform seek.\nMovie finally indeed computer wait boy. Second my clear experience. Fire structure successful take far design.\nCar article attorney assume. Figure term off need true western. Him risk poor past own family.\nTown international material doctor international community memory. Cup me machine trial safe morning skill recent. Side bank film fast thank present measure.\nRecently subject training success cultural ability. Movie break market magazine material certainly player pressure. Continue investment figure find.\nSpecial forget training continue. Design rock as. Health red mean.\nPage generation so realize. Notice quality president east three. From economy democratic at toward lawyer.\nFederal professor me too consider work space rock. Wall study amount enjoy answer memory say.\nStory friend tree product bar. Look pressure happy these. Travel whom option industry bill control everything. Respond compare research management no home.\nSouthern story on fund after act inside. Three character assume Democrat.\nGuy east great responsibility. Anyone professional rule imagine according rule in.\nApproach these woman day off letter unit. Form site member only push since wear west.\nSix side into someone last support participant describe. Stop discuss expect myself.\nCell of operation article. Inside break piece budget.\nLow other suffer style. Age whole close theory relate protect. State system black simple.\nGroup arm my environment. Difference force may while. American hold real close control.\nPoor television year week. Half industry wind fund ability two such. Surface score building guess will.\nHeavy community himself peace relate clear list. Fly cup hard peace play west month.\nCar book position without. Interest produce do American center check.\nYard Mrs image tree. Student carry service marriage style.\nEffort court set mention minute so.\nGet instead notice well evening much. Possible pull technology four onto despite product. Dream fish leave agency.\nWar especially policy analysis somebody. Little reflect view computer thousand. Why compare receive detail medical.\nThing forward former difference. City much him base face until personal goal. Beat factor assume spring day.\nWrite likely first before might more project. Listen all term.\nOfficer court fact part exist. Mouth why collection hit born pattern rather realize.\nYes lay measure nice door. Next energy interview. Half perform glass nature put international friend.\nSuggest stop really. Officer writer type write operation Mrs.\nIncrease inside treat wall. Herself trip mission fund claim in white. Feel stage reflect shoulder. Ten word cell account step continue TV.",
+      "type": "Abstract",
+      "lang": "eng"
+    }
+  ],
+  "identifiers": {
+    "DOI": "10.9999/rdm.9999999",
+    "arXiv": "9999.99999"
+  },
+  "version": "v0.0.1",
+  "creators": [
+    {
+      "affiliations": [
+        {
+          "name": "Perry-Brown",
+          "identifiers": {
+            "ror": "03yrm5c26"
+          }
+        }
+      ],
+      "name": "Derrick Hopkins",
+      "identifiers": {
+        "Orcid": "0000-0002-1825-0097"
+      },
+      "type": "Personal"
+    }
+  ],
+  "dates": [
+    {
+      "description": "Random test date",
+      "start": "1996-08-20",
+      "type": "Other"
+    }
+  ],
+  "_default_preview": "previewer one",
+  "resource_type": {
+    "subtype": "image-drawing",
+    "type": "image"
+  },
+  "_created_by": 2,
+  "references": [
+    {
+      "scheme": "GRID",
+      "reference_string": "Reference to something et al.",
+      "identifier": "9999.99988"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "scheme": "DOI",
+      "resource_type": {
+        "subtype": "",
+        "type": "lesson"
+      },
+      "relation_type": "Requires",
+      "identifier": "10.9999/rdm.9999988"
+    }
+  ],
+  "publication_date": "1987-03-08",
+  "access_right": "open",
+  "titles": [
+    {
+      "title": "Flynn Group's gallery",
+      "type": "Other",
+      "lang": "eng"
+    }
+  ],
+  "language": "eng",
+  "_owners": [
+    1
+  ],
+  "contact": "info@inveniosoftware.org",
+  "_access": {
+    "files_restricted": false,
+    "metadata_restricted": false
+  },
+  "subjects": [
+    {
+      "scheme": "no-scheme",
+      "subject": "Romans",
+      "identifier": "subj-1"
+    }
+  ],
+  "contributors": [
+    {
+      "affiliations": [
+        {
+          "name": "Best-Wilson",
+          "identifiers": {
+            "ror": "03yrm5c26"
+          }
+        }
+      ],
+      "name": "Joel Gordon",
+      "role": "RightsHolder",
+      "type": "Personal"
+    }
+  ],
+  "embargo_date": "2021-07-01",
+  "locations": [
+    {
+      "place": "Arles",
+      "description": "Random place on land for random coordinates...",
+      "point": {
+        "lon": -92.455517,
+        "lat": 75.0681235
+      }
+    }
+  ],
+  "_publication_date_search": "1987-03-08"
+}
