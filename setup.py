@@ -78,6 +78,9 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
+        'flask.commands': [
+            'madmp = invenio_madmp.cli:madmp'
+        ],
         'invenio_base.apps': [
             'invenio_madmp = invenio_madmp:InvenioMaDMP',
         ],
