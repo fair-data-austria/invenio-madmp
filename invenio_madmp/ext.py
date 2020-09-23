@@ -12,7 +12,7 @@ from flask_babelex import gettext as _
 from . import config
 
 
-class InveniomaDMP(object):
+class InvenioMaDMP(object):
     """Invenio-maDMP extension."""
 
     def __init__(self, app=None):

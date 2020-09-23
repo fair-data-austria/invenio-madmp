@@ -79,7 +79,7 @@ setup(
     platforms='any',
     entry_points={
         'invenio_base.apps': [
-            'invenio_madmp = invenio_madmp:InveniomaDMP',
+            'invenio_madmp = invenio_madmp:InvenioMaDMP',
         ],
         # 'invenio_base.blueprints': [],
         'invenio_i18n.translations': [
