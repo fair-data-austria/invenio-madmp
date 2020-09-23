@@ -84,7 +84,9 @@ setup(
         'invenio_base.apps': [
             'invenio_madmp = invenio_madmp:InvenioMaDMP',
         ],
-        # 'invenio_base.blueprints': [],
+        'invenio_base.blueprints': [
+            'invenio_madmp = invenio_madmp.views:rest_blueprint'
+        ],
         'invenio_i18n.translations': [
             'messages = invenio_madmp',
         ],
