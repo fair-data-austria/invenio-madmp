@@ -80,6 +80,35 @@ class DataManagementPlan(db.Model):
 
         return []
 
+    @classmethod
+    def create(
+        cls,
+        dmp_id: str,
+        datasets: List["Dataset"] = None,
+    ) -> "DataManagementPlan":
+        """Create and store a DMP with the given properties."""
+        dmp = None
+
+        try:
+            if not datasets:
+                datasets = []
+            elif isinstance(datasets, Dataset):
+                # if the argument is a single Dataset, put it in a new list
+                datasets = [datasets]
+
+            with db.session.begin_nested():
+                dmp = cls(
+                    dmp_id=dmp_id,
+                )
+                dmp.datasets.extend(datasets)
+                db.session.add(dmp)
+
+        except IntegrityError:
+            # TODO probably indicates a duplicate entry
+            raise
+
+        return dmp
+
 
 class Dataset(db.Model):
     """Dataset as defined in a Data Management Plan.
