@@ -35,9 +35,12 @@ def parse_date(date_str):
     return datetime.fromisoformat(date_str)
 
 
-def format_date(date):
+def format_date(date, fmt="%Y-%m-%d"):
     """Format the given date."""
-    return date.isoformat()
+    if not fmt:
+        return date.isoformat()
+
+    return date.strftime(fmt)
 
 
 def distribution_matches_us(distribution_dict):

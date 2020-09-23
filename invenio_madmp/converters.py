@@ -67,7 +67,7 @@ def map_creator(creator_dict):
 
     additional_details = {
         k: v
-        for k, v in translate_person_details(creator_dict)
+        for k, v in translate_person_details(creator_dict).items()
         if k in creator.keys() and v is not None
     }
     creator.update(additional_details)
@@ -111,7 +111,7 @@ def map_contributor(contributor_dict, role_idx=0):
 
     additional_details = {
         k: v
-        for k, v in translate_person_details(contributor_dict)
+        for k, v in translate_person_details(contributor_dict).items()
         if k in contributor.keys() and v is not None
     }
     contributor.update(additional_details)
@@ -200,7 +200,7 @@ def distribution_to_record(
 
         # the earliest license start date is in the future:
         # that means there's an embargo
-        fmt_date = format_date(min_lic_start)
+        fmt_date = format_date(min_lic_start, "%Y-%m-%d")
         record["embargo_date"] = fmt_date
 
     files_restricted = access_right != "open"
@@ -215,8 +215,20 @@ def distribution_to_record(
     users = [
         user
         for user in (find_user(email) for email in emails if email is not None)
-        if user is not None
     ]
+
+    if None in users and False:  # TODO add config item instead of False
+        unknown = [email for email in emails if find_user(email) is None]
+        raise LookupError(
+            "DMP contains unknown contributors: %s" % unknown
+        )
+
+    users = [user for user in users if user is not None]
+
+    if not users:
+        raise LookupError(
+            "no registered users found for any email address: %s" % emails
+        )
 
     record["_owners"] = {u.id for u in users}
     record["_created_by"] = users[
@@ -242,7 +254,7 @@ def convert(madmp_dict) -> List:
         if not distribs:
             # our repository is not listed as host for any of the distributions
 
-            if not dataset["distribution"]:
+            if not dataset.get("distribution"):
                 # the dataset doesn't have any distributions specified... weird
                 # TODO how do we want to handle this case?
                 pass
