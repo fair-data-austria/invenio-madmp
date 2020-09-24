@@ -7,6 +7,8 @@
 
 """Invenio module for maDMP integration."""
 
+from datetime import datetime
+
 from flask_babelex import gettext as _
 
 from . import config
@@ -24,6 +26,10 @@ class InvenioMaDMP(object):
         """Flask application initialization."""
         self.init_config(app)
         app.extensions["invenio-madmp"] = self
+
+        if not hasattr(datetime, "fromisoformat"):
+            from backports.datetime_fromisoformat import MonkeyPatch
+            MonkeyPatch.patch_fromisoformat()
 
     def init_config(self, app):
         """Initialize configuration."""
