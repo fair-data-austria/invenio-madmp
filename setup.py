@@ -20,6 +20,7 @@ tests_require = [
     'invenio-rdm-records>=0.19.0,<=0.19.1',  # TODO 0.19.1 has issues with...
     'invenio-records-permissions==0.9.0',  # TODO >= 0.10.0
     'flask-resources==0.3.1',  # TODO >=0.3.2
+    'SQLAlchemy-Utils>=0.33.1,<=0.36', # FIXME without this: ContextualVersionConflict {invenio-files-rest}
     'invenio-search[elasticsearch7]>=1.3.1',
 ]
 
