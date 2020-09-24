@@ -32,7 +32,12 @@ def is_identifier_type_allowed(id_type: str, contributor_dict: Dict = None):
 
 def parse_date(date_str):
     """Parse the given date string."""
-    return datetime.fromisoformat(date_str)
+    try:
+        return datetime.fromisoformat(date_str)
+    except AttributeError:
+        from backports.datetime_fromisoformat import MonkeyPatch
+        MonkeyPatch.patch_fromisoformat()
+        return parse_date(date_str)
 
 
 def format_date(date, fmt="%Y-%m-%d"):

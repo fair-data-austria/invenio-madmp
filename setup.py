@@ -56,6 +56,7 @@ install_requires = [
     'invenio-records>=1.3.2',
     'invenio-db>=1.0.0',
     'invenio-accounts>=1.3.0',
+    'backports-datetime-fromisoformat>=1.0 ; python_version<"3.7"',
 ]
 
 packages = find_packages()
