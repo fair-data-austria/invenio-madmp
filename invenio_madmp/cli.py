@@ -6,6 +6,7 @@ import sys
 
 import click
 from flask.cli import with_appcontext
+from invenio_db import db
 from invenio_pidstore.models import PersistentIdentifier
 
 from .convert import convert_dmp
@@ -40,8 +41,9 @@ def madmp_list():
 
 @madmp.command("import")
 @click.argument("file")
+@click.option("--dry-run", "-d", is_flag=True, default=False)
 @with_appcontext
-def madmp_import(file):
+def madmp_import(file, dry_run):
     """Import maDMP from the specified JSON file."""
     if not file or not os.path.isfile(file):
         click.secho("'%s' is not a file" % file, file=sys.stderr, fg="red")
@@ -63,3 +65,7 @@ def madmp_import(file):
                 recid = "[recid: %s]" % pid.pid_value
 
             click.echo("  DS: %s %s" % (dataset.dataset_id, recid))
+
+    if not dry_run:
+        db.session.add(dmp)
+        db.session.commit()
