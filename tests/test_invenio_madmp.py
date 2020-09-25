@@ -13,7 +13,7 @@ from invenio_accounts.models import User
 from invenio_pidstore.models import PersistentIdentifier as PID
 
 from invenio_madmp import InvenioMaDMP
-from invenio_madmp.converters import convert
+from invenio_madmp.convert import convert_dmp
 from invenio_madmp.models import DataManagementPlan, Dataset
 
 
@@ -151,7 +151,7 @@ def test_successful_conversion(
     base_app, example_madmps_for_invenio, all_required_accounts
 ):
     for _, madmp in example_madmps_for_invenio.items():
-        dmp = convert(madmp["dmp"])
+        dmp = convert_dmp(madmp["dmp"])
 
         assert dmp is not None
         assert dmp.dmp_id == madmp["dmp"]["dmp_id"]["identifier"]
@@ -164,4 +164,4 @@ def test_no_users(base_app, example_madmps_for_invenio_requiring_users):
     for madmp in problematic_madmps:
         with pytest.raises(LookupError):
             madmp = problematic_madmps[madmp]["dmp"]
-            convert(madmp)
+            convert_dmp(madmp)

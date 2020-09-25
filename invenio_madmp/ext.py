@@ -29,6 +29,7 @@ class InvenioMaDMP(object):
 
         if not hasattr(datetime, "fromisoformat"):
             from backports.datetime_fromisoformat import MonkeyPatch
+
             MonkeyPatch.patch_fromisoformat()
 
     def init_config(self, app):

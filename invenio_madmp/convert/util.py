@@ -1,47 +1,32 @@
-# TODO: make the functions used for mapping RDA Common Standard to
-#       Invenio metadata model configurable
-#       (because invenio doesn't necessarily use the current
-#        Invenio-RDM-Records metadata model)
-"""Utility functions for mapping RDA maDMPs to Invenio records."""
+"""TODO."""
 
-from datetime import datetime
+
 from typing import List
 
 from flask import current_app as app
 from invenio_pidstore.models import PersistentIdentifier as PID
 
-from .models import DataManagementPlan as DMP
-from .models import Dataset
-from .util import create_new_record, distribution_matches_us, \
-    fetch_unassigned_record, find_user, format_date, \
-    is_identifier_type_allowed, parse_date, translate_dataset_type, \
-    translate_license, translate_person_details
+from ..models import DataManagementPlan as DMP
+from ..models import Dataset
+from ..util import create_new_record, distribution_matches_us, \
+    fetch_unassigned_record, is_identifier_type_allowed, \
+    translate_person_details
 
 
-def matching_distributions(dataset_dict):
-    """Fetch all matching distributions from the dataset."""
-    return [
-        dist
-        for dist in dataset_dict.get("distribution", [])
-        if distribution_matches_us(dist)
-    ]
+def get_matching_converter(
+    distribution_dict: dict, dataset_dict: dict, dmp_dict: dict
+) -> "BaseRecordConverter":
+    """TODO."""
+    for converter in app.config["MADMP_RECORD_CONVERTERS"]:
+        if converter.matches(distribution_dict, dataset_dict, dmp_dict):
+            return converter
 
-
-def map_access_right(distribution_dict):
-    """Get the 'access_right' from the distribution."""
-    return distribution_dict.get(
-        "data_access", app.config["MADMP_DEFAULT_DATA_ACCESS"]
-    )
+    return app.config["MADMP_FALLBACK_RECORD_CONVERTER"]
 
 
 def map_contact(contact_dict):
     """Get the contact person's e-mail address."""
     return contact_dict.get("mbox", app.config["MADMP_DEFAULT_CONTACT"])
-
-
-def map_resource_type(dataset_dict):
-    """Map the resource type of the dataset."""
-    return translate_dataset_type(dataset_dict)
 
 
 def map_creator(creator_dict):
@@ -73,17 +58,6 @@ def map_creator(creator_dict):
     creator.update(additional_details)
 
     return {k: v for k, v in creator.items() if v is not None}
-
-
-def map_title(dataset_dict):
-    """Map the dataset's title to the record's title."""
-    return {
-        "title": dataset_dict.get("title", "[No Title]"),
-        "type": "MainTitle",  # TODO check vocabulary
-        "lang": dataset_dict.get(
-            "language", app.config["MADMP_DEFAULT_LANGUAGE"]
-        ),
-    }
 
 
 def map_contributor(contributor_dict, role_idx=0):
@@ -119,126 +93,16 @@ def map_contributor(contributor_dict, role_idx=0):
     return {k: v for k, v in contributor.items() if v is not None}
 
 
-def map_language(dataset_dict):
-    """Map the dataset's language to the record's language."""
-    # note: both RDA-CS and Invenio-RDM-Records use ISO 639-3
-    return dataset_dict.get("language", app.config["MADMP_DEFAULT_LANGUAGE"])
-
-
-def map_license(license_dict):
-    """Map the distribution's license to the record's license."""
-    return translate_license(license_dict)
-
-
-def map_description(dataset_dict):
-    """Map the dataset's description to the record's description."""
-    # possible description types, from the rdm-records marshmallow schema:
-    #
-    # "Abstract", "Methods", "SeriesInformation", "TableOfContents",
-    # "TechnicalInfo", "Other"
-
-    return {
-        "description": dataset_dict.get("description", "[No Description]"),
-        "type": "Other",
-        "lang": dataset_dict.get(
-            "language", app.config["MADMP_DEFAULT_LANGUAGE"]
-        ),
-    }
-
-
-def distribution_to_record(
-    distribution_dict,
-    dataset_dict,
-    dmp_dict,
-    contact=None,
-    creators=None,
-    contributors=None,
-):
-    """Map the dataset distribution to metadata for a record in Invenio."""
-    contact_dict = dmp_dict.get("contact", {})
-    contributor_list = dmp_dict.get("contributor", [])
-
-    if contact is None:
-        contact = map_contact(contact_dict)
-
-    if contributors is None:
-        contributors = list(map(map_contributor, contributor_list))
-
-    if creators is None:
-        creators = list(map(map_creator, contributor_list))
-
-    resource_type = map_resource_type(dataset_dict)
-    access_right = map_access_right(distribution_dict)
-    titles = [map_title(dataset_dict)]
-    language = map_language(dataset_dict)
-    licenses = list(map(map_license, distribution_dict.get("license", [])))
-    descriptions = [map_description(dataset_dict)]
-    dates = []
-
-    min_lic_start = None
-    for lic in distribution_dict.get("license"):
-        lic_start = parse_date(lic["start_date"])
-
-        if min_lic_start is None or lic_start < min_lic_start:
-            min_lic_start = lic_start
-
-    record = {
-        "access_right": access_right,
-        "contact": contact,
-        "resource_type": resource_type,
-        "creators": creators,
-        "titles": titles,
-        "contributors": contributors,
-        "dates": dates,
-        "language": language,
-        "licenses": licenses,
-        "descriptions": descriptions,
-        "publication_date": datetime.utcnow().isoformat(),
-    }
-
-    if min_lic_start is None or datetime.utcnow() < min_lic_start:
-
-        # the earliest license start date is in the future:
-        # that means there's an embargo
-        fmt_date = format_date(min_lic_start, "%Y-%m-%d")
-        record["embargo_date"] = fmt_date
-
-    files_restricted = access_right != "open"
-    metadata_restricted = False
-    record["_access"] = {
-        "files_restricted": files_restricted,
-        "metadata_restricted": metadata_restricted,
-    }
-
-    # TODO find owners by contributors and contact fields from DMP
-    emails = [contact] + [creator.get("mbox") for creator in contributor_list]
-    users = [
-        user
-        for user in (find_user(email) for email in emails if email is not None)
+def matching_distributions(dataset_dict):
+    """Fetch all matching distributions from the dataset."""
+    return [
+        dist
+        for dist in dataset_dict.get("distribution", [])
+        if distribution_matches_us(dist)
     ]
 
-    if None in users and False:  # TODO add config item instead of False
-        unknown = [email for email in emails if find_user(email) is None]
-        raise LookupError(
-            "DMP contains unknown contributors: %s" % unknown
-        )
 
-    users = [user for user in users if user is not None]
-
-    if not users:
-        raise LookupError(
-            "no registered users found for any email address: %s" % emails
-        )
-
-    record["_owners"] = {u.id for u in users}
-    record["_created_by"] = users[
-        0
-    ].id  # TODO fallback user? some admin? or exception?
-
-    return record
-
-
-def convert(madmp_dict) -> List:
+def convert_dmp(madmp_dict: dict) -> List:
     """Map the maDMP's dictionary to a number of Invenio RDM Records."""
     records = []
 
@@ -291,21 +155,32 @@ def convert(madmp_dict) -> List:
                 #       (e.g. same dataset saved in our repo, in different
                 #        formats)
 
-                record = distribution_to_record(
+                converter = get_matching_converter(
+                    distrib, dataset, madmp_dict
+                )
+
+                if converter is None:
+                    raise LookupError(
+                        "no matching converter registered for dataset: %s"
+                        % dataset
+                    )
+
+                record = converter.convert_dataset(
                     distrib,
                     dataset,
                     madmp_dict,
-                    contact=contact,
                     creators=creators,
                     contributors=contribs,
+                    contact=contact,
                 )
+
                 records.append(record)
 
             ds = Dataset.get_by_dataset_id(dataset_id) or Dataset(
                 dataset_id=dataset_id
             )
 
-            if ds not in dmp.datasets:
+            if ds.dataset_id not in [ds.dataset_id for ds in dmp.datasets]:
                 dmp.datasets.append(ds)
 
             if ds.record is None:

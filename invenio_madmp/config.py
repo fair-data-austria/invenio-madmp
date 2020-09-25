@@ -7,6 +7,7 @@
 
 """Invenio module for maDMP integration."""
 
+from .convert.records.rdm_records import RDMRecordConverter
 from .licenses import KNOWN_LICENSES
 
 MADMP_HOST_URL = "https://data.tuwien.ac.at"
@@ -15,6 +16,9 @@ MADMP_HOST_TITLE = "TU Data"
 MADMP_DEFAULT_LANGUAGE = "eng"
 MADMP_DEFAULT_CONTACT = "info@invenio.org"
 MADMP_DEFAULT_DATA_ACCESS = "open"
+
+MADMP_RECORD_CONVERTERS = []
+MADMP_FALLBACK_RECORD_CONVERTER = RDMRecordConverter()
 
 MADMP_ALLOW_MULTIPLE_DISTRIBUTIONS = False
 

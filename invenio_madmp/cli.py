@@ -8,7 +8,7 @@ import click
 from flask.cli import with_appcontext
 from invenio_pidstore.models import PersistentIdentifier
 
-from .converters import convert
+from .convert import convert_dmp
 from .models import DataManagementPlan
 
 
@@ -49,7 +49,7 @@ def madmp_import(file):
 
     with open(file, "r") as dmp_file:
         dmp_dict = json.load(dmp_file).get("dmp", {})
-        dmp = convert(dmp_dict)
+        dmp = convert_dmp(dmp_dict)
 
         click.echo("DMP %s has %s datasets" % (dmp.dmp_id, len(dmp.datasets)))
 
