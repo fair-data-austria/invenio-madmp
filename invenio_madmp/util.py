@@ -17,9 +17,6 @@ from werkzeug.utils import import_string
 
 from .licenses import License
 
-default_data_validator = MarshmallowDataValidator(schema=MetadataSchemaV1)
-default_pid_manager = BibliographicPIDManager()
-
 url_identifier_pattern = re.compile(r"https?://.*?/(.*)")
 name_pattern_1 = re.compile(r"([^\s]+)\s+([^\s]+)")
 name_pattern_2 = re.compile(r"([^\s]+),\s+([^\s]+)")
@@ -105,32 +102,6 @@ def translate_person_details(person_dict: Dict) -> Dict:
             additional_infos["family_name"] = m2.group(1)
 
     return additional_infos
-
-
-def create_new_record(
-    record_dict,
-    record_api_class=BibliographicRecordDraft,
-    data_validator=default_data_validator,
-    pid_manager=default_pid_manager,
-):
-    """Create a new record (draft) with the given metadata in record_dict.
-
-    :param record_dict: Dictionary with metadata to use for the new record
-    :type record_dict: dict
-    :param data_validator: The Marshmallow data validator to use
-    :param pid_manager: The PID manager to use
-    :return: The created record (draft)
-    """
-    # TODO check if the following is correct (and necessary):
-    # identity = Identity(1)
-    # identity.provides.add(any_user)
-    # require_permission(identity, "create")
-    data = data_validator.validate(record_dict, partial=True)
-    rec_uuid = uuid.uuid4()
-    pid_manager.mint(record_uuid=rec_uuid, data=data)
-    draft = record_api_class.create(data, id_=rec_uuid)
-
-    return draft
 
 
 def fetch_unassigned_record(dataset_identifier, distribution_access_url=None):

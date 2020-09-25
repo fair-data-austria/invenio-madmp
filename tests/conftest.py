@@ -21,20 +21,39 @@ import uuid
 import pytest
 from flask import Flask
 from flask_babelex import Babel
+from invenio_access import InvenioAccess
 from invenio_accounts import InvenioAccounts
 from invenio_config import InvenioConfigDefault
 from invenio_db import InvenioDB, db
+from invenio_indexer import InvenioIndexer
 from invenio_pidrelations import InvenioPIDRelations
 from invenio_pidstore import InvenioPIDStore
 from invenio_pidstore.models import PersistentIdentifier as PID
 from invenio_rdm_records.pid_manager import BibliographicPIDManager
 from invenio_records import InvenioRecords
 from invenio_records.api import Record
+from invenio_search import InvenioSearch
 from sqlalchemy_utils.functions import create_database, database_exists, \
     drop_database
 
 from invenio_madmp import InvenioMaDMP
+from invenio_madmp.convert.records import RDMRecordConverter
 from invenio_madmp.models import DataManagementPlan, Dataset
+
+
+class DummyRDMRecordConverter(RDMRecordConverter):
+    """Dummy record converter that doesn't index records."""
+
+    def create_record(self, data, identity):
+        """Create a draft, but don't index it."""
+        service = self.record_service
+        validated_data = service.data_validator.validate(data, partial=True)
+        rec_uuid = uuid.uuid4()
+        service.pid_manager.mint(record_uuid=rec_uuid, data=validated_data)
+        draft = service.draft_cls.create(validated_data, id_=rec_uuid)
+
+        db.session.commit()
+        return draft
 
 
 @pytest.fixture(scope="module")
@@ -54,6 +73,7 @@ def base_app(request):
     app.config.update(
         MADMP_HOST_URL="https://test.invenio.cern.ch",
         MADMP_HOST_TITLE="Invenio",
+        MADMP_FALLBACK_RECORD_CONVERTER=DummyRDMRecordConverter(),
         SQLALCHEMY_DATABASE_URI=os.getenv(
             "SQLALCHEMY_DATABASE_URI", "sqlite://"
         ),
@@ -66,6 +86,9 @@ def base_app(request):
     InvenioPIDStore(app)
     InvenioPIDRelations(app)
     InvenioAccounts(app)
+    InvenioAccess(app)
+    InvenioIndexer(app)
+    InvenioSearch(app)
     InvenioMaDMP(app)
 
     with app.app_context():

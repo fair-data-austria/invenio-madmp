@@ -6,6 +6,7 @@ different types of Records (respectively, Records with different metadata
 models).
 """
 
+from flask_principal import Identity
 from invenio_records.api import Record
 
 
@@ -25,6 +26,10 @@ class BaseRecordConverter:
         creators=None,
         contributors=None,
     ) -> Record:
+        """TODO."""
+        raise NotImplementedError
+
+    def create_record(self, record_data: dict, identity: Identity):
         """TODO."""
         raise NotImplementedError
 

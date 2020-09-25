@@ -7,6 +7,8 @@
 from datetime import datetime
 
 from flask import current_app as app
+from flask_principal import Identity
+from invenio_rdm_records.services import BibliographicRecordService
 
 from ...util import find_user, format_date, parse_date, \
     translate_dataset_type, translate_license
@@ -16,6 +18,10 @@ from .base import BaseRecordConverter
 
 class RDMRecordConverter(BaseRecordConverter):
     """TODO."""
+
+    def __init__(self):
+        """TODO."""
+        self.record_service = BibliographicRecordService()
 
     def map_access_right(self, distribution_dict):
         """Get the 'access_right' from the distribution."""
@@ -160,3 +166,7 @@ class RDMRecordConverter(BaseRecordConverter):
         ].id  # TODO fallback user? some admin? or exception?
 
         return record
+
+    def create_record(self, record_data: dict, identity: Identity):
+        """TODO."""
+        return self.record_service.create(identity, record_data)

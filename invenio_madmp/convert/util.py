@@ -4,13 +4,14 @@
 from typing import List
 
 from flask import current_app as app
+from flask_principal import Identity
+from invenio_access.permissions import any_user
 from invenio_pidstore.models import PersistentIdentifier as PID
 
 from ..models import DataManagementPlan as DMP
 from ..models import Dataset
-from ..util import create_new_record, distribution_matches_us, \
-    fetch_unassigned_record, is_identifier_type_allowed, \
-    translate_person_details
+from ..util import distribution_matches_us, fetch_unassigned_record, \
+    is_identifier_type_allowed, translate_person_details
 
 
 def get_matching_converter(
@@ -104,8 +105,6 @@ def matching_distributions(dataset_dict):
 
 def convert_dmp(madmp_dict: dict) -> List:
     """Map the maDMP's dictionary to a number of Invenio RDM Records."""
-    records = []
-
     contact = map_contact(madmp_dict.get("contact", {}))
     contribs = list(map(map_contributor, madmp_dict.get("contributor", [])))
     creators = list(map(map_creator, madmp_dict.get("contributor", [])))
@@ -128,7 +127,6 @@ def convert_dmp(madmp_dict: dict) -> List:
                 pass
 
         else:
-
             # we're not interested in datasets without deposit in Invenio
             # TODO: to be unique, we need the dataset_id identifier and type,
             #       which translate to pid_value and pid_type (the latter might
@@ -147,6 +145,7 @@ def convert_dmp(madmp_dict: dict) -> List:
                         % (dataset_id, len(distribs))
                     )
 
+            records_and_converters = []
             for distrib in distribs:
                 # iterate over all dataset[].distribution[] elements that match
                 # our repository, and create a record for each distribution
@@ -174,7 +173,7 @@ def convert_dmp(madmp_dict: dict) -> List:
                     contact=contact,
                 )
 
-                records.append(record)
+                records_and_converters.append((record, converter))
 
             ds = Dataset.get_by_dataset_id(dataset_id) or Dataset(
                 dataset_id=dataset_id
@@ -198,7 +197,12 @@ def convert_dmp(madmp_dict: dict) -> List:
                     ).first()
                 else:
                     # create a new Draft
-                    rec = create_new_record(records[0])
+                    # TODO make the logic for deciding which record to create
+                    #      more flexible
+                    record_data, converter = records_and_converters[0]
+                    identity = Identity(1)  # TODO find out ID of owner?
+                    identity.provides.add(any_user)
+                    rec = converter.create_record(record_data, identity)
 
                     ds.record_pid = PID.query.filter(
                         PID.object_uuid == rec.id
