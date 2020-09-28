@@ -1,6 +1,7 @@
 """Blueprint definitions for maDMP integration."""
 
 from flask import Blueprint, jsonify, request
+from invenio_db import db
 
 from .convert import convert_dmp
 from .models import DataManagementPlan
@@ -32,6 +33,9 @@ def create_dmp():
     dmp_json = request.json.get("dmp", {})
     dmp = convert_dmp(dmp_json)
     res = _summarize_dmp(dmp)
+
+    db.session.add(dmp)
+    db.session.commit()
 
     return jsonify(res)
 
