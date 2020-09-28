@@ -169,4 +169,8 @@ class RDMRecordConverter(BaseRecordConverter):
 
     def create_record(self, record_data: dict, identity: Identity):
         """TODO."""
-        return self.record_service.create(identity, record_data)
+        # note: the BibliographicRecordService will return an IdentifiedRecord,
+        #       which wraps the record/draft and its PID into one object
+        # note: Service.create() will already commit the changes to DB!
+        draft = self.record_service.create(identity, record_data)
+        return draft.record
