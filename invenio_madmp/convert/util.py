@@ -6,6 +6,7 @@ from typing import List
 from flask import current_app as app
 from flask_principal import Identity
 from invenio_access.permissions import any_user
+from invenio_db import db
 from invenio_pidstore.models import PersistentIdentifier as PID
 
 from ..models import DataManagementPlan as DMP
@@ -103,110 +104,136 @@ def matching_distributions(dataset_dict):
     ]
 
 
-def convert_dmp(madmp_dict: dict) -> List:
+def convert_dmp(
+    madmp_dict: dict, hard_sync: bool = False, identity: Identity = None
+) -> List:
     """Map the maDMP's dictionary to a number of Invenio RDM Records."""
-    contact = map_contact(madmp_dict.get("contact", {}))
-    contribs = list(map(map_contributor, madmp_dict.get("contributor", [])))
-    creators = list(map(map_creator, madmp_dict.get("contributor", [])))
-    dmp_id = madmp_dict.get("dmp_id", {}).get("identifier")
-    dmp = DMP.get_by_dmp_id(dmp_id) or DMP(dmp_id=dmp_id)
+    with db.session.no_autoflush:
+        # disabling autoflush, because we don't want to flush unfinished parts
+        # (this caused issues when Dataset.record_pid_id was not nullable)
+        identity = identity or any_user
+        contrib_list = madmp_dict.get("contributor", [])
+        contact = map_contact(madmp_dict.get("contact", {}))
+        contribs = list(map(map_contributor, contrib_list))
+        creators = list(map(map_creator, contrib_list))
+        dmp_id = madmp_dict.get("dmp_id", {}).get("identifier")
 
-    for dataset in madmp_dict.get("dataset", []):
+        found_dmp = DMP.get_by_dmp_id(dmp_id)
+        dmp = found_dmp or DMP(dmp_id=dmp_id)
+        old_datasets = dmp.datasets.copy()
 
-        distribs = matching_distributions(dataset)
-        if not distribs:
-            # our repository is not listed as host for any of the distributions
+        for dataset in madmp_dict.get("dataset", []):
+            distribs = matching_distributions(dataset)
+            if not distribs:
+                # our repository is not listed as host for any
+                # of the distributions
 
-            if not dataset.get("distribution"):
-                # the dataset doesn't have any distributions specified... weird
-                # TODO how do we want to handle this case?
-                pass
+                if not dataset.get("distribution"):
+                    # the dataset doesn't have any distributions specified...
+                    # weird.
+                    # TODO how do we want to handle this case?
+                    #      do we want to create the first distribution?
+                    pass
+
+                else:
+                    # there are distributions, but just not in our repo: ignore
+                    pass
 
             else:
-                # there are distributions, but just not in our repo: ignore
-                pass
+                # we're not interested in datasets without deposit in Invenio
+                # TODO: to be unique, we need the dataset_id identifier and
+                #       type, which translate to pid_value and pid_type
+                #       (the latter might require some mapping) -- then,
+                #       PID provides a method PID.get(pid_type, pid_value)
+                dataset_id = dataset.get("dataset_id", {}).get("identifier")
 
-        else:
-            # we're not interested in datasets without deposit in Invenio
-            # TODO: to be unique, we need the dataset_id identifier and type,
-            #       which translate to pid_value and pid_type (the latter might
-            #       require some mapping) -- then, PID provides a method
-            #       PID.get(pid_type, pid_value)
-            dataset_id = dataset.get("dataset_id", {}).get("identifier")
-
-            if len(distribs) > 1:
-                if not app.config["MADMP_ALLOW_MULTIPLE_DISTRIBUTIONS"]:
-                    raise Exception(
-                        (
-                            "dataset (%s) has multiple (%s) matching "
-                            "distributions on this host, "
-                            "but only one is allowed"
+                if len(distribs) > 1:
+                    if not app.config["MADMP_ALLOW_MULTIPLE_DISTRIBUTIONS"]:
+                        raise Exception(
+                            (
+                                "dataset (%s) has multiple (%s) matching "
+                                "distributions on this host, "
+                                "but only one is allowed"
+                            )
+                            % (dataset_id, len(distribs))
                         )
-                        % (dataset_id, len(distribs))
+
+                records_and_converters = []
+                for distrib in distribs:
+                    # iterate over all dataset[].distribution[] elements that
+                    # match our repository, and create a record for each
+                    # distribution
+                    # note: we assume at most one distribution per host, as
+                    #       the same distribution with several formats can be
+                    #       published in a single ZIP file (i.e. as a single
+                    #       record)
+
+                    converter = get_matching_converter(
+                        distrib, dataset, madmp_dict
                     )
 
-            records_and_converters = []
-            for distrib in distribs:
-                # iterate over all dataset[].distribution[] elements that match
-                # our repository, and create a record for each distribution
-                # note: is expected to be at most one item, but if there are
-                #       multiple matching items this is probably assumed
-                #       (e.g. same dataset saved in our repo, in different
-                #        formats)
+                    if converter is None:
+                        raise LookupError(
+                            "no matching converter registered for dataset: %s"
+                            % dataset
+                        )
 
-                converter = get_matching_converter(
-                    distrib, dataset, madmp_dict
-                )
-
-                if converter is None:
-                    raise LookupError(
-                        "no matching converter registered for dataset: %s"
-                        % dataset
+                    record_data = converter.convert_dataset(
+                        distrib,
+                        dataset,
+                        madmp_dict,
+                        creators=creators,
+                        contributors=contribs,
+                        contact=contact,
                     )
 
-                record = converter.convert_dataset(
-                    distrib,
-                    dataset,
-                    madmp_dict,
-                    creators=creators,
-                    contributors=contribs,
-                    contact=contact,
-                )
+                    records_and_converters.append((record_data, converter))
 
-                records_and_converters.append((record, converter))
+                found_ds = Dataset.get_by_dataset_id(dataset_id)
+                ds = found_ds or Dataset(dataset_id=dataset_id)
+                if found_ds is not None:
+                    old_datasets.remove(found_ds)
 
-            ds = Dataset.get_by_dataset_id(dataset_id) or Dataset(
-                dataset_id=dataset_id
-            )
+                if ds.dataset_id not in [ds.dataset_id for ds in dmp.datasets]:
+                    dmp.datasets.append(ds)
 
-            if ds.dataset_id not in [ds.dataset_id for ds in dmp.datasets]:
-                dmp.datasets.append(ds)
+                if ds.record is None:
+                    record = fetch_unassigned_record(
+                        dataset_id, distribs[0].get("access_url")
+                    )
+                    if record is not None:
+                        # TODO find better way of getting the "best" identifier
+                        #      (e.g. first check for DOI, then whatever, and as
+                        #       fallback the Recid)
+                        #      note: the best would of course be the one
+                        #            matching the dataset_id!
+                        ds.record_pid = PID.query.filter(
+                            PID.object_uuid == record.id
+                        ).first()
+                    else:
+                        # create a new Draft
+                        # TODO make the logic for deciding which record to
+                        #      create more flexible
+                        record_data, converter = records_and_converters[0]
+                        identity = Identity(1)  # TODO find out ID of owner?
+                        identity.provides.add(any_user)
+                        rec = converter.create_record(record_data, identity)
 
-            if ds.record is None:
-                record = fetch_unassigned_record(
-                    dataset_id, distribs[0].get("access_url")
-                )
-                if record is not None:
-                    # TODO find better way of getting the "best" identifier
-                    #      (e.g. first check for DOI, then whatever, and as
-                    #       fallback the Recid)
-                    #      note: the best would of course be the one
-                    #            matching the dataset_id!
-                    ds.record_pid = PID.query.filter(
-                        PID.object_uuid == record.id
-                    ).first()
-                else:
-                    # create a new Draft
-                    # TODO make the logic for deciding which record to create
-                    #      more flexible
+                        ds.record_pid = PID.query.filter(
+                            PID.object_uuid == rec.id
+                        ).first()
+
+                elif hard_sync:
+                    # hard-sync the dataset's associated record
                     record_data, converter = records_and_converters[0]
                     identity = Identity(1)  # TODO find out ID of owner?
-                    identity.provides.add(any_user)
-                    rec = converter.create_record(record_data, identity)
+                    converter.update_record(ds.record, record_data, identity)
 
-                    ds.record_pid = PID.query.filter(
-                        PID.object_uuid == rec.id
-                    ).first()
+        for old_ds in old_datasets:
+            # unlink the datasets that were previously connected to the DMP,
+            # but are no longer mentioned in the maDMP JSON
+            # note: if the DMP is new, old_datasets is necessarily empty
+            dmp.datasets.remove(old_ds)
 
-    # TODO commit DB session & index created drafts
-    return dmp
+        # TODO commit DB session & index created drafts
+        return dmp

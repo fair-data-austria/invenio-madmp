@@ -175,6 +175,7 @@ def all_required_accounts(base_app):
         email="cc@example.com", password="password", active=True
     )
 
+    db.session.commit()
     return [u1, u2, u3, u4, u5, u6]
 
 
@@ -222,5 +223,5 @@ def example_data(base_app):
         "datasets": datasets,
         "used_datasets": used_datasets,
         "unused_datasets": unused_datasets,
-        "dmps": [dmp1, dmp2, dmp3, dmp4]
+        "dmps": [dmp1, dmp2, dmp3, dmp4],
     }

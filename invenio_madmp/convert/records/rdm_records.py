@@ -8,7 +8,12 @@ from datetime import datetime
 
 from flask import current_app as app
 from flask_principal import Identity
-from invenio_rdm_records.services import BibliographicRecordService
+from invenio_access.permissions import any_user
+from invenio_rdm_records.permissions import RDMRecordPermissionPolicy
+from invenio_rdm_records.services import BibliographicRecordService, \
+    BibliographicRecordServiceConfig
+from invenio_records.api import Record
+from invenio_records_permissions.generators import AnyUser
 
 from ...util import find_user, format_date, parse_date, \
     translate_dataset_type, translate_license
@@ -16,12 +21,24 @@ from ..util import map_contact, map_contributor, map_creator
 from .base import BaseRecordConverter
 
 
+class PermissionPolicy(RDMRecordPermissionPolicy):
+    """TODO delet this (https://tinyurl.com/y69derx3)."""
+
+    can_update = [AnyUser()]
+
+
+class ServiceConfig(BibliographicRecordServiceConfig):
+    """TODO delet this (https://tinyurl.com/y69derx3)."""
+
+    permission_policy_cls = PermissionPolicy
+
+
 class RDMRecordConverter(BaseRecordConverter):
     """TODO."""
 
     def __init__(self):
         """TODO."""
-        self.record_service = BibliographicRecordService()
+        self.record_service = BibliographicRecordService(config=ServiceConfig)
 
     def map_access_right(self, distribution_dict):
         """Get the 'access_right' from the distribution."""
@@ -137,9 +154,7 @@ class RDMRecordConverter(BaseRecordConverter):
         }
 
         # TODO find owners by contributors and contact fields from DMP
-        emails = [contact] + [
-            creator.get("mbox") for creator in contributor_list
-        ]
+        emails = [creator.get("mbox") for creator in contributor_list]
         users = [
             user
             for user in (
@@ -147,7 +162,8 @@ class RDMRecordConverter(BaseRecordConverter):
             )
         ]
 
-        if None in users and False:  # TODO add config item instead of False
+        allow_unknown_contribs = app.config["MADMP_ALLOW_UNKNOWN_CONTRIBUTORS"]
+        if None in users and not allow_unknown_contribs:
             unknown = [email for email in emails if find_user(email) is None]
             raise LookupError(
                 "DMP contains unknown contributors: %s" % unknown
@@ -167,10 +183,32 @@ class RDMRecordConverter(BaseRecordConverter):
 
         return record
 
-    def create_record(self, record_data: dict, identity: Identity):
+    def create_record(self, record_data: dict, identity: Identity) -> Record:
         """TODO."""
         # note: the BibliographicRecordService will return an IdentifiedRecord,
         #       which wraps the record/draft and its PID into one object
         # note: Service.create() will already commit the changes to DB!
         draft = self.record_service.create(identity, record_data)
         return draft.record
+
+    def update_record(
+        self,
+        original_record: Record,
+        new_record_data: dict,
+        identity: Identity,
+    ):
+        """TODO."""
+        new_data = new_record_data.copy()
+        del new_data["_owners"]
+        del new_data["_creator"]
+
+        identity.provides.add(any_user)
+        if self.is_draft(original_record):
+            self.record_service.update_draft(
+                identity, original_record["recid"], new_data
+            )
+
+        elif self.is_record(original_record):
+            self.record_service.update(
+                identity, original_record["recid"], new_data
+            )

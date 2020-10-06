@@ -13,6 +13,19 @@
 				"type": "orcid"
 			}
 		},
+		"contributor": [
+			{
+				"name": "Leo Messi",
+				"mbox": "leo.messi@barcelona.com",
+				"contributor_id": {
+					"identifier": "https://orcid.org/0000-0002-0000-0000",
+					"type": "orcid"
+				},
+				"role": [
+					"ProjectLeader"
+				]
+			}
+		],
 		"language": "eng",
 		"ethical_issues_exist": "no",
 		"dmp_id": {

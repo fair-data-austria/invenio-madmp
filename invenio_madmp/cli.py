@@ -42,8 +42,14 @@ def madmp_list():
 @madmp.command("import")
 @click.argument("file")
 @click.option("--dry-run", "-d", is_flag=True, default=False)
+@click.option(
+    "--hard-sync/--soft-sync",
+    "-h/-s",
+    default=False,
+    help="whether to only check for new/removed datasets (soft sync) or to also force updates on existing datasets (hard sync)",  # noqa
+)
 @with_appcontext
-def madmp_import(file, dry_run):
+def madmp_import(file, dry_run, hard_sync):
     """Import maDMP from the specified JSON file."""
     if not file or not os.path.isfile(file):
         click.secho("'%s' is not a file" % file, file=sys.stderr, fg="red")
@@ -51,7 +57,7 @@ def madmp_import(file, dry_run):
 
     with open(file, "r") as dmp_file:
         dmp_dict = json.load(dmp_file).get("dmp", {})
-        dmp = convert_dmp(dmp_dict)
+        dmp = convert_dmp(dmp_dict, hard_sync=hard_sync)
 
         click.echo("DMP %s has %s datasets" % (dmp.dmp_id, len(dmp.datasets)))
 
@@ -66,6 +72,8 @@ def madmp_import(file, dry_run):
 
             click.echo("  DS: %s %s" % (dataset.dataset_id, recid))
 
-    if not dry_run:
+    if dry_run:
+        db.session.rollback()
+    else:
         db.session.add(dmp)
         db.session.commit()
