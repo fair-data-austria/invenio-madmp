@@ -15,7 +15,7 @@ readme = open('README.rst').read()
 history = open('CHANGES.rst').read()
 
 tests_require = [
-    'pytest-invenio>=1.3.2',
+    'pytest-invenio>=1.4.0',
     'invenio-config>=1.0.3',
     'invenio-rdm-records>=0.18.0,<0.19',  # TODO 0.19 starts having issues with other pacakges
     'invenio-records-permissions>=0.9.0,<0.10',  # TODO >= 0.10.0
