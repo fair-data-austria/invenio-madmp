@@ -18,6 +18,8 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy_utils.types import UUIDType
 
+from .signals import dataset_changed, dmp_changed
+
 datamanagementplan_dataset = db.Table(
     "dmp_datamanagementplan_dataset",
     db.Column("dmp_id", UUIDType, db.ForeignKey("dmp_datamanagementplan.id")),
@@ -52,6 +54,23 @@ class DataManagementPlan(db.Model):
     datasets = db.relationship(
         "Dataset", secondary=datamanagementplan_dataset, back_populates="dmps"
     )
+
+    def add_dataset(self, dataset: "Dataset", emit_signal=True):
+        """TODO."""
+        self.datasets.append(dataset)
+        if emit_signal:
+            dmp_changed.send(self, new_dataset=dataset)
+        # TODO emit signal, like in the setter of Dataset.record
+
+    def delete(self, commit=True):
+        """Delete the DMP, but do not delete the datasets."""
+        for ds in self.datasets:
+            ds.dmps.remove(self)
+
+        db.session.delete(self)
+
+        if commit:
+            db.session.commit()
 
     @classmethod
     def get_by_dmp_id(cls, dmp_id: str) -> "DataManagementPlan":
@@ -140,10 +159,12 @@ class Dataset(db.Model):
         back_populates="datasets",
     )
 
+    # this is nullable b/c we also want to have knowledge about datasets that
+    # do not have a distribution in Invenio (yet)
+    # they can be used at deposit to create a new distribution for a dataset
     record_pid_id = db.Column(
         db.Integer,
         db.ForeignKey(PersistentIdentifier.id),
-        nullable=False,
         unique=True,
     )
 
@@ -151,6 +172,24 @@ class Dataset(db.Model):
         PersistentIdentifier,
         foreign_keys=[record_pid_id],
     )
+
+    @property
+    def has_record(self) -> bool:
+        """Check if this Dataset has a Record assigned."""
+        # since accessing the 'record' property may be expensive, we try
+        # to minimize the cost of this function by checking the
+        # 'record_pid_id' first, which does not require joins
+        if self.record_pid_id is None or self.record_pid is None:
+            return False
+        elif self.record is None:
+            return False
+        else:
+            return True
+
+    @property
+    def is_zombie(self) -> bool:
+        """Check if this Dataset is a zombie (i.e. it has a dangling PID)."""
+        return self.record_pid_id is not None and self.record is None
 
     @property
     def record(self) -> Record:
@@ -170,6 +209,30 @@ class Dataset(db.Model):
                 break
 
         return record
+
+    @record.setter
+    def record(self, record: Record, emit_signal=True):
+        old_pid = self.record_pid
+        rec_id = record.id
+        pids = PersistentIdentifier.query.filter_by(object_uuid=rec_id).all()
+        # TODO make the function for fetching the "best" PID configurable
+        pid = pids[0]
+        # TODO emit a signal that the record has been changed; will be useful
+        #      for detecting updates to be sent to the DMP Tool
+        self.record_pid = pid
+
+        if emit_signal:
+            dataset_changed.send(self, old_pid=old_pid, new_pid=pid)
+
+    def delete(self, commit=True):
+        """Delete the dataset, but do not delete associated DMPs or records."""
+        for dmp in self.dmps:
+            dmp.datasets.remove(self)
+
+        db.session.delete(self)
+
+        if commit:
+            db.session.commit()
 
     @classmethod
     def get_by_dataset_id(cls, dataset_id: str) -> "Dataset":
@@ -199,6 +262,24 @@ class Dataset(db.Model):
             record_pid_id = record_pid
 
         return cls.query.filter(cls.record_pid_id == record_pid_id).first()
+
+    @classmethod
+    def get_zombies(cls) -> List["Dataset"]:
+        """Get all Datasets that are associated with non-existing records."""
+        return [
+            ds
+            for ds in cls.query.filter(cls.record_pid_id != None)  # noqa
+            if ds.record is None
+        ]
+
+    @classmethod
+    def get_orphans(cls, include_zombies: bool = False) -> List["Dataset"]:
+        """Get all Datasets that don't have an associated record."""
+        if include_zombies:
+            # TODO
+            pass
+        else:
+            return cls.query.filter(cls.record_pid_id == None).all()  # noqa
 
     @classmethod
     def create(
