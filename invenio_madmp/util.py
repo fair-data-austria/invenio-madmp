@@ -1,18 +1,13 @@
 """Helper functions for Invenio-maDMP."""
 
 import re
-import uuid
 from datetime import datetime
 from typing import Dict
 
 from flask import current_app as app
 from invenio_accounts.models import User
 from invenio_pidstore.models import PersistentIdentifier as PID
-from invenio_rdm_records.marshmallow import MetadataSchemaV1
-from invenio_rdm_records.models import BibliographicRecordDraft
-from invenio_rdm_records.pid_manager import BibliographicPIDManager
 from invenio_records.models import RecordMetadata
-from invenio_records_resources.services import MarshmallowDataValidator
 from werkzeug.utils import import_string
 
 from .licenses import License

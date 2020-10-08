@@ -49,7 +49,10 @@ class BaseRecordConverter:
         return isinstance(record, Record)
 
     def update_record(
-        self, original_record: Record, new_record_data: dict
+        self,
+        original_record: Record,
+        new_record_data: dict,
+        identity: Identity,
     ) -> Record:
         """TODO."""
         original_record.update(new_record_data)

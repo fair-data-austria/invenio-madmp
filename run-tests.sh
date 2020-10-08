@@ -8,7 +8,7 @@
 
 docker-services-cli up postgresql es redis && \
 pydocstyle invenio_madmp tests docs && \
-isort invenio_madmp tests --check-only --diff && \
+isort --check-only --diff --recursive invenio_madmp tests && \
 check-manifest --ignore ".travis-*" && \
 sphinx-build -qnNW docs docs/_build/html && \
 pytest
