@@ -30,9 +30,9 @@ class License:
 
         http, https = "http://", "https://"
         if self.uri.startswith(http):
-            self.alt_uri = "%s%s" % (https, self.uri[len(http):])
+            self.alt_uri = "%s%s" % (https, self.uri[len(http) :])
         elif self.uri.startswith(https):
-            self.alt_uri = "%s%s" % (http, self.uri[len(https):])
+            self.alt_uri = "%s%s" % (http, self.uri[len(https) :])
 
         self.values_to_check = [
             self.identifier,

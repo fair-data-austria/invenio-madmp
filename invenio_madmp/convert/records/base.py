@@ -14,9 +14,7 @@ from invenio_records.api import Record
 class BaseRecordConverter:
     """TODO."""
 
-    def matches_dataset(
-        self, dataset_dict: dict, dmp_dict: dict = None
-    ) -> bool:
+    def matches_dataset(self, dataset_dict: dict, dmp_dict: dict = None) -> bool:
         """TODO."""
         raise NotImplementedError
 

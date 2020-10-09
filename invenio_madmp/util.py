@@ -61,9 +61,7 @@ def translate_license(license_dict):
     """Try to find the referenced license in the list of known licenses."""
     licenses = app.config["MADMP_LICENSES"]
 
-    matching_licenses = [
-        lic for lic in licenses if lic.matches(*license_dict.values())
-    ]
+    matching_licenses = [lic for lic in licenses if lic.matches(*license_dict.values())]
 
     if matching_licenses:
         lic = matching_licenses[0]

@@ -33,8 +33,7 @@ from invenio_rdm_records.pid_manager import BibliographicPIDManager
 from invenio_records import InvenioRecords
 from invenio_records.api import Record
 from invenio_search import InvenioSearch
-from sqlalchemy_utils.functions import create_database, database_exists, \
-    drop_database
+from sqlalchemy_utils.functions import create_database, database_exists, drop_database
 
 from invenio_madmp import InvenioMaDMP
 from invenio_madmp.convert.records import RDMRecordConverter
@@ -74,9 +73,7 @@ def base_app(request):
         MADMP_HOST_URL="https://test.invenio.cern.ch",
         MADMP_HOST_TITLE="Invenio",
         MADMP_FALLBACK_RECORD_CONVERTER=DummyRDMRecordConverter(),
-        SQLALCHEMY_DATABASE_URI=os.getenv(
-            "SQLALCHEMY_DATABASE_URI", "sqlite://"
-        ),
+        SQLALCHEMY_DATABASE_URI=os.getenv("SQLALCHEMY_DATABASE_URI", "sqlite://"),
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
     )
     Babel(app)
@@ -168,12 +165,8 @@ def all_required_accounts(base_app):
     u4 = datastore.create_user(
         email="robert@bayern.de", password="weisswurschtundbier", active=True
     )
-    u5 = datastore.create_user(
-        email="CR@juve.it", password="pizza1234", active=True
-    )
-    u6 = datastore.create_user(
-        email="cc@example.com", password="password", active=True
-    )
+    u5 = datastore.create_user(email="CR@juve.it", password="pizza1234", active=True)
+    u6 = datastore.create_user(email="cc@example.com", password="password", active=True)
 
     db.session.commit()
     return [u1, u2, u3, u4, u5, u6]

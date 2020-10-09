@@ -11,8 +11,12 @@ from invenio_pidstore.models import PersistentIdentifier as PID
 
 from ..models import DataManagementPlan as DMP
 from ..models import Dataset
-from ..util import distribution_matches_us, fetch_unassigned_record, \
-    is_identifier_type_allowed, translate_person_details
+from ..util import (
+    distribution_matches_us,
+    fetch_unassigned_record,
+    is_identifier_type_allowed,
+    translate_person_details,
+)
 
 
 def get_matching_converter(
@@ -168,14 +172,11 @@ def convert_dmp(
                     #       published in a single ZIP file (i.e. as a single
                     #       record)
 
-                    converter = get_matching_converter(
-                        distrib, dataset, madmp_dict
-                    )
+                    converter = get_matching_converter(distrib, dataset, madmp_dict)
 
                     if converter is None:
                         raise LookupError(
-                            "no matching converter registered for dataset: %s"
-                            % dataset
+                            "no matching converter registered for dataset: %s" % dataset
                         )
 
                     record_data = converter.convert_dataset(

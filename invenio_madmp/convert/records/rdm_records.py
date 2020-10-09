@@ -10,13 +10,20 @@ from flask import current_app as app
 from flask_principal import Identity
 from invenio_access.permissions import any_user
 from invenio_rdm_records.permissions import RDMRecordPermissionPolicy
-from invenio_rdm_records.services import BibliographicRecordService, \
-    BibliographicRecordServiceConfig
+from invenio_rdm_records.services import (
+    BibliographicRecordService,
+    BibliographicRecordServiceConfig,
+)
 from invenio_records.api import Record
 from invenio_records_permissions.generators import AnyUser
 
-from ...util import find_user, format_date, parse_date, \
-    translate_dataset_type, translate_license
+from ...util import (
+    find_user,
+    format_date,
+    parse_date,
+    translate_dataset_type,
+    translate_license,
+)
 from ..util import map_contact, map_contributor, map_creator
 from .base import BaseRecordConverter
 
@@ -55,17 +62,13 @@ class RDMRecordConverter(BaseRecordConverter):
         return {
             "title": dataset_dict.get("title", "[No Title]"),
             "type": "MainTitle",  # TODO check vocabulary
-            "lang": dataset_dict.get(
-                "language", app.config["MADMP_DEFAULT_LANGUAGE"]
-            ),
+            "lang": dataset_dict.get("language", app.config["MADMP_DEFAULT_LANGUAGE"]),
         }
 
     def map_language(self, dataset_dict):
         """Map the dataset's language to the record's language."""
         # note: both RDA-CS and Invenio-RDM-Records use ISO 639-3
-        return dataset_dict.get(
-            "language", app.config["MADMP_DEFAULT_LANGUAGE"]
-        )
+        return dataset_dict.get("language", app.config["MADMP_DEFAULT_LANGUAGE"])
 
     def map_license(self, license_dict):
         """Map the distribution's license to the record's license."""
@@ -81,9 +84,7 @@ class RDMRecordConverter(BaseRecordConverter):
         return {
             "description": dataset_dict.get("description", "[No Description]"),
             "type": "Other",
-            "lang": dataset_dict.get(
-                "language", app.config["MADMP_DEFAULT_LANGUAGE"]
-            ),
+            "lang": dataset_dict.get("language", app.config["MADMP_DEFAULT_LANGUAGE"]),
         }
 
     def convert_dataset(
@@ -112,9 +113,7 @@ class RDMRecordConverter(BaseRecordConverter):
         access_right = self.map_access_right(distribution_dict)
         titles = [self.map_title(dataset_dict)]
         language = self.map_language(dataset_dict)
-        licenses = list(
-            map(self.map_license, distribution_dict.get("license", []))
-        )
+        licenses = list(map(self.map_license, distribution_dict.get("license", [])))
         descriptions = [self.map_description(dataset_dict)]
         dates = []
 
@@ -156,18 +155,13 @@ class RDMRecordConverter(BaseRecordConverter):
         # TODO find owners by contributors and contact fields from DMP
         emails = [creator.get("mbox") for creator in contributor_list]
         users = [
-            user
-            for user in (
-                find_user(email) for email in emails if email is not None
-            )
+            user for user in (find_user(email) for email in emails if email is not None)
         ]
 
         allow_unknown_contribs = app.config["MADMP_ALLOW_UNKNOWN_CONTRIBUTORS"]
         if None in users and not allow_unknown_contribs:
             unknown = [email for email in emails if find_user(email) is None]
-            raise LookupError(
-                "DMP contains unknown contributors: %s" % unknown
-            )
+            raise LookupError("DMP contains unknown contributors: %s" % unknown)
 
         users = [user for user in users if user is not None]
 
@@ -209,6 +203,4 @@ class RDMRecordConverter(BaseRecordConverter):
             )
 
         elif self.is_record(original_record):
-            self.record_service.update(
-                identity, original_record["recid"], new_data
-            )
+            self.record_service.update(identity, original_record["recid"], new_data)

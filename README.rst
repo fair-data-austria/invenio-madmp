@@ -23,6 +23,9 @@
 .. image:: https://img.shields.io/github/license/fair-data-austria/invenio-madmp.svg
         :target: https://github.com/fair-data-austria/invenio-madmp/blob/master/LICENSE
 
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/psf/black
+
 Invenio module for maDMP integration.
 
 TODO: Please provide feature overview of module
