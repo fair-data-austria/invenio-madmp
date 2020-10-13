@@ -19,17 +19,6 @@ from ..util import (
 )
 
 
-def get_matching_converter(
-    distribution_dict: dict, dataset_dict: dict, dmp_dict: dict
-) -> "BaseRecordConverter":
-    """TODO."""
-    for converter in app.config["MADMP_RECORD_CONVERTERS"]:
-        if converter.matches(distribution_dict, dataset_dict, dmp_dict):
-            return converter
-
-    return app.config["MADMP_FALLBACK_RECORD_CONVERTER"]
-
-
 def map_contact(contact_dict):
     """Get the contact person's e-mail address."""
     return contact_dict.get("mbox", app.config["MADMP_DEFAULT_CONTACT"])
@@ -238,3 +227,17 @@ def convert_dmp(
 
         # TODO commit DB session & index created drafts
         return dmp
+
+
+from .records.base import BaseRecordConverter  # noqa - fixes circular import issue
+
+
+def get_matching_converter(
+    distribution_dict: dict, dataset_dict: dict, dmp_dict: dict
+) -> BaseRecordConverter:
+    """TODO."""
+    for converter in app.config["MADMP_RECORD_CONVERTERS"]:
+        if converter.matches(distribution_dict, dataset_dict, dmp_dict):
+            return converter
+
+    return app.config["MADMP_FALLBACK_RECORD_CONVERTER"]
