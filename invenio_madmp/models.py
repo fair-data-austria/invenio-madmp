@@ -8,7 +8,7 @@
 """Database models for Data Management Plans."""
 
 import uuid
-from typing import List
+from typing import List, Optional
 
 from invenio_db import db
 from invenio_pidstore.models import PersistentIdentifier
@@ -73,7 +73,7 @@ class DataManagementPlan(db.Model):
             db.session.commit()
 
     @classmethod
-    def get_by_dmp_id(cls, dmp_id: str) -> "DataManagementPlan":
+    def get_by_dmp_id(cls, dmp_id: str) -> Optional["DataManagementPlan"]:
         """Get the dataset with the given dmp_id."""
         return cls.query.filter(cls.dmp_id == dmp_id).one_or_none()
 
@@ -192,7 +192,7 @@ class Dataset(db.Model):
         return self.record_pid_id is not None and self.record is None
 
     @property
-    def record(self) -> Record:
+    def record(self) -> Optional[Record]:
         """Get the Record associated with this Dataset."""
         if self.record_pid is None:
             return None
@@ -235,12 +235,12 @@ class Dataset(db.Model):
             db.session.commit()
 
     @classmethod
-    def get_by_dataset_id(cls, dataset_id: str) -> "Dataset":
+    def get_by_dataset_id(cls, dataset_id: str) -> Optional["Dataset"]:
         """Get the dataset with the given dataset_id."""
         return cls.query.filter(cls.dataset_id == dataset_id).one_or_none()
 
     @classmethod
-    def get_by_record(cls, record: Record) -> "Dataset":
+    def get_by_record(cls, record: Record) -> Optional["Dataset"]:
         """Get the associated Dataset for the given Record."""
         # TODO: a record may have multiple PIDs, and the Dataset is only
         #       associated with one of these PIDs
@@ -254,7 +254,7 @@ class Dataset(db.Model):
         return cls.get_by_record_pid(pid)
 
     @classmethod
-    def get_by_record_pid(cls, record_pid: PersistentIdentifier) -> "Dataset":
+    def get_by_record_pid(cls, record_pid: PersistentIdentifier) -> Optional["Dataset"]:
         """Get the associated Dataset for the Record with the given PID."""
         if isinstance(record_pid, PersistentIdentifier):
             record_pid_id = record_pid.id
@@ -277,7 +277,7 @@ class Dataset(db.Model):
         """Get all Datasets that don't have an associated record."""
         if include_zombies:
             # TODO
-            pass
+            return []
         else:
             return cls.query.filter(cls.record_pid_id == None).all()  # noqa
 

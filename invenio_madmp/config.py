@@ -7,6 +7,9 @@
 
 """Invenio module for maDMP integration."""
 
+from typing import Dict, List
+
+from .convert.records.base import BaseRecordConverter
 from .convert.records.rdm_records import RDMRecordConverter
 from .licenses import KNOWN_LICENSES
 
@@ -20,16 +23,16 @@ MADMP_DEFAULT_CONTACT = "info@invenio.org"
 MADMP_DEFAULT_DATA_ACCESS = "open"
 
 # record converters
-MADMP_RECORD_CONVERTERS = []
-MADMP_FALLBACK_RECORD_CONVERTER = RDMRecordConverter()
+MADMP_RECORD_CONVERTERS: List[BaseRecordConverter] = []
+MADMP_FALLBACK_RECORD_CONVERTER: BaseRecordConverter = RDMRecordConverter()
 
 # determine of some semantic errors should be ignored
 MADMP_ALLOW_MULTIPLE_DISTRIBUTIONS = False
 MADMP_ALLOW_UNKNOWN_CONTRIBUTORS = False
 
 # dictionaries for mapping resource (sub-) types
-MADMP_RESOURCE_TYPE_TRANSLATION_DICT = {}
-MADMP_RESOURCE_SUBTYPE_TRANSLATION_DICT = {}
+MADMP_RESOURCE_TYPE_TRANSLATION_DICT: Dict[str, str] = {}
+MADMP_RESOURCE_SUBTYPE_TRANSLATION_DICT: Dict[str, str] = {}
 
 # list of known licenses (as License objects)
 MADMP_LICENSES = KNOWN_LICENSES
