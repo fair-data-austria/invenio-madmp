@@ -115,8 +115,8 @@ todo_include_todos = False
 html_theme = "alabaster"
 
 html_theme_options = {
-    "description": "Invenio module for maDMP integration.",
-    "github_user": "inveniosoftware",
+    "description": "Invenio module for integrating maDMPs.",
+    "github_user": "fair-data-austria",
     "github_repo": "invenio-madmp",
     "github_button": False,
     "github_banner": True,
