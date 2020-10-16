@@ -30,6 +30,10 @@ MADMP_RECORD_CREATOR_USER_ID = None
 MADMP_RECORD_CONVERTERS: List[BaseRecordConverter] = []
 MADMP_FALLBACK_RECORD_CONVERTER: BaseRecordConverter = RDMRecordConverter()
 
+# list of contributor roles that are considered to be record owners
+# an empty list makes all contributors to record owners, regardless of their roles
+MADMP_RELEVANT_CONTRIBUTOR_ROLES = []
+
 # determine of some semantic errors should be ignored
 MADMP_ALLOW_MULTIPLE_DISTRIBUTIONS = False
 MADMP_ALLOW_UNKNOWN_CONTRIBUTORS = False

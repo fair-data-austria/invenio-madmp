@@ -19,6 +19,23 @@ from ..util import (
 )
 
 
+def is_relevant_contributor(role: str) -> bool:
+    """Check if the contributor is relevant as owner, based on their role."""
+    if not app.config["MADMP_RELEVANT_CONTRIBUTOR_ROLES"]:
+        return True
+
+    return role in app.config["MADMP_RELEVANT_CONTRIBUTOR_ROLES"]
+
+
+def filter_contributors(contrib_dict_list: List[dict]) -> List[dict]:
+    """Filter the list of contributors by their roles."""
+    return [
+        contrib
+        for contrib in contrib_dict_list
+        if is_relevant_contributor(contrib["role"])
+    ]
+
+
 def map_contact(contact_dict):
     """Get the contact person's e-mail address."""
     return contact_dict.get("mbox", app.config["MADMP_DEFAULT_CONTACT"])

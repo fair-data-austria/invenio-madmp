@@ -24,7 +24,7 @@ from ...util import (
     translate_dataset_type,
     translate_license,
 )
-from ..util import map_contact, map_contributor, map_creator
+from ..util import filter_contributors, map_contact, map_contributor, map_creator
 from .base import BaseRecordConverter
 
 
@@ -157,14 +157,20 @@ class RDMRecordConverter(BaseRecordConverter):
             }
         )
 
-        # TODO find owners by contributors and contact fields from DMP
-        emails = [creator.get("mbox") for creator in contributor_list]
+        # parse the record owners from the contributors (based on their roles)
+        filtered_contribs = filter_contributors(contributor_list)
+        if not filtered_contribs:
+            message = "the contributors contain no suitable record owners by role"
+            raise ValueError(message)
+
+        emails = [creator.get("mbox") for creator in filtered_contribs]
         users = [
             user for user in (find_user(email) for email in emails if email is not None)
         ]
 
         allow_unknown_contribs = app.config["MADMP_ALLOW_UNKNOWN_CONTRIBUTORS"]
         if None in users and not allow_unknown_contribs:
+            # if there are relevant owners who are unknown to us
             unknown = [email for email in emails if find_user(email) is None]
             raise LookupError("DMP contains unknown contributors: %s" % unknown)
 
