@@ -17,7 +17,7 @@ history = open("CHANGES.rst").read()
 tests_require = [
     "pytest-invenio>=1.4.0",
     "invenio-config>=1.0.3",
-    "invenio-rdm-records>=0.20.8,<0.21", # 0.21 changed the module structure
+    "invenio-rdm-records>=0.20.8,<0.21",  # 0.21 changed the module structure
     "invenio-records-permissions>=0.10.0",
     "SQLAlchemy-Utils>=0.33.1,<0.36",  # FIXME without this: ContextualVersionConflict {invenio-files-rest}
     "invenio-search[elasticsearch7]>=1.4.0",
@@ -72,7 +72,7 @@ setup(
     version=version,
     description=__doc__,
     long_description=readme + "\n\n" + history,
-    keywords="invenio TODO",
+    keywords="invenio dmp madmp machine-actionable data management plan",
     license="MIT",
     author="FAIR Data Austria",
     author_email="maximilian.moser@tuwien.ac.at",
@@ -83,10 +83,10 @@ setup(
     platforms="any",
     entry_points={
         "flask.commands": ["madmp = invenio_madmp.cli:madmp"],
-        "invenio_base.apps": [
+        "invenio_base.api_apps": [
             "invenio_madmp = invenio_madmp:InvenioMaDMP",
         ],
-        "invenio_base.blueprints": [
+        "invenio_base.api_blueprints": [
             "invenio_madmp = invenio_madmp.views:rest_blueprint"
         ],
         "invenio_i18n.translations": [
