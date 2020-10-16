@@ -198,7 +198,7 @@ def convert_dmp(
 
                 found_ds = Dataset.get_by_dataset_id(dataset_id)
                 ds = found_ds or Dataset(dataset_id=dataset_id)
-                if found_ds is not None:
+                if found_ds is not None and found_ds in old_datasets:
                     old_datasets.remove(found_ds)
 
                 if ds.dataset_id not in [ds.dataset_id for ds in dmp.datasets]:

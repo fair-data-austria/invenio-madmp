@@ -315,3 +315,15 @@ class Dataset(db.Model):
             raise
 
         return dataset
+
+    def __eq__(self, other: "Dataset") -> bool:
+        """Check if this Dataset is equal to the other."""
+        if not isinstance(other, self.__class__):
+            return False
+        elif self is other or self.id == other.id:
+            return True
+
+        return (
+            self.dataset_id == other.dataset_id
+            and self.record_pid_id == other.record_pid_id
+        )
