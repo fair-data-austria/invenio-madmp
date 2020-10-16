@@ -205,11 +205,24 @@ class RDMRecordConverter(BaseRecordConverter):
         del new_data["access"]["owners"]
         del new_data["access"]["created_by"]
 
+        # because partial updates are currently not working, we use the data from the
+        # original record and update the metadata dictionary
+        data = original_record.model.data.copy()
+        data["metadata"].update(new_data["metadata"])
         identity.provides.add(any_user)
+
         if self.is_draft(original_record):
             self.record_service.update_draft(
-                identity, original_record["recid"], new_data
+                identity=identity,
+                id_=original_record["id"],
+                data=data,
             )
 
         elif self.is_record(original_record):
-            self.record_service.update(identity, original_record["recid"], new_data)
+            self.record_service.update(
+                identity=identity,
+                id_=original_record["id"],
+                data=data,
+            )
+
+        # TODO return value is missing!
