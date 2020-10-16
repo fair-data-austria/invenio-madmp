@@ -208,10 +208,7 @@ def convert_dmp(
                         identity = Identity(1)  # TODO find out ID of owner?
                         identity.provides.add(any_user)
                         rec = converter.create_record(record_data, identity)
-
-                        ds.record_pid = PID.query.filter(
-                            PID.object_uuid == rec.id
-                        ).first()
+                        ds.record_pid = rec.pid
 
                 elif hard_sync:
                     # hard-sync the dataset's associated record

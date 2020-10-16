@@ -10,7 +10,6 @@
 import pytest
 from flask import Flask
 from invenio_accounts.models import User
-from invenio_pidstore.models import PersistentIdentifier as PID
 
 from invenio_madmp import InvenioMaDMP
 from invenio_madmp.convert import convert_dmp
@@ -69,8 +68,7 @@ def test_find_dataset_by_record(base_app, example_data):
 
 def test_find_dataset_by_record_pid(base_app, example_data):
     for record in (ds.record for ds in example_data["datasets"]):
-        rec_pid = PID.get_by_object("recid", "rec", record.id)
-        dataset = Dataset.get_by_record_pid(rec_pid)
+        dataset = Dataset.get_by_record_pid(record.pid)
 
         assert dataset is not None
         assert dataset.record.id == record.id
@@ -121,8 +119,7 @@ def test_find_dmps_by_record_unused(base_app, example_data):
 
 def test_find_dmps_by_record_pid(base_app, example_data):
     for rec in (ds.record for ds in example_data["used_datasets"]):
-        rec_pid = PID.get_by_object("recid", "rec", rec.id)
-        dmps = DataManagementPlan.get_by_record_pid(rec_pid)
+        dmps = DataManagementPlan.get_by_record_pid(rec.pid)
 
         assert isinstance(dmps, list)
         assert dmps
@@ -138,8 +135,7 @@ def test_find_dmps_by_record_pid_nonexisting(base_app, example_data):
 
 def test_find_dmps_by_record_pid_unused(base_app, example_data):
     for rec in example_data["unused_records"]:
-        rec_pid = PID.get_by_object("recid", "rec", rec.id)
-        dmps = DataManagementPlan.get_by_record_pid(rec_pid)
+        dmps = DataManagementPlan.get_by_record_pid(rec.pid)
 
         assert isinstance(dmps, list)
         assert not dmps

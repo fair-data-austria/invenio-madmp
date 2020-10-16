@@ -1,129 +1,130 @@
 {
-  "_internal_notes": [
-    {
-      "user": "inveniouser",
-      "note": "RDM record",
-      "timestamp": "1978-09-17"
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1995-09-02",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Young-Baker's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Lindsay Williams",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Gibbs-Hays",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Custoias",
+                "point": {
+                    "lat": -50.781282,
+                    "lon": 83.118331
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Elizabeth Dawson",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Miller-Knapp",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Chance then nor baby. Early kid almost create.\nTotal help reveal. Area possible actually else they nation decide. Outside anything capital across cost.\nProduction finally job create future ever year. Say performance face serve grow beat. Its when amount college want energy.\nCut hair sea security remember bed meeting. Necessary big compare good. Scene stay sign eye evidence newspaper week manager.\nStock enough from control. Through me left ever economic. Provide during painting early I add father.\nAgree young ten moment some ask. Trip without have difficult church return.\nCar tonight role beyond responsibility. Her exactly measure become attack drug camera live.\nRest church left note experience. Light cultural since reach return seem.\nMr fly truth woman hundred two discussion. Language tough program community father game rest.\nRecord or quality fact above attack. Card walk office sure low across professional.\nFood girl answer happy institution find grow. Just would push ball relationship night institution example.\nAvailable development they. Wind bit style feeling future game hour.\nMany sign stay her office safe. Stay smile cup cost a part.\nBall low trial her oil seat go condition. Rich risk loss design new. Us especially citizen feeling.\nWhat carry themselves somebody father. Into range set foreign two.\nIndeed sing already movement section issue. Mrs throughout by early wait if. Key true fire him attention choose.\nVoice board girl organization certainly share. Certain happy memory sell thought letter beat federal.\nFine direction sit create hot least day resource.\nDifference call culture probably. Eight get common top until pretty until.\nStage federal answer whose appear. Into security simply senior.\nThird industry sometimes Democrat remain single from movie. Suggest thank return write seat land bit music. Item nor half nor nearly opportunity. Bag surface report similar me agree responsibility easy.\nRepublican computer brother break teacher federal serve. Model finally list indeed. Source about skill fast indeed identify.\nCareer point group enter white doctor. Various plant west production may. Town positive book generation.\nCareer listen eat beautiful music writer investment. Family method note suffer local. Size shake foot player loss. Notice laugh husband executive difference challenge something.\nTeacher world thank performance improve. Nature beautiful heavy tree.\nTurn pull food make moment card.\nExample rise their administration prevent. Pattern boy any look say. Wall few as assume.\nOil detail without identify everything. Meet stuff president. Page song character attorney room son become.\nThe three good pay order. Provide American risk space others traditional sometimes.\nWhich begin fact old. Represent management heart movement. Key final imagine question feel occur commercial.\nFollow modern camera picture only test yard. Grow feel create east top forget.\nWho building why see sell whom I and. Once issue not."
+            }
+        ],
+        "embargo_date": "2021-10-11",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-workingpaper"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1992-10-20"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1997-07-03/2003-06-14",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-book"
+                }
+            }
+        ]
     }
-  ],
-  "licenses": [
-    {
-      "scheme": "BSD-3",
-      "uri": "https://opensource.org/licenses/BSD-3-Clause",
-      "identifier": "BSD-3",
-      "license": "Berkeley Software Distribution 3"
-    }
-  ],
-  "descriptions": [
-    {
-      "description": "Front church south general. School hundred let enter argue try have.\nDiscover edge body. Mention she including us officer.\nEntire scene likely. How relationship may will page head.\nJoin even cup play himself attack. Leave lot believe which raise player rate. Better Democrat might speech toward ball.\nRecognize natural language together. Fact plant because act in PM clearly. Million black view into.\nSummer run start first actually my. Bring enjoy nation yes memory recently court machine.\nOnce place three common strategy. Role first exist message.\nIndeed yeah value enter coach now use. Local avoid any tree skin consider. Point yes before economic likely none for.\nPosition over brother possible you down when trouble. Kind need fund impact subject customer laugh on. Manager main particularly mean talk.\nMake current research mission have pull sister feel. Between house take best check real current.\nNot fine painting teacher edge up card discussion. East beyond campaign affect sound.\nReligious try challenge boy official occur. While black list idea name walk finish. Police collection material act.\nOnce TV seat sometimes turn. Care believe hair party. Unit professional peace poor total.\nFire small end boy above dream. Modern history president professor simple attention. Time since state exactly recognize none choose.\nIndustry per training account his. Protect western stay side check forward pressure.\nMeasure provide employee treat ten suddenly process child. Television career today feeling TV physical. Any participant glass fill hand claim.\nWork girl door else respond. Hotel commercial that. According industry dog social base painting.\nMeasure box pass what go people indicate.\nHelp history claim senior operation situation environmental. Experience successful last. Image present including attention point president.\nPrepare player themselves institution these. Prove house do capital.\nDuring contain quickly letter dog. A respond process anyone science industry.\nThe election bad some move heavy. Agency specific doctor improve spend.\nChair almost run deal work. His nothing movie raise various really little.\nVarious actually see PM. Game wide look. Large seven skin center allow interview moment source.\nEnough future miss energy similar produce activity. Study answer film project behavior. Produce citizen work very here truth.\nDiscussion forget main standard. Recognize executive movement move mention.\nExpect wall heart carry believe several. Success rise trial truth magazine work debate natural. Part real executive arm fear save.\nSpend water campaign game better condition job. Consider clearly nor school effort.\nAudience popular enjoy. The manage raise then. Reality behavior interesting likely important break note.\nYet successful record several guess. Plant service employee believe former TV right. Find magazine gas indicate interesting recognize per.",
-      "type": "Abstract",
-      "lang": "eng"
-    }
-  ],
-  "identifiers": {
-    "DOI": "10.9999/rdm.9999999",
-    "arXiv": "9999.99999"
-  },
-  "version": "v0.0.1",
-  "creators": [
-    {
-      "affiliations": [
-        {
-          "name": "Martin, Pham and Cunningham",
-          "identifiers": {
-            "ror": "03yrm5c26"
-          }
-        }
-      ],
-      "name": "Ashley Allen",
-      "identifiers": {
-        "Orcid": "0000-0002-1825-0097"
-      },
-      "type": "Personal"
-    }
-  ],
-  "dates": [
-    {
-      "description": "Random test date",
-      "start": "2014-07-08",
-      "type": "Other"
-    }
-  ],
-  "_default_preview": "previewer one",
-  "resource_type": {
-    "subtype": "",
-    "type": "dataset"
-  },
-  "_created_by": 2,
-  "references": [
-    {
-      "scheme": "GRID",
-      "reference_string": "Reference to something et al.",
-      "identifier": "9999.99988"
-    }
-  ],
-  "related_identifiers": [
-    {
-      "scheme": "DOI",
-      "resource_type": {
-        "subtype": "image-figure",
-        "type": "image"
-      },
-      "relation_type": "Requires",
-      "identifier": "10.9999/rdm.9999988"
-    }
-  ],
-  "publication_date": "1990/1992-07",
-  "access_right": "open",
-  "titles": [
-    {
-      "title": "Kim PLC's gallery",
-      "type": "Other",
-      "lang": "eng"
-    }
-  ],
-  "language": "eng",
-  "_owners": [
-    1
-  ],
-  "contact": "info@inveniosoftware.org",
-  "_access": {
-    "files_restricted": false,
-    "metadata_restricted": false
-  },
-  "subjects": [
-    {
-      "scheme": "no-scheme",
-      "subject": "Romans",
-      "identifier": "subj-1"
-    }
-  ],
-  "contributors": [
-    {
-      "affiliations": [
-        {
-          "name": "Walker-Holt",
-          "identifiers": {
-            "ror": "03yrm5c26"
-          }
-        }
-      ],
-      "name": "Mr. Alan Norris DVM",
-      "role": "RightsHolder",
-      "type": "Personal"
-    }
-  ],
-  "embargo_date": "2021-09-03",
-  "locations": [
-    {
-      "place": "Santa Maria",
-      "description": "Random place on land for random coordinates...",
-      "point": {
-        "lon": -151.10834,
-        "lat": -40.985148
-      }
-    }
-  ],
-  "_publication_date_search": "1990-01-01"
 }

@@ -125,32 +125,37 @@ class RDMRecordConverter(BaseRecordConverter):
                 min_lic_start = lic_start
 
         record = {
-            "access_right": access_right,
-            "contact": contact,
-            "resource_type": resource_type,
-            "creators": creators,
-            "titles": titles,
-            "contributors": contributors,
-            "dates": dates,
-            "language": language,
-            "licenses": licenses,
-            "descriptions": descriptions,
-            "publication_date": datetime.utcnow().isoformat(),
+            "access": {
+                "access_right": access_right,
+            },
+            "metadata": {
+                "contact": contact,
+                "resource_type": resource_type,
+                "creators": creators,
+                "titles": titles,
+                "contributors": contributors,
+                "dates": dates,
+                "language": language,
+                "licenses": licenses,
+                "descriptions": descriptions,
+                "publication_date": datetime.utcnow().isoformat(),
+            },
         }
 
         if min_lic_start is None or datetime.utcnow() < min_lic_start:
-
             # the earliest license start date is in the future:
             # that means there's an embargo
             fmt_date = format_date(min_lic_start, "%Y-%m-%d")
-            record["embargo_date"] = fmt_date
+            record["metadata"]["embargo_date"] = fmt_date
 
         files_restricted = access_right != "open"
         metadata_restricted = False
-        record["_access"] = {
-            "files_restricted": files_restricted,
-            "metadata_restricted": metadata_restricted,
-        }
+        record["access"].update(
+            {
+                "files_restricted": files_restricted,
+                "metadata_restricted": metadata_restricted,
+            }
+        )
 
         # TODO find owners by contributors and contact fields from DMP
         emails = [creator.get("mbox") for creator in contributor_list]
@@ -164,16 +169,14 @@ class RDMRecordConverter(BaseRecordConverter):
             raise LookupError("DMP contains unknown contributors: %s" % unknown)
 
         users = [user for user in users if user is not None]
-
         if not users:
             raise LookupError(
                 "no registered users found for any email address: %s" % emails
             )
 
-        record["_owners"] = {u.id for u in users}
-        record["_created_by"] = users[
-            0
-        ].id  # TODO fallback user? some admin? or exception?
+        creator_id = app.config["MADMP_RECORD_CREATOR_USER_ID"] or users[0].id
+        record["access"]["owners"] = {u.id for u in users}
+        record["access"]["created_by"] = creator_id
 
         return record
 
@@ -183,7 +186,7 @@ class RDMRecordConverter(BaseRecordConverter):
         #       which wraps the record/draft and its PID into one object
         # note: Service.create() will already commit the changes to DB!
         draft = self.record_service.create(identity, record_data)
-        return draft.record
+        return draft._record
 
     def update_record(
         self,
@@ -193,8 +196,8 @@ class RDMRecordConverter(BaseRecordConverter):
     ):
         """TODO."""
         new_data = new_record_data.copy()
-        del new_data["_owners"]
-        del new_data["_creator"]
+        del new_data["access"]["owners"]
+        del new_data["access"]["created_by"]
 
         identity.provides.add(any_user)
         if self.is_draft(original_record):

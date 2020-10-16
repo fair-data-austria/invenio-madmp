@@ -17,25 +17,24 @@ history = open("CHANGES.rst").read()
 tests_require = [
     "pytest-invenio>=1.4.0",
     "invenio-config>=1.0.3",
-    "invenio-rdm-records>=0.18.0,<0.19",  # TODO 0.19 starts having issues with other pacakges
-    "invenio-records-permissions>=0.9.0,<0.10",  # TODO >= 0.10.0
-    "flask-resources>=0.2.1,<=0.3.1",  # TODO >=0.3.2
+    "invenio-rdm-records>=0.20.8",
+    "invenio-records-permissions>=0.10.0",
     "SQLAlchemy-Utils>=0.33.1,<0.36",  # FIXME without this: ContextualVersionConflict {invenio-files-rest}
-    "invenio-search[elasticsearch7]>=1.3.1",
+    "invenio-search[elasticsearch7]>=1.4.0",
 ]
 
 extras_require = {
     "docs": [
-        "Sphinx>=1.5.1",
+        "Sphinx>=3.2.1",
     ],
     "mysql": [
-        "invenio-db[mysql]>=1.0.0",
+        "invenio-db[mysql]>=1.0.6",
     ],
     "postgresql": [
-        "invenio-db[postgresql]>=1.0.0",
+        "invenio-db[postgresql]>=1.0.6",
     ],
     "sqlite": [
-        "invenio-db>=1.0.0",
+        "invenio-db>=1.0.6",
     ],
     "tests": tests_require,
 }
@@ -45,17 +44,17 @@ for reqs in extras_require.values():
     extras_require["all"].extend(reqs)
 
 setup_requires = [
-    "Babel>=1.3",
+    "Babel>=2.8",
     "pytest-runner>=3.0.0,<5",
 ]
 
 install_requires = [
     "Flask-BabelEx>=0.9.4",
-    "invenio-records>=1.3.2,<2.0.0",
     "invenio-pidstore>=1.2.1",
-    "invenio-records>=1.3.2",
-    "invenio-db>=1.0.0",
+    "invenio-records>=1.4.0a4",
+    "invenio-db>=1.0.6",
     "invenio-accounts>=1.3.0",
+    "sqlalchemy-continuum>=1.3.11",
     'backports-datetime-fromisoformat>=1.0 ; python_version<"3.7"',
 ]
 

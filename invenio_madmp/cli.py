@@ -7,7 +7,6 @@ import sys
 import click
 from flask.cli import with_appcontext
 from invenio_db import db
-from invenio_pidstore.models import PersistentIdentifier
 
 from .convert import convert_dmp
 from .models import DataManagementPlan
@@ -30,9 +29,7 @@ def madmp_list():
             recid = "[no record]"
 
             if dataset.record:
-                pid = PersistentIdentifier.get_by_object(
-                    "recid", "rec", dataset.record.id
-                )
+                pid = dataset.record.pid
                 recid = "[recid: %s]" % pid.pid_value
 
             click.echo("  [DS] %s %s" % (dataset.dataset_id, recid))
@@ -65,9 +62,7 @@ def madmp_import(file, dry_run, hard_sync):
             recid = "[no record]"
 
             if dataset.record:
-                pid = PersistentIdentifier.get_by_object(
-                    "recid", "rec", dataset.record.id
-                )
+                pid = dataset.record.pid
                 recid = "[recid: %s]" % pid.pid_value
 
             click.echo("  DS: %s %s" % (dataset.dataset_id, recid))

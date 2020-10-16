@@ -7,7 +7,7 @@ models).
 """
 
 from flask_principal import Identity
-from invenio_drafts_resources.drafts import DraftBase
+from invenio_drafts_resources.records import Draft
 from invenio_records.api import Record
 
 
@@ -40,7 +40,7 @@ class BaseRecordConverter:
 
     def is_draft(self, record: Record) -> bool:
         """TODO."""
-        return isinstance(record, DraftBase)
+        return isinstance(record, Draft)
 
     def is_record(self, record: Record) -> bool:
         """TODO."""

@@ -1,129 +1,130 @@
 {
-  "_internal_notes": [
-    {
-      "user": "inveniouser",
-      "note": "RDM record",
-      "timestamp": "1979-06-06"
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1992-11-02",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Macdonald Inc's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "John Barnes",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Hanson PLC",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Krymsk",
+                "point": {
+                    "lat": -3.985797,
+                    "lon": 156.860934
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Jonathan Berg Jr.",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Edwards-Smith",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Letter remain cut. Mouth movement surface agreement view democratic.\nAnyone position message prove. Particular worker break mind officer bit.\nEnter kid claim he. Receive director view about instead think any.\nInvolve maybe identify various. Go cut recognize bit all between.\nQuestion film player your. Individual issue north very add picture itself. Respond scientist both claim name car.\nMay compare step senior indeed along test. Require eight even offer. Rich figure commercial.\nYeah senior process boy loss beyond reason. Model why miss. Better worker young memory. Audience talk threat yes operation when east develop.\nResearch item affect wear inside fire. Out man test serious office.\nSure ready ago land. Visit speech head price hotel similar. Mother that fight wide number wonder agreement.\nFilm easy always somebody agency over along party. Tend mouth out hospital. Share billion any usually.\nBody mind deep risk light manage total stuff. Idea stage miss spend mouth newspaper.\nCentral air agency eat senior leg shoulder. No employee grow short. Hundred art but window.\nHerself where fine major.\nThis some serve major history. Meeting debate sister more pay article far. Clear fine site fund continue.\nPoor might any represent ask TV. Method TV member doctor group drive.\nAccording serve law case let positive. Remember note attack defense notice.\nInside decade get staff season professional should. Approach mean sound operation safe child language.\nLaw doctor story believe north reality. Impact step program position significant purpose. Avoid attorney American provide.\nRelationship family rest little. Pass will attention operation specific man remember. Travel hard movement question.\nParticipant ever tax best debate inside get. Accept agency approach must. Goal middle professional modern it to.\nPerson center own end to particularly. Push three treat lead computer memory down season.\nInto church present reason trade ago. Green manage simply such detail hard.\nExist try away ready TV local south center.\nSix attorney quality share recent box goal. World enough point morning floor language decide hear. Blue knowledge member information level total society live.\nTechnology according simple alone quickly. Money lawyer each law fight drug ever. Across office thing shake send. Rich number professor article.\nType both here improve heart. Voice research threat discover second capital either.\nCenter often about price. Mouth high far star sort for when. Set station identify share discover wrong now.\nPiece far sit doctor successful. Major tree include store.\nBank front animal tonight. Himself argue environment discuss reason. Bag seven spend have budget scene cup.\nSpace majority feeling those voice. Risk travel less collection we. Their building it lawyer.\nAdmit know government imagine education. Single clearly too enter. East low describe dinner mention apply almost. Food himself level indicate method.\nCouple food direction this heart final smile political."
+            }
+        ],
+        "embargo_date": "2021-06-08",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-book"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1971-08-21"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1975-04-14/1992-02",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-conferencepaper"
+                }
+            }
+        ]
     }
-  ],
-  "licenses": [
-    {
-      "scheme": "BSD-3",
-      "uri": "https://opensource.org/licenses/BSD-3-Clause",
-      "identifier": "BSD-3",
-      "license": "Berkeley Software Distribution 3"
-    }
-  ],
-  "descriptions": [
-    {
-      "description": "Sometimes specific discussion production. Subject education idea war.\nStudy those ground dream. Goal about a officer month series boy. Sing six answer then take.\nGarden listen during ask note nature major. Ok book game center.\nThan and process. Cause charge clear.\nWho collection certain. On see work once. Air cause increase glass learn market.\nBox former staff south sell. Score business turn economy question.\nRich machine store.\nCharacter compare strong around marriage. Central view computer reveal.\nFilm produce investment community system stay seven.\nToward affect trial grow remember. Collection admit information role.\nVarious upon share measure major mission. Else write yes southern life. Different around exist buy.\nFor edge style policy second voice realize opportunity. Short film kind. Field view style charge.\nFoot state their. Its defense family movie do party. Director bit American apply.\nBook effort fish plan. Sit reveal rest cold boy.\nSmall trouble music heart machine situation Congress. Admit receive necessary hear yourself people. Item each character apply capital artist level.\nEveryone rock network son. Operation before worker education manager free.\nEvening PM form house.\nComputer without fight TV above. Apply foreign traditional Democrat.\nNote their more top very test assume real. Major base development true heavy.\nPerformance state address easy employee.\nOld east fact dream adult. Then machine total this movement administration actually. Benefit later oil real somebody vote drug.\nRise establish compare edge or. Budget right wrong decision study police.\nReason way information hear here decade act. Reality quite message team ball sure music.\nNumber act relationship media future college. It test section build realize. Poor turn soldier party.\nSport I participant Congress poor education make everybody.\nSingle clearly third natural option she often.\nPm property customer government. Rule say throughout remain sure stuff own.\nHuman already use new growth. Positive ever modern. Country past full recognize.\nBody picture a part moment operation wish. Value agency main assume modern audience pay. Room some development challenge wear himself adult.\nGuy camera improve fish again give success. From table wish account.\nRace bad eye usually. Write kitchen tend bar direction.\nThing generation yet despite. According still region real bit. Understand property mouth art again service. Pressure design late section cause.\nReality account never tell physical manager same. Sense word movie real science site of. Newspaper federal here food response threat go woman.\nSuccessful no lose ready friend. Trip him car also. System piece long dream.\nWhether decide them executive two. Bag half feel result customer car seven. Team drop song per world act from.\nOrder high bring manager accept one none. Key top state mission choice.\nStructure help resource television according let analysis. Exist trial talk brother produce.\nRoom series this they near situation natural.",
-      "type": "Abstract",
-      "lang": "eng"
-    }
-  ],
-  "identifiers": {
-    "DOI": "10.9999/rdm.9999999",
-    "arXiv": "9999.99999"
-  },
-  "version": "v0.0.1",
-  "creators": [
-    {
-      "affiliations": [
-        {
-          "name": "Smith-Martinez",
-          "identifiers": {
-            "ror": "03yrm5c26"
-          }
-        }
-      ],
-      "name": "Laura Alexander",
-      "identifiers": {
-        "Orcid": "0000-0002-1825-0097"
-      },
-      "type": "Personal"
-    }
-  ],
-  "dates": [
-    {
-      "description": "Random test date",
-      "start": "2012-09-17",
-      "type": "Other"
-    }
-  ],
-  "_default_preview": "previewer one",
-  "resource_type": {
-    "subtype": "publication-patent",
-    "type": "publication"
-  },
-  "_created_by": 2,
-  "references": [
-    {
-      "scheme": "GRID",
-      "reference_string": "Reference to something et al.",
-      "identifier": "9999.99988"
-    }
-  ],
-  "related_identifiers": [
-    {
-      "scheme": "DOI",
-      "resource_type": {
-        "subtype": "image-other",
-        "type": "image"
-      },
-      "relation_type": "Requires",
-      "identifier": "10.9999/rdm.9999988"
-    }
-  ],
-  "publication_date": "1989-08-22",
-  "access_right": "open",
-  "titles": [
-    {
-      "title": "George, Watkins and Rodriguez's gallery",
-      "type": "Other",
-      "lang": "eng"
-    }
-  ],
-  "language": "eng",
-  "_owners": [
-    1
-  ],
-  "contact": "info@inveniosoftware.org",
-  "_access": {
-    "files_restricted": false,
-    "metadata_restricted": false
-  },
-  "subjects": [
-    {
-      "scheme": "no-scheme",
-      "subject": "Romans",
-      "identifier": "subj-1"
-    }
-  ],
-  "contributors": [
-    {
-      "affiliations": [
-        {
-          "name": "Barker-Moreno",
-          "identifiers": {
-            "ror": "03yrm5c26"
-          }
-        }
-      ],
-      "name": "Joshua Lawrence",
-      "role": "RightsHolder",
-      "type": "Personal"
-    }
-  ],
-  "embargo_date": "2021-08-09",
-  "locations": [
-    {
-      "place": "Lymington",
-      "description": "Random place on land for random coordinates...",
-      "point": {
-        "lon": 149.777985,
-        "lat": 52.1122485
-      }
-    }
-  ],
-  "_publication_date_search": "1989-08-22"
 }

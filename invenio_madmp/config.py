@@ -22,6 +22,10 @@ MADMP_DEFAULT_LANGUAGE = "eng"
 MADMP_DEFAULT_CONTACT = "info@invenio.org"
 MADMP_DEFAULT_DATA_ACCESS = "open"
 
+# the ID of the user to be set as record creator
+# 'None' lets the RecordConverter decide
+MADMP_RECORD_CREATOR_USER_ID = None
+
 # record converters
 MADMP_RECORD_CONVERTERS: List[BaseRecordConverter] = []
 MADMP_FALLBACK_RECORD_CONVERTER: BaseRecordConverter = RDMRecordConverter()

@@ -1,129 +1,130 @@
 {
-  "access_right": "open",
-  "contact": "info@inveniosoftware.org",
-  "embargo_date": "2020-10-23",
-  "dates": [
-    {
-      "type": "Other",
-      "start": "2010-11-22",
-      "description": "Random test date"
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1976-10-31",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Duarte Inc's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Ethan Keller",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Clark-Mays",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Niort",
+                "point": {
+                    "lat": 66.480643,
+                    "lon": -65.591801
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Richard Petersen",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Martin Inc",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Tell evidence husband. Student manage onto add explain.\nWorker experience military director century. Nothing hand identify well. Idea front general cold.\nSix guy day tend nothing help. Instead bank quite. Amount no dream threat student believe who.\nFill how yet. Wind always although local inside of strategy.\nScientist big program entire candidate. Benefit work full candidate such.\nPlayer site third. Early exist past agreement federal around start different. You contain throughout company fish season impact.\nHope material necessary to certain however region. Structure site understand know finally economic success. That health senior smile act late able.\nHalf yet grow adult lot. Moment apply popular difficult.\nMethod technology some pay front. Increase section road fight. Strategy main up must development check suggest.\nAuthor check edge change. Age everything west teacher usually party pull.\nCommunity into us of stuff. Group college arrive foreign. Official support material. Billion character program late open system.\nThough into fight agency. Number next herself culture.\nCost popular customer anyone still. Oil side wall less up upon before. Light seat back garden. Money candidate member our population.\nOne key pull local employee traditional scene. Nation newspaper seat win guy thank. His whom my once.\nEnvironment magazine marriage by. Move hundred chance sign. Always leg evidence.\nMinute pattern strong doctor modern art. Behind want resource today activity past. Growth teach character best on.\nInternational particular agreement former green find this. Whatever walk minute finally. Series real specific door name about. Community past detail resource her.\nAbility wonder make manage issue who. Among deal own turn ok population off. Rate exactly front particularly.\nContinue news well pretty effect crime catch. Office above give.\nSupport right mission suddenly herself drive. Be simple house under conference husband.\nSecond possible that school lose cup. Among beyond keep think far. Available figure protect. Because fine sell direction crime there dream.\nRed administration know Mrs sing. Response describe or need.\nNorth know exactly manage. Rock beautiful Mr teacher someone.\nGreat program number. Child direction lose recently. Save certain station only history another.\nTv they about. At sound number measure heart particular year. Return break science something least.\nYoung Democrat present beat mean anyone kid. First require among great. Voice music brother evening time fact describe.\nRight your oil statement woman light. Very somebody medical become. Edge fact red place head traditional these notice.\nSection hold land short. Risk purpose story instead impact government imagine dark. Certainly reason teacher strategy move stuff enough.\nHeart city cover head wife growth together cold. Article example and purpose control month bad week."
+            }
+        ],
+        "embargo_date": "2021-06-12",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-book"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1983-04-03"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1998-03-30",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-taxonomictreatment"
+                }
+            }
+        ]
     }
-  ],
-  "references": [
-    {
-      "reference_string": "Reference to something et al.",
-      "scheme": "GRID",
-      "identifier": "9999.99988"
-    }
-  ],
-  "descriptions": [
-    {
-      "type": "Abstract",
-      "lang": "eng",
-      "description": "Mouth walk teach explain today. My five cup start military.\nForeign local kind somebody. Last discover ready soon night.\nCommunity leave lose.\nWater become city individual hair should size. Serious its kitchen special. Join behavior never coach others gas lose police.\nPay once ball positive either rich war nearly. Mean Congress color fall I. Charge rule star around. Hair your star approach treat beautiful sort.\nView year agency. National church race woman. Particularly manager pattern movement home modern.\nLocal serious whatever son new.\nPossible other what court. Loss prevent accept guess sort old tonight. Environment another cultural something bag success.\nInformation admit arrive leg. Choice raise stay can room.\nCoach concern television history former fall near. Behavior TV item forget answer. Whatever face where.\nWater bed drive local. Box number whom worker.\nUpon ok morning. Spring degree they lose.\nBad budget season also drive blood say.\nWriter rock pressure I serious person. Rich believe with coach rock. Upon blue true color actually ever discover.\nActivity western range study later design have. Language later peace same member. Trip event list.\nFour process medical much price enough party help. Pick beyond turn drop approach other. Single serious thought budget wish character every.\nForce though allow main single seat however wait. Effect maybe difference article college billion. Example available analysis why.\nLeg specific election final health. Large choice party one order few.\nHappy pull voice quickly necessary. Off enter let election force feeling.\nBut culture which public. Do generation especially. Member parent may capital that garden.\nGreat lawyer laugh agreement TV. Open there sing letter wall require story.\nOfficer kind family beat full receive. Family nation lose spring cell choose on. Century drug finish population include.\nProduction as reflect system company. Relationship or wait them middle power. Show successful room ever.\nReady relationship have happen exactly. Like race both whatever lead figure prevent.\nMoney small indicate daughter movement really good. Fill discussion beat test however better yard. Do force care answer. Really prove write despite discover.\nYoung already recent language suffer measure remember specific. Local our within health. Room on audience kid.\nAir station go set cause raise travel. Foreign threat whole machine until. Company ball name defense plant figure smile small. Positive enter deep begin.\nDeep picture themselves your tell. Dream garden popular move. Huge career guess garden.\nHer spend friend her. Five away prepare degree hair. Or brother present Congress.\nSkill future subject administration occur receive size take. Study born technology maybe happy ground article.\nReality back year. Data tax which name or response major. Reduce spend where result.\nRich control group probably. Off participant staff.\nStage tax between population tough can. Who recently feeling."
-    }
-  ],
-  "_internal_notes": [
-    {
-      "user": "inveniouser",
-      "timestamp": "1980-08-21",
-      "note": "RDM record"
-    }
-  ],
-  "locations": [
-    {
-      "description": "Random place on land for random coordinates...",
-      "point": {
-        "lon": 71.390963,
-        "lat": -89.7563495
-      },
-      "place": "Ada"
-    }
-  ],
-  "creators": [
-    {
-      "affiliations": [
-        {
-          "identifiers": {
-            "ror": "03yrm5c26"
-          },
-          "name": "Marquez, Smith and Garcia"
-        }
-      ],
-      "identifiers": {
-        "Orcid": "0000-0002-1825-0097"
-      },
-      "type": "Personal",
-      "name": "Katherine Levy"
-    }
-  ],
-  "related_identifiers": [
-    {
-      "resource_type": {
-        "type": "publication",
-        "subtype": "publication-milestone"
-      },
-      "relation_type": "Requires",
-      "scheme": "DOI",
-      "identifier": "10.9999/rdm.9999988"
-    }
-  ],
-  "resource_type": {
-    "type": "other",
-    "subtype": ""
-  },
-  "identifiers": {
-    "DOI": "10.9999/rdm.9999999",
-    "arXiv": "9999.99999"
-  },
-  "_owners": [
-    1
-  ],
-  "_default_preview": "previewer one",
-  "_access": {
-    "files_restricted": false,
-    "metadata_restricted": false
-  },
-  "subjects": [
-    {
-      "subject": "Romans",
-      "scheme": "no-scheme",
-      "identifier": "subj-1"
-    }
-  ],
-  "language": "eng",
-  "titles": [
-    {
-      "type": "Other",
-      "lang": "eng",
-      "title": "Lynch-Hernandez's gallery"
-    }
-  ],
-  "publication_date": "2009-04-08",
-  "licenses": [
-    {
-      "license": "Berkeley Software Distribution 3",
-      "scheme": "BSD-3",
-      "uri": "https://opensource.org/licenses/BSD-3-Clause",
-      "identifier": "BSD-3"
-    }
-  ],
-  "_created_by": 2,
-  "version": "v0.0.1",
-  "contributors": [
-    {
-      "affiliations": [
-        {
-          "identifiers": {
-            "ror": "03yrm5c26"
-          },
-          "name": "Hernandez-Bauer"
-        }
-      ],
-      "type": "Personal",
-      "role": "RightsHolder",
-      "name": "Julie Olsen"
-    }
-  ],
-  "_publication_date_search": "2009-04-08"
 }
