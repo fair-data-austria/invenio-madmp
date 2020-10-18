@@ -1,10 +1,4 @@
-"""TODO.
-
-RecordConverters are used to parse DMPs (respectively, datasets) into Records.
-Different concrete RecordConverters can be used to parse datasets into
-different types of Records (respectively, Records with different metadata
-models).
-"""
+"""Base classes for conversions between maDMP dictionaries and Records."""
 
 from flask_principal import Identity
 from invenio_drafts_resources.records import Draft
@@ -12,14 +6,14 @@ from invenio_records.api import Record
 
 
 class BaseRecordConverter:
-    """TODO."""
+    """Converter between datasets/distributions in maDMPs and Records in Invenio."""
 
     def matches_dataset(self, dataset_dict: dict, dmp_dict: dict = None) -> bool:
-        """TODO."""
+        """Check if this converter is suitable for the specified maDMP dataset."""
         raise NotImplementedError
 
     def matches_record(self, record: Record) -> bool:
-        """TODO."""
+        """Check if this converter is suitable for the specified Record."""
         return self.is_draft(record) or self.is_record(record)
 
     def convert_dataset(
@@ -31,19 +25,35 @@ class BaseRecordConverter:
         creators=None,
         contributors=None,
     ) -> dict:
-        """TODO."""
+        """Convert the maDMP dataset dictionary to a Record (or Draft).
+
+        :param distribution_dict: The distribution which to convert to a Record.
+        :param dataset_dict: The dataset dictionary to which the distribution belongs.
+        :param dmp_dict: The dmp dictionary in which the dataset is defined.
+        :param contact: The contact person's mail address.
+        :param creators: The list of creators, as defined in the maMDP.
+        :param contributors: The list of contributors, as defined in the maDMP.
+        :return: The dictionary to be used as metadata for the Record.
+        :rtype: dict
+        """
         raise NotImplementedError
 
     def create_record(self, record_data: dict, identity: Identity) -> Record:
-        """TODO."""
+        """Create a new Record (or Draft) from the specified metadata.
+
+        :param record_data: The metadata to be used for the new Record or Draft.
+        :param identity: The identity to be used for checking the creation permissions.
+        :return: The created Record.
+        :rtype: Record
+        """
         raise NotImplementedError
 
     def is_draft(self, record: Record) -> bool:
-        """TODO."""
+        """Check if the specified object is a suitable Record."""
         return isinstance(record, Draft)
 
     def is_record(self, record: Record) -> bool:
-        """TODO."""
+        """Check if the specified object is a suitable Draft."""
         return isinstance(record, Record)
 
     def update_record(
@@ -52,13 +62,13 @@ class BaseRecordConverter:
         new_record_data: dict,
         identity: Identity,
     ) -> Record:
-        """TODO."""
+        """Update the metadata of the specified Record with the new data.
+
+        :param original_record: The Record whose metadata should be updated.
+        :param new_records_data: The new (partial) metadata to be used.
+        :param identity: The identity to be used for checking the update permissions.
+        :return: The updated Record.
+        :rtype: Record
+        """
         original_record.update(new_record_data)
         return original_record.commit()
-
-
-# note: only the logic directly linked to record parsing needs to be
-#       customizable for different metadata models; the general framework
-#       (with logic such as checking if the DMP contains datasets that are
-#        relevant for us, by checking for matching distributions) should
-#       stay the same

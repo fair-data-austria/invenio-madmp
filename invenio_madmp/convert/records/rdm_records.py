@@ -1,8 +1,4 @@
 """Record Converter for RDM Records."""
-# TODO: make the functions used for mapping RDA Common Standard to
-#       Invenio metadata model configurable
-#       (because invenio doesn't necessarily use the current
-#        Invenio-RDM-Records metadata model)
 
 from datetime import datetime
 
@@ -41,10 +37,10 @@ class ServiceConfig(BibliographicRecordServiceConfig):
 
 
 class RDMRecordConverter(BaseRecordConverter):
-    """TODO."""
+    """RecordConverter using the Invenio-RDM-Records metadata model."""
 
     def __init__(self):
-        """TODO."""
+        """Initialize a new RDMRecordConverter."""
         self.record_service = BibliographicRecordService(config=ServiceConfig)
 
     def map_access_right(self, distribution_dict):
@@ -58,7 +54,7 @@ class RDMRecordConverter(BaseRecordConverter):
         return translate_dataset_type(dataset_dict)
 
     def map_title(self, dataset_dict):
-        """Map the dataset's title to the record's title."""
+        """Map the dataset's title to the Record's title."""
         return {
             "title": dataset_dict.get("title", "[No Title]"),
             "type": "MainTitle",  # TODO check vocabulary
@@ -66,16 +62,16 @@ class RDMRecordConverter(BaseRecordConverter):
         }
 
     def map_language(self, dataset_dict):
-        """Map the dataset's language to the record's language."""
+        """Map the dataset's language to the Record's language."""
         # note: both RDA-CS and Invenio-RDM-Records use ISO 639-3
         return dataset_dict.get("language", app.config["MADMP_DEFAULT_LANGUAGE"])
 
     def map_license(self, license_dict):
-        """Map the distribution's license to the record's license."""
+        """Map the distribution's license to the Record's license."""
         return translate_license(license_dict)
 
     def map_description(self, dataset_dict):
-        """Map the dataset's description to the record's description."""
+        """Map the dataset's description to the Record's description."""
         # possible description types, from the rdm-records marshmallow schema:
         #
         # "Abstract", "Methods", "SeriesInformation", "TableOfContents",
@@ -96,7 +92,7 @@ class RDMRecordConverter(BaseRecordConverter):
         creators=None,
         contributors=None,
     ):
-        """Map the dataset distribution to metadata for a record in Invenio."""
+        """Map the dataset distribution to metadata for a Record in Invenio."""
         contact_dict = dmp_dict.get("contact", {})
         contributor_list = dmp_dict.get("contributor", [])
 
@@ -187,7 +183,7 @@ class RDMRecordConverter(BaseRecordConverter):
         return record
 
     def create_record(self, record_data: dict, identity: Identity) -> Record:
-        """TODO."""
+        """Create a new Draft from the specified metadata."""
         # note: the BibliographicRecordService will return an IdentifiedRecord,
         #       which wraps the record/draft and its PID into one object
         # note: Service.create() will already commit the changes to DB!
@@ -200,7 +196,7 @@ class RDMRecordConverter(BaseRecordConverter):
         new_record_data: dict,
         identity: Identity,
     ):
-        """TODO."""
+        """Update the metadata of the specified Record with the new data."""
         new_data = new_record_data.copy()
         del new_data["access"]["owners"]
         del new_data["access"]["created_by"]
