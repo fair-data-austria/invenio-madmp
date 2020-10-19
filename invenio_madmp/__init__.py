@@ -8,6 +8,7 @@
 """Invenio module for maDMP integration."""
 
 from .ext import InvenioMaDMP
+from .proxies import current_madmp
 from .version import __version__
 
-__all__ = ("__version__", "InvenioMaDMP")
+__all__ = ("__version__", "current_madmp", "InvenioMaDMP")
