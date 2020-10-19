@@ -50,6 +50,7 @@ setup_requires = [
 
 install_requires = [
     "Flask-BabelEx>=0.9.4",
+    "Flask-HTTPAuth>=4.1.0",
     "invenio-pidstore>=1.2.1",
     "invenio-records>=1.4.0a4",
     "invenio-db>=1.0.6",
@@ -87,7 +88,7 @@ setup(
             "invenio_madmp = invenio_madmp:InvenioMaDMP",
         ],
         "invenio_base.api_blueprints": [
-            "invenio_madmp = invenio_madmp.views:rest_blueprint"
+            "invenio_madmp = invenio_madmp.views:create_rest_blueprint"
         ],
         "invenio_i18n.translations": [
             "messages = invenio_madmp",
