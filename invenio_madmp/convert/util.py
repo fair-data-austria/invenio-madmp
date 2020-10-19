@@ -1,4 +1,4 @@
-"""TODO."""
+"""Utilities for mapping between maDMPs and Records."""
 
 
 from typing import List
@@ -249,7 +249,7 @@ from .records.base import BaseRecordConverter  # noqa - fixes circular import is
 def get_matching_converter(
     distribution_dict: dict, dataset_dict: dict, dmp_dict: dict
 ) -> BaseRecordConverter:
-    """TODO."""
+    """Get the first matching RecordConverter from the configuration."""
     for converter in app.config["MADMP_RECORD_CONVERTERS"]:
         if converter.matches(distribution_dict, dataset_dict, dmp_dict):
             return converter

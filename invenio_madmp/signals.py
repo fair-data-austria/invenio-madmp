@@ -1,4 +1,4 @@
-"""Signals for Invenio-maDMP."""
+"""Signals for Invenio-MaDMP."""
 
 from blinker import Namespace
 

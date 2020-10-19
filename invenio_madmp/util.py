@@ -1,4 +1,4 @@
-"""Helper functions for Invenio-maDMP."""
+"""Helper functions for Invenio-MaDMP."""
 
 import re
 from datetime import datetime
