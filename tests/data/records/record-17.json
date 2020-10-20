@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "2010-10-17",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Williams PLC's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Justin Williams",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Lawrence, Velasquez and Turner",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Pfullingen",
+                "point": {
+                    "lat": -4.817245,
+                    "lon": 45.912208
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Beth Gonzales",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Dalton, Lopez and Robertson",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Thought national performance increase develop film series reveal. Test worker draw subject.\nProject participant hear business your try challenge allow. International few information difference. Join history stage.\nThought order authority can natural. Feel strong read nearly story.\nMemory somebody military let bag year evening.\nCamera buy since health computer say. Third purpose magazine base tree now.\nMeeting long attention mother. Thought agreement tend. Main ready before eat administration sense article. Loss your table herself assume food throw.\nKnow white of magazine.\nTough energy father particular use gun. Perform magazine also so view. Memory simple quality town.\nCoach region them between even fly say nothing. No spend need step control vote off.\nImage give street garden laugh choose finish. Out whatever analysis arrive these particular.\nMedia foot political television realize occur. Look agency year education population own its article. Recognize magazine while instead. His so music young music history service.\nRule evening soldier question vote teach participant. Why bank occur me senior skill.\nCarry doctor really break teach service standard able. Ball possible who easy area. Station experience oil behind for authority.\nHundred include worker. Line while happy go mission feel. Set alone effort social culture.\nTake power some then always consumer analysis.\nAgo else myself represent case indicate. Option put much plant will idea.\nManager break born experience open whose strong. Hospital clear summer bill movie. Have majority crime support pick cup itself.\nBuy they receive worker easy experience hot. Though although environment some. Up garden single worker.\nGarden system yeah difference realize environment too. Natural product Democrat strategy key effort town. Let former include civil she fish plan.\nCareer girl southern hand possible. Nice education final ask and recognize money. View interview service clearly evidence wind.\nNone job gun left usually parent concern. Say happen game try against. Pick base argue rich sister because arm. Year class vote bag.\nForeign however enough west word month establish. Side state value our able note much general. Right production society.\nWhile plan nice as his direction focus. Traditional reflect direction technology our each.\nNecessary kid cold ago. Sign laugh base he bad hit seven. Scene identify stand view individual receive affect trial.\nRegion attention mention role hot often simply. Race trade community include threat.\nMind door girl sense. Early several argue evening story hard remain.\nSite hit service hot race one draw. Certainly interview eight quality.\nAction within teacher would town also raise drive. Learn somebody compare affect act fact.\nChurch include role truth break expert inside. Article phone loss another only level apply.\nFace suggest always blue tend.\nHold PM poor themselves despite fact give. Throw argue already short."
+            }
+        ],
+        "embargo_date": "2021-09-27",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-patent"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "2004-01-07"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1980-06-11",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-proposal"
+                }
+            }
+        ]
+    }
+}

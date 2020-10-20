@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1975-01-23",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Diaz PLC's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Jennifer Barnett",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Garner-Frazier",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Schwalmtal",
+                "point": {
+                    "lat": -25.4562395,
+                    "lon": -158.538585
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Michael Lambert",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Sanders Inc",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Certainly owner become talk right officer. Bed knowledge response happen.\nThrough important executive magazine. Perform former crime write. Chair sometimes here score capital difference.\nShow democratic opportunity trial partner open western that. Popular hand only event visit employee positive season.\nMonth machine whose life six. Billion southern sing town black suggest or magazine.\nDecide military subject ten wind third all. Stay thus help decade enough science until. Conference tend example season recent test manager.\nNear way you. Child box fire forget call imagine.\nFinancial usually author PM hot. Door her child. Cost box stay catch.\nAdmit sometimes medical cold. Before hair amount mention.\nWhom rule yard heavy increase century. Approach step accept onto generation shoulder. Life player help sure able wonder purpose rest.\nResult game free strong or federal language. Bit true season perhaps south person.\nHouse pay heavy meet staff. Share animal anyone class store hair. Body finish politics better put should. Reveal prove left.\nCenter network majority summer training we attention. Ability home close step hear environmental and protect. Particular remain foreign fast significant.\nPm mouth safe hour. Establish weight back real give enough left. Environment time by safe allow.\nReport least too benefit above sea small. Impact today worry stand.\nMust game store something. Community drop yes way. Any lead new newspaper.\nGeneral different set those owner fall.\nFloor improve people firm. Successful blue heart opportunity player style someone.\nEver loss shake exist. Service ever question activity enjoy. Fight effort view you anyone story set.\nCover whole its most tree prove single scientist. How like as within skin. Teach modern hand exist city.\nAssume large other situation. Board Republican behind way.\nWest ability dog sing discover series.\nConcern actually article us.\nThese fill recently simple degree. That indicate couple benefit. Likely effect laugh case box Republican goal fact.\nOperation oil budget seek marriage fast southern. Cost show policy southern allow. Example hundred power arm cold.\nStrong eye exactly now enjoy town tell. Would fast figure.\nTheory matter practice half window act.\nForeign good about business president behind available. Save evidence act still home.\nAhead maintain again effect behind strategy visit detail. House network piece. Fear debate number evening probably particular.\nConcern dream now although. Piece threat maintain behind.\nKeep leader since. First similar for treatment give tough.\nWhy learn much outside find.\nBeyond thing first difficult arm view. Trouble language candidate hair risk. Whether line use road Mr main alone.\nArea better final a candidate. Change exactly never guess.\nSmall manage participant item economic study population. Force explain nothing card heavy week.\nAppear ahead case floor democratic pressure risk. Coach series front myself book plant two. Best hold also indicate."
+            }
+        ],
+        "embargo_date": "2020-11-24",
+        "resource_type": {
+            "type": "dataset",
+            "subtype": ""
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1997-08-30"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1997-11-26/2006-02",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-softwaredocumentation"
+                }
+            }
+        ]
+    }
+}

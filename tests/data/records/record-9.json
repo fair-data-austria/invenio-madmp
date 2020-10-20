@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "2020-02-15",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Singleton, Medina and Hernandez's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Caroline Andrews",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Johnson, Dunn and Odonnell",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Rafiganj",
+                "point": {
+                    "lat": 16.4052455,
+                    "lon": 15.748128
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Dustin Johnson",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Huff-Fisher",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Cause next new focus example road argue scene.\nLarge stop large away consumer we former time. Send available strategy. Account term dog.\nUnderstand strategy task man. Concern spring certainly member consumer race hit. Ball move hand imagine product skin majority.\nMean lead them art at school. Other number we rich find campaign your.\nFormer simple on machine both half real. Join physical you page. During break his investment foot watch or.\nFar blue hit dinner likely. Take myself program discussion buy good something.\nFight sea between order. Foot class to nor direction hope table between.\nForget position suddenly offer write low some. People down natural suffer. Push thus myself ability.\nThank available either research. Today fill according gas property outside pass. News church board.\nPlan win term reason sort budget ground. Speech behavior goal already improve believe color. Citizen line knowledge will top hair pull.\nSkin drop candidate least. Behavior past hotel official sure. Letter prove several political.\nThree real until result reflect reality support. Anyone expert moment actually entire. Player certain now management mission face own.\nIndeed require participant region. Agree statement memory feeling. Force sure black work newspaper.\nFollow continue night opportunity happy. Several score do experience partner the. Low radio week organization.\nBeautiful stay candidate it walk. Direction when contain response up common.\nCultural skill popular. Piece year make enough hair continue level pressure.\nActually might run without. Growth front discuss for order four.\nTell voice everything beautiful us effort cause. Fight visit share TV hard. They where dream interview later both tend. Local consider air hold such.\nImportant vote close century during various. Mother music similar kid PM concern.\nUnder bring fact beautiful buy bag my. Responsibility business forward message left relate field public. Themselves child occur take low student.\nBill music if themselves cell success. Result place different choose ground especially describe writer. There surface focus I. Likely hot much about car.\nYard better why approach increase answer. Way those lot prepare anything into. Grow night evidence environment hospital boy behind light.\nCoach animal want force too myself enter. Dream item little participant. Memory brother account.\nGround long kid. Chair rise him message concern public.\nAnother focus establish rather health leg. Method notice material event determine effect seven.\nAmong upon pattern treatment summer. Case important skin owner very stop writer art.\nReason spend family medical improve get. Cause seven billion indeed Mrs. Season word candidate personal must do network.\nMajority rise return development owner game. Easy factor base. Number night society discussion individual station cut.\nHis window onto strong region. President security company them. Look person actually check audience suffer.\nSpecial air country decade grow choice."
+            }
+        ],
+        "embargo_date": "2021-09-01",
+        "resource_type": {
+            "type": "poster",
+            "subtype": ""
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1972-05-09"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1970-05-18",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "poster",
+                    "subtype": ""
+                }
+            }
+        ]
+    }
+}

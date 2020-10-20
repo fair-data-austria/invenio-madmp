@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "2017-08-24",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Chapman-Turner's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "John Taylor",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Beck, Moore and Savage",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Moga",
+                "point": {
+                    "lat": 30.858154,
+                    "lon": 128.500184
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Toni Garza",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Wilson-Rivera",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Responsibility home meet shake particularly. Human impact city enough hope step yard well. Themselves system away there thing.\nLater just sea once only same two. Since baby who. Choice exist while Congress.\nStructure about war office only rather right. Go I threat as language still. Then writer defense hit meeting would protect.\nTry tree tax article a rock. The street century drive property anyone she. Nothing available economic.\nScore safe organization in. Son condition there including manage technology.\nWant allow maintain effect look organization official finally. Interesting and budget although. Government hotel individual hair.\nGas pretty attention camera show rich knowledge. Hour indicate central.\nUntil send degree sister oil. Near try difficult that threat especially.\nPolitics watch instead but return.\nPerhaps team establish hundred main coach my physical.\nGet anyone type whole question wall. Traditional more of want statement space finish.\nAttorney that goal world fish economic. Report begin spend other project. Perform skill market trip range late time.\nYard wife return share apply body. Quite none travel serious street space issue. Likely word building Congress prepare can system.\nEnvironment area mother capital commercial. Hour ready act travel necessary.\nEither quality resource special free read.\nWeight then design myself show to air. Space shoulder debate anyone cause.\nCongress happy summer responsibility number break project.\nUntil college summer sure make girl energy. Meeting improve color treatment college dog foreign.\nDifference language she represent girl. Day nothing never ever. None window hair natural.\nInside laugh want east building fire teach catch. Fire assume loss control serious week. Official where positive debate.\nCoach military get easy best lose enter summer.\nSmile big everybody we bill billion. Crime design skin never charge teacher.\nLess particular simple usually understand successful worry. Growth spring last same rest. Worry great professional whom pressure eye.\nSpring box position everybody. North consider system. Meet able sign item term.\nThousand present lay risk. Instead between father pass region.\nEast idea nothing note language operation. Discuss he against.\nWork spend already not. Argue scene physical term can before adult. These other outside treatment down. Sort yes bar ability boy herself.\nCould region hold environmental. New board music ask another. Partner next culture institution amount natural.\nTime heart final free film really might. Bill mouth into put. Offer late then material choice.\nFour successful sister agree. Speak audience rather our little high.\nDrug blue poor station star leader between ready. Deal realize year option. Agent line now red individual.\nLay travel raise green human laugh deep. Industry free ready nation other serve.\nFood pass opportunity truth environment include. Box culture training meeting western probably wish. Lose this better source billion college."
+            }
+        ],
+        "embargo_date": "2020-12-26",
+        "resource_type": {
+            "type": "image",
+            "subtype": "image-plot"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1979-08-23"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1989-12-20/2006-02",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-preprint"
+                }
+            }
+        ]
+    }
+}

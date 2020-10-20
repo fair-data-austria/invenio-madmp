@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1992-07-11",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Knight LLC's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Roger Owens",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Martin-Brooks",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Qadirpur Ran",
+                "point": {
+                    "lat": -66.790527,
+                    "lon": -81.732414
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "William Harvey",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Roman-Nguyen",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Create space management school. Ago industry represent north. Hour smile well wear population.\nTell perform situation research step team create. Mean its organization stock success.\nUnderstand peace bit national option describe near. Fill model class why question visit. Feel must address.\nLeast cost book. School soon option bad thing. Create story painting bit. Five cell rest half not boy.\nFive important education perform choose sign summer page. One series effect condition issue writer.\nResource food you accept say. Company sing front modern.\nNor treat general. Enough none will picture smile order.\nNot piece Democrat reduce writer. Yeah agent money cell cut factor. Authority PM south nothing like very among. Break drop central.\nSpecial number mind simple.\nHeart beat reflect again. Use first although we water tell.\nThus wind indeed financial. Cost citizen mouth agreement weight leg our.\nTime serious event entire detail woman. Economic future story conference. Face expert explain store.\nAnd carry month fact. House wife they type. Against anyone sing with minute knowledge financial case. Minute deal color capital run allow rich.\nMillion history executive business new trouble. Add human stage. Consumer mission paper network people. Else stock enjoy red win.\nQuite smile form according. Interest pattern end girl cost become want. Leg in particular prevent natural security.\nOut son simply. Floor bank across seat anyone some network. Watch that shake vote range. Head something like away easy film enough.\nMother few list hold tend. Interview very carry. Less analysis imagine so society bank always.\nFact benefit purpose space should. Ok pick plan wait week his before. Energy news form.\nTurn Mr explain relate size difference. Before time factor.\nNecessary physical current. Public season sister. Reduce base population.\nWhich sometimes wish lawyer. Get alone likely condition. Senior city protect gas left arrive.\nHome recent mouth break actually live. Star into religious guess. Include Mr audience. Father herself home speak kid not someone.\nCentury day work improve others.\nReflect rate necessary alone someone he. Provide or themselves follow.\nAct network former receive voice table. Follow finally from available law senior talk. Admit measure window body play radio answer.\nSomething development property dinner. Beautiful million political outside develop. Out end reduce social.\nDirection friend purpose seven specific war can. War fight future protect want.\nProject increase according firm whom push. Service prevent a as poor. Ground foreign number plan imagine. Cost machine bad bad evening meeting.\nApproach piece democratic our certainly contain option. Half picture up appear national small. Who collection theory budget subject. Hospital during executive simply arm.\nAbove than list real wonder nature.\nTime modern increase most. Case specific conference growth finally ok. Game result close participant class any."
+            }
+        ],
+        "embargo_date": "2020-10-26",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-other"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1979-09-12"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "2008",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "image",
+                    "subtype": "image-plot"
+                }
+            }
+        ]
+    }
+}

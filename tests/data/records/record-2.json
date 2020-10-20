@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1986-07-21",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Becker, Wright and Walsh's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Gabriel Bright",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Martin-Scott",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Hakodate",
+                "point": {
+                    "lat": 82.2832545,
+                    "lon": 89.092254
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Russell Clay",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Davis, Galloway and Bowman",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Animal natural hear in plant. Heavy third poor carry deep various. Us particular benefit.\nSecurity best notice local term fine spring. At water may Democrat painting mind in.\nTrouble to scene high. Agent national property contain. Beyond former company.\nRepresent daughter position price positive mind since. Enjoy happen office mean lose decade. Back pretty responsibility play other. Clearly gun meeting develop national issue address.\nRed pattern product. Summer time rate a.\nFriend beat read land help or. Save realize price win. Pay size true agency almost along.\nDevelopment finish everybody those paper something best mission. Store conference sort record pay series treat. List field moment blood.\nAlmost ago author day court. Seek ever simply develop threat live.\nLittle above sit film consumer expect popular enough. Open family thus.\nAttention happy item level argue list what. Structure force able continue wear evidence bank recognize. Increase contain management little above.\nDevelop its range appear. Relationship customer follow. Pick decide show address save.\nRange bed realize project. Himself evening support.\nOrganization movement it authority compare away become manage. Believe white expect scientist fly. Coach according right image score.\nSomething fast usually site. Bank property meeting soldier office true today. Among local watch bit.\nProfessional city if hope hour detail. I carry phone skin degree. Carry and rate buy such actually.\nThem information without animal. Example seat return show. Nation probably about culture why.\nSure town technology will thank. Indeed case attorney identify become attack may short.\nNow late recent evening hold measure. More soldier seven any scene. Election interview foot sure center those campaign produce.\nPlayer southern medical provide open. Very again both store attention lawyer already dog. Discuss simply trip produce reach risk left. Some place high point.\nControl involve industry claim too. Section city movement three artist building.\nStore tonight PM open bag. Member very degree common decide anyone.\nAlmost degree perhaps know. At factor hold.\nCenter available project arm bed try. Sport lawyer especially worker simply always general science.\nGrow rule star simply rest century. Teacher indicate ground black throughout. Increase outside summer approach college.\nExpect before floor enough policy. Successful east if seem. Country music fact learn door who call.\nParticipant movie fly word. Management will traditional first machine popular television.\nCouple building those myself partner. Tv staff investment media organization power. Teacher stock evening land fine into well.\nJob defense girl save money protect. Issue soon whose fine.\nSoon front instead reflect cost hope consumer. Pm exist much. Receive back understand newspaper chance unit.\nInstead than fill.\nProperty fall effect go involve. Something court adult mean professor. For industry at level phone industry treatment economic."
+            }
+        ],
+        "embargo_date": "2021-08-31",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-article"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "2019-05-27"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1976",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-patent"
+                }
+            }
+        ]
+    }
+}

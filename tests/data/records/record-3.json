@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1988-06-01",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Clark Inc's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "James Rodriguez",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Hudson-Johnson",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Jinotepe",
+                "point": {
+                    "lat": 80.5075735,
+                    "lon": 113.539613
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Eddie Bradford",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Johnson PLC",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Century least church major him. Lot police career huge. Return history stop teach property or politics. Evidence any executive Republican dinner last green race.\nBed difficult goal example read through. True western animal entire science blue image receive.\nPerformance read discuss. If too easy son rule serious body.\nDown myself article crime program. Environmental will forward receive stand. Check key person question modern off.\nIncluding about wife material serve.\nDevelop traditional fire central. Walk according week leg serious whole. Decade real seven including success east.\nAlways financial run respond might ask spend. Since since enjoy might dream.\nWind plant choice letter. Economic probably both present Democrat focus where. Work man government officer trial method. Land nation several different they.\nAdministration sit next system. Charge watch future fine. Receive eat total.\nMoment discussion military strategy. Social step realize teacher happy base present anything.\nManage art time something leave edge then. Parent art meeting buy. Until leg decision argue.\nEven they product yard official. Dream speech matter measure administration listen wife science.\nDrug capital southern catch another size how down. Let quite allow future. Nature near than represent month prepare crime.\nGeneral address break hold.\nPay money miss. Arm instead chair treatment various produce. West guy soon power while. Inside natural especially.\nScore particularly rise attack. More less assume kind court return husband. Church tell west model despite instead sort.\nTough these building treat beat card book. Education arrive determine officer something after.\nExist physical fish subject quickly. Son hot west this certain.\nFinancial reveal benefit president capital push. Its form better center.\nLess order reality lawyer public network about score. Specific price along husband. Ball music decide free list.\nAdult recent late list crime industry they. Trouble have can since garden power. Stuff market almost send stuff oil mind. Series reason across.\nSure teacher too natural remain fear protect during. Major television economic.\nRecognize my history audience front. Board affect bag dog seven language share.\nPage write law cold again. Republican its media action morning she treatment national. Audience they box religious around.\nPractice to network hot. Enter dinner address instead claim. Child night serious common visit big technology.\nHe owner thing here. Fine see event participant address again. Two benefit bank detail reflect collection discussion.\nKnowledge strong issue want professor. Year again however detail lose.\nBuilding walk star why good head American. Player character test with. Seven claim season key light.\nCard policy Mrs happy upon history knowledge. Director partner whether soldier. Wife adult conference too interest fill claim.\nCompany too job mission consider. Wife south well effect. Institution some bar before."
+            }
+        ],
+        "embargo_date": "2021-02-06",
+        "resource_type": {
+            "type": "software",
+            "subtype": ""
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "2001-09-21"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "2003-04",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "other",
+                    "subtype": ""
+                }
+            }
+        ]
+    }
+}

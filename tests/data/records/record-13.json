@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1996-05-11",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Moody Inc's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Joshua Graves",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Ross PLC",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Lal Bahadur Nagar",
+                "point": {
+                    "lat": 49.3698555,
+                    "lon": -125.300914
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Mark Knight",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Hunter, Wood and Nichols",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Least ability themselves base consumer consider drug. Save surface today although house exactly. Step peace treat.\nOffer television test standard experience teacher bag possible. Politics interview father happen page food best.\nCity record best. Middle tough theory expert message. From clear professional same affect.\nAnyone office year field long policy they. End pick worry. Per green much interest law realize. Pass month management town fill development seem.\nEveryone phone run executive receive family. Main win camera throw game phone father.\nSister heavy modern meet. Impact college identify investment response would professional. Style land activity alone control theory.\nOnly understand turn available international training way in. Cup box recognize imagine official. This ground daughter everything research.\nArea course current voice give. Consumer agency manager when level ahead movement.\nOffer very guess suffer pull.\nWell compare admit radio civil animal believe evening.\nDifferent father my any. Somebody discussion general clear.\nMilitary prevent tell much practice.\nSea quality occur choice couple yard will. Decade two suddenly interesting. Air where drop also scientist. Mean read serve often account.\nLeft officer executive television. Operation project brother during through raise. Fast cell manager nothing vote impact bed.\nEveryone whatever why. Old become once fire check nothing. Former actually consumer movement with.\nSpring performance really simply unit. Impact real half. Lawyer voice different third adult.\nCertainly strong camera forward camera hundred long. Card him everyone say say almost first. Deep small design million party dog operation whom.\nSend door court no. Perform begin without deal.\nWait suddenly station late mission. Can worry important often prepare mean it any. Simple some machine perform option space.\nAlmost board daughter even physical five computer. Run light administration fast customer subject three base.\nFoot know environmental property economy all usually. Among peace free camera treatment down.\nPerson son baby water laugh watch decide land. Energy tough far present property various.\nForce leave benefit color everyone course event. Least south power economic. Social out hold those kid bad.\nMovie within itself law Mr she tax. Small determine least television.\nRoom if us music. She seek term add history dark a.\nThem difference last film big. More economy week computer world charge world.\nNo moment detail new audience too keep. Cell personal tough.\nAuthor still ask medical. Discuss ask both coach evening development.\nEven center exist movement analysis beyond meeting. Build close indeed cover.\nFoot country pull cold experience. Western look early two space.\nFriend explain cost research some center. All hotel bag necessary my respond. Bill hard commercial same region support.\nRich look week hear wife by. Hair six article activity score specific."
+            }
+        ],
+        "embargo_date": "2021-05-05",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-datamanagementplan"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "2020-02-18"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1978-08-03/1989-03",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "image",
+                    "subtype": "image-diagram"
+                }
+            }
+        ]
+    }
+}

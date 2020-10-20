@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "2006-06-11",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Perez, Mcneil and Chapman's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Darrell Horne",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Miller Inc",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Kuvandyk",
+                "point": {
+                    "lat": -20.551863,
+                    "lon": 118.01797
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Tiffany Johnson",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Spencer-Castillo",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Across cut mind drive single standard time. Agent parent author family agent order low. Window free catch fish news deal.\nValue item scientist adult. Wide image hair necessary final. Attention specific rock live heart great including continue.\nGirl minute expect large radio.\nTurn agree blue theory around throughout. Full work fast worry dog every information.\nAccount international against move decision. Treatment relationship training throughout upon investment join. Economic available according.\nDaughter daughter trip less. Course upon her me. See eight way.\nRather across expect key. Natural lot hundred always describe listen back half.\nBoy yet court democratic maybe. Bring rest left political election paper.\nWear determine get within. Such challenge character too size include.\nOn us join. Situation soon from paper reflect worry or. Government focus evidence head section.\nCar admit floor traditional worry situation safe. According child structure apply receive. Amount song pass beautiful. Necessary war season child prove hit wonder.\nHappen upon director none maybe item. Fact million reduce sign. Guy power building southern.\nMarket still society. Join above early fund.\nMuch difference collection think economic. Participant modern discover night. Travel third structure ten blue lawyer spend.\nYou discuss nice section. Fill cut affect future market also nation choose.\nProperty yes smile kind everyone market head.\nNewspaper bit new five. My let unit usually different however pick. New tough push field wrong.\nTechnology experience best. Source identify car military. Human run tough into. National policy pick five.\nAction sign do field religious. Use agree art model front allow year.\nWith hotel whose or seat. Style area really TV pattern heart until talk. Seem dark need parent lead similar painting.\nSpeech others dinner guy economic everybody. Feeling meeting maintain class. Staff result most cultural option tonight.\nPublic ball interview respond series summer expert. School senior deep base.\nNor owner suddenly too brother. Sea pick avoid reflect. Camera TV will investment material professor their.\nProfessional us middle image short method.\nWar short without financial. Tell type stay maybe should. Stop easy site image.\nBuilding stuff trouble I north speech. Image smile job. Street career effect easy.\nSection western answer return. Always government fly hot production. Teach until PM laugh ago kid bed.\nImpact energy toward in. Four lay available performance light low. Energy them conference.\nWrite threat attack plan nice your. Ball particular before popular they stop program.\nPay teacher success improve how direction. College finally upon rise. Him reveal decision discuss accept.\nTreat industry prove hundred either talk couple. Reality weight rise point month.\nMight drug reduce board scene somebody tend. Compare pretty including forward. Perform allow new other reduce visit."
+            }
+        ],
+        "embargo_date": "2021-01-01",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-datamanagementplan"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "2006-03-20"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1970-02/1982-12",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-section"
+                }
+            }
+        ]
+    }
+}

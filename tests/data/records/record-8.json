@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1988-06-28",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Thompson-Smith's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Michael Long",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Barron, Russell and Figueroa",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Karben",
+                "point": {
+                    "lat": 85.279339,
+                    "lon": 157.068665
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Tina Hunter",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Rodriguez, Douglas and Baker",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Anything nothing before rule more. Teacher road call company door.\nOf law or past. Develop tonight image career price central.\nPresident determine push plan case. Later seek up senior agree.\nSeem performance true administration perhaps what make. Generation friend sign stuff same room.\nSeven effort rest somebody interesting it. Information college east service various leave exactly. Share tree show until effect fund strong. Politics leave book safe chair standard choose.\nFederal prepare future experience. Put much difficult place. Collection surface national color outside speak argue authority. Left true professor section.\nDream offer keep give. Democratic heavy front and. Toward cause realize month record yard treatment let.\nScience article newspaper set face sort may. Stage law author little class present music. Free set picture performance decide participant.\nSome particularly play I particularly sister Republican. Sure drive open player many.\nTv green necessary father test. Message young tend pattern get everybody. Listen station interview visit money. Gas accept operation heart subject require.\nNight remember that wind single air. Agency blood believe growth effort something have wall. Enough drug art price practice.\nSimply two employee rich.\nMe case sell senior best. When executive everybody off enter capital else. Quality light only detail.\nDebate decision myself southern anyone perhaps. Commercial need low fund very information that. Chance market appear sense speak interesting. Community until serious well back information answer.\nSomeone direction for shoulder thus behavior. Scientist apply agree operation best report.\nMinute on it watch might develop evidence. Weight institution mind maybe traditional. Factor least person accept not central of.\nIndustry position positive. Hear job situation. Water order color open art certain.\nOnto glass conference red agency board represent. Play thing all. Ball hotel manage level might risk carry discuss.\nMy natural final contain. Receive drop drug marriage my quite.\nBefore back example. Since at treatment from throw brother. Data color from.\nWhen mind she letter. Dark sometimes foreign politics.\nRisk yard shoulder understand line born president. End word rest. Tend building political sea side read education.\nUs act family. Else improve left get choose message.\nEvent maybe society approach why its goal. Any ago wonder key.\nHis thank land admit sell music. Particular whose ground. Page knowledge through seem vote. Role wrong none suddenly need.\nGovernment economy word go street that sell father. Back never cup hour. Performance theory hit music.\nAccording less more situation involve right happy. Describe sing prepare quickly wife. Term hard model finish them.\nSeries military best computer. Daughter explain choose wind. Arm animal start science.\nUpon cost subject challenge ahead. Into church past research decide."
+            }
+        ],
+        "embargo_date": "2021-05-20",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-other"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "2001-10-19"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1994-12-30",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "image",
+                    "subtype": "image-photo"
+                }
+            }
+        ]
+    }
+}

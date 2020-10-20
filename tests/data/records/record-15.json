@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1995-09-02",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Young-Baker's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Lindsay Williams",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Gibbs-Hays",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Custoias",
+                "point": {
+                    "lat": -50.781282,
+                    "lon": 83.118331
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Elizabeth Dawson",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Miller-Knapp",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Chance then nor baby. Early kid almost create.\nTotal help reveal. Area possible actually else they nation decide. Outside anything capital across cost.\nProduction finally job create future ever year. Say performance face serve grow beat. Its when amount college want energy.\nCut hair sea security remember bed meeting. Necessary big compare good. Scene stay sign eye evidence newspaper week manager.\nStock enough from control. Through me left ever economic. Provide during painting early I add father.\nAgree young ten moment some ask. Trip without have difficult church return.\nCar tonight role beyond responsibility. Her exactly measure become attack drug camera live.\nRest church left note experience. Light cultural since reach return seem.\nMr fly truth woman hundred two discussion. Language tough program community father game rest.\nRecord or quality fact above attack. Card walk office sure low across professional.\nFood girl answer happy institution find grow. Just would push ball relationship night institution example.\nAvailable development they. Wind bit style feeling future game hour.\nMany sign stay her office safe. Stay smile cup cost a part.\nBall low trial her oil seat go condition. Rich risk loss design new. Us especially citizen feeling.\nWhat carry themselves somebody father. Into range set foreign two.\nIndeed sing already movement section issue. Mrs throughout by early wait if. Key true fire him attention choose.\nVoice board girl organization certainly share. Certain happy memory sell thought letter beat federal.\nFine direction sit create hot least day resource.\nDifference call culture probably. Eight get common top until pretty until.\nStage federal answer whose appear. Into security simply senior.\nThird industry sometimes Democrat remain single from movie. Suggest thank return write seat land bit music. Item nor half nor nearly opportunity. Bag surface report similar me agree responsibility easy.\nRepublican computer brother break teacher federal serve. Model finally list indeed. Source about skill fast indeed identify.\nCareer point group enter white doctor. Various plant west production may. Town positive book generation.\nCareer listen eat beautiful music writer investment. Family method note suffer local. Size shake foot player loss. Notice laugh husband executive difference challenge something.\nTeacher world thank performance improve. Nature beautiful heavy tree.\nTurn pull food make moment card.\nExample rise their administration prevent. Pattern boy any look say. Wall few as assume.\nOil detail without identify everything. Meet stuff president. Page song character attorney room son become.\nThe three good pay order. Provide American risk space others traditional sometimes.\nWhich begin fact old. Represent management heart movement. Key final imagine question feel occur commercial.\nFollow modern camera picture only test yard. Grow feel create east top forget.\nWho building why see sell whom I and. Once issue not."
+            }
+        ],
+        "embargo_date": "2021-10-11",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-workingpaper"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1992-10-20"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1997-07-03/2003-06-14",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-book"
+                }
+            }
+        ]
+    }
+}

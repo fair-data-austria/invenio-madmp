@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1976-10-31",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Duarte Inc's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Ethan Keller",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Clark-Mays",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Niort",
+                "point": {
+                    "lat": 66.480643,
+                    "lon": -65.591801
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Richard Petersen",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Martin Inc",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Tell evidence husband. Student manage onto add explain.\nWorker experience military director century. Nothing hand identify well. Idea front general cold.\nSix guy day tend nothing help. Instead bank quite. Amount no dream threat student believe who.\nFill how yet. Wind always although local inside of strategy.\nScientist big program entire candidate. Benefit work full candidate such.\nPlayer site third. Early exist past agreement federal around start different. You contain throughout company fish season impact.\nHope material necessary to certain however region. Structure site understand know finally economic success. That health senior smile act late able.\nHalf yet grow adult lot. Moment apply popular difficult.\nMethod technology some pay front. Increase section road fight. Strategy main up must development check suggest.\nAuthor check edge change. Age everything west teacher usually party pull.\nCommunity into us of stuff. Group college arrive foreign. Official support material. Billion character program late open system.\nThough into fight agency. Number next herself culture.\nCost popular customer anyone still. Oil side wall less up upon before. Light seat back garden. Money candidate member our population.\nOne key pull local employee traditional scene. Nation newspaper seat win guy thank. His whom my once.\nEnvironment magazine marriage by. Move hundred chance sign. Always leg evidence.\nMinute pattern strong doctor modern art. Behind want resource today activity past. Growth teach character best on.\nInternational particular agreement former green find this. Whatever walk minute finally. Series real specific door name about. Community past detail resource her.\nAbility wonder make manage issue who. Among deal own turn ok population off. Rate exactly front particularly.\nContinue news well pretty effect crime catch. Office above give.\nSupport right mission suddenly herself drive. Be simple house under conference husband.\nSecond possible that school lose cup. Among beyond keep think far. Available figure protect. Because fine sell direction crime there dream.\nRed administration know Mrs sing. Response describe or need.\nNorth know exactly manage. Rock beautiful Mr teacher someone.\nGreat program number. Child direction lose recently. Save certain station only history another.\nTv they about. At sound number measure heart particular year. Return break science something least.\nYoung Democrat present beat mean anyone kid. First require among great. Voice music brother evening time fact describe.\nRight your oil statement woman light. Very somebody medical become. Edge fact red place head traditional these notice.\nSection hold land short. Risk purpose story instead impact government imagine dark. Certainly reason teacher strategy move stuff enough.\nHeart city cover head wife growth together cold. Article example and purpose control month bad week."
+            }
+        ],
+        "embargo_date": "2021-06-12",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-book"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1983-04-03"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1998-03-30",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-taxonomictreatment"
+                }
+            }
+        ]
+    }
+}

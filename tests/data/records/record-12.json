@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1979-11-12",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Watson-Tucker's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Daniel Smith",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Johnson-Howard",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Dongdu",
+                "point": {
+                    "lat": -79.2544305,
+                    "lon": -42.096143
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Anthony Oconnor",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Phillips-Stephens",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Actually travel human main make why. Throughout market body machine figure. Ok nature door tend tend.\nDeal leader PM piece. Always professional front quality budget describe like.\nCenter learn security agent dinner.\nChurch tough however. Understand seek purpose kind player cold. Television buy defense economic.\nMarriage smile somebody where book.\nPainting community prevent area pick environment rather. Teacher often produce professional own.\nOrganization item last others land hour. Area continue real great.\nSpend hour site. Enter focus Republican job.\nCheck less rich argue option security. Tonight paper property remain right soldier. Reflect Republican much we many oil. However service phone year.\nDifference store nearly worry close. As bill local apply past focus.\nIf state blood same individual sound. Send career far sing pattern reason. Person bank agency thank.\nAgain already fast share. Ground use focus relationship skill statement. Become thought production energy central itself focus. Marriage economic soon mission daughter.\nLearn including letter whole look ok recognize.\nPartner important during heavy fine seat. Far quickly century film black.\nGreen event recent however bar option. Thought organization through operation lay into month.\nProject down need mission. Medical few worker scientist.\nPopulation sing group arm. Factor last pass idea because. Fire according something control second require because.\nRace respond understand face capital ball. Staff term scene remain security assume.\nNature career individual join. Option many government hundred and away attack. Evening record situation above cup right.\nConcern scientist run order sign month growth. Final sport treatment spring various any. Of and value learn national goal.\nContinue page unit seem whole few. Something doctor every student man degree state. Official situation reduce data they nothing professor.\nOne guy generation sound together according pay. Treat dream around eight say as.\nMoney long while bring this. Nothing run few leg. Themselves notice seat owner.\nTest positive cultural force never probably. Behavior road back true rock Mr worry.\nPay star large management rule live spend. Simply long agree player without why. Short approach teach call name pressure.\nAnswer student purpose claim. Our out find community not as stock mind.\nLay once report appear social environment. Onto partner quality bed.\nSeek international gun fast. Imagine policy traditional. Bring arm ten current accept authority answer total. Though stage scene drive.\nAlong establish side night hundred home. Far true so fire bit adult among. Way detail official both month.\nSeveral move eye. Offer state focus discussion.\nMajority those large life raise worker. Industry affect bank read see movie when place. Yard drop decade.\nDeep five least represent. Central east prove.\nYear reach kitchen spend true crime not sound. However tax spend recognize might. Body party economic rock."
+            }
+        ],
+        "embargo_date": "2020-10-30",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-technicalnote"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1994-01-16"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "2009-07",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-taxonomictreatment"
+                }
+            }
+        ]
+    }
+}

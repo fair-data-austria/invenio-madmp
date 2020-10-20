@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1984-03-30",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Murphy, Owens and Reed's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Lynn Payne",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Moody and Sons",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Rahat",
+                "point": {
+                    "lat": -21.787376,
+                    "lon": 9.194861
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Joseph Molina",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Higgins, Brown and Cooper",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Beautiful dream she available affect language. Serious military mouth size.\nTown with south student. Officer next stay different material site director. The authority authority.\nSurface forget west give pick. Almost radio compare cup pressure smile finally none.\nTend world try every case. Baby executive move check focus receive. Sell happy there seek listen amount suddenly.\nPerson center campaign chair fall prove car feel. Wife why Mrs floor plan. Stuff professional increase product coach.\nEight conference director finally police direction machine. Successful that environment product church account.\nRecord something thousand play travel stage their fill. Source industry others interview have act Mr.\nGame a power its bar. None executive soon two now parent. Son road base give lawyer here computer.\nConsumer manage everyone foot prepare talk. Call right toward hope seat international win. West box new early where hit sing.\nInclude memory town. Herself end public activity bill. Middle opportunity provide organization according on Democrat beat.\nNight explain woman. Avoid it more dog.\nLong specific mother order heart food free majority. Talk world build financial six wrong.\nInto nice expect citizen lay state traditional. Spend keep bank apply. Method suffer art.\nSuccessful care unit show large down. Pick before senior those send.\nArgue nature choose environment different political important my. Crime recent assume difference including impact of wide. Physical health tough within recent factor as.\nKnowledge accept work standard teacher. There defense you firm I fly. Here blood between. Cut national nation high raise message.\nNext everyone minute TV certainly religious air action. Art fill run.\nSome consumer hot. Door laugh truth. Economy week worker maintain position hard role away.\nBusiness several common travel assume training voice. Fish interest wonder prevent ever possible traditional. Head them ahead piece.\nLarge company take standard level truth.\nEither hotel more rate system box night. Reveal table machine here.\nBe still sister. Recognize fall market sure energy amount common little. Wide anything professor church candidate cause or.\nNothing attorney body. Field feel wonder upon interesting.\nEconomic meeting while sea month simply. Usually unit different down high simple. Get friend no when.\nMajor much career school book stand box do. This table director kid or far.\nCongress meeting treat daughter body language nearly federal. Debate me he experience may go power.\nFull or Congress certainly century. Audience use brother store.\nCell forward clear wind. Physical firm forward this product hard.\nRest party difference stock. Drive scene room loss career stock positive.\nWe similar see finally study these. Leader off dog again. Actually most today claim recent response.\nFormer culture here knowledge enter morning. Church play however well well popular end hundred."
+            }
+        ],
+        "embargo_date": "2021-08-04",
+        "resource_type": {
+            "type": "video",
+            "subtype": ""
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1984-05-05"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1973-05/1974-01-30",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "other",
+                    "subtype": ""
+                }
+            }
+        ]
+    }
+}

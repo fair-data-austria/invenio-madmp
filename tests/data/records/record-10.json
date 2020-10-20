@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1990-08-04",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Lamb LLC's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Melanie Weiss",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Schneider, Gross and Alexander",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Danjiangkou",
+                "point": {
+                    "lat": -25.579471,
+                    "lon": -94.648837
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "David Mckee",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Francis Group",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Someone next show rich. Front under point chance answer guy we.\nProgram character source popular moment thousand certainly. Skin name hot my itself. Economy know whatever friend base approach poor. Table eye first executive.\nWhen question southern television toward loss. Deep determine total.\nWife party candidate. Finish six consumer expert common least deep.\nEither from direction scientist above. Form some generation central learn.\nData sing size million group project admit. Mother safe entire stand material table truth.\nWhich hundred say entire other wrong. Religious dark anyone painting political rock himself administration. Deep do field apply.\nWhom position truth represent. When natural national movie. Science but hard whatever final better.\nStory anyone else happy. Under blue kitchen charge vote couple.\nFar half want accept team view. Experience modern kitchen first return candidate. Wonder each green also.\nRisk generation about month executive inside young.\nClaim production activity high around understand.\nOne play authority their. What according room light couple religious analysis.\nYet everyone information manage fire. Realize sense however be at tree forward happen.\nIndeed catch money father increase must. Too section understand best eight.\nEconomic part interview during can less. Threat mean six old member law money.\nRecord which live whatever sort sometimes head section. Including sell marriage. Dark big item.\nCharacter huge thing front build perform. Gun indicate nor board real itself.\nDrug huge fight agreement cost rate. Among investment inside indicate little. Safe his of able.\nTop thought level toward seat ten. Edge record forget sure use. How none military nothing focus meet once personal. Society would church nor little black hair.\nSocial skill generation read commercial. Of responsibility total. Run prevent difficult remember help though though.\nCould bring action street board say. Know fact student carry bring rock national.\nFocus seem receive take. Teach deal degree ever discover. Yourself we still stop whose.\nCan television board cell. Spend rule environmental short especially offer.\nSeven large system evidence. Rule difficult benefit break throughout right.\nTime bag social. Foot none practice here ago end.\nAdmit account western outside break listen. Final above and rule man meet. Glass think structure.\nHuge among too factor letter two young. Affect by camera rule.\nTwo next hotel work reason. Newspaper look might.\nEffort special animal day these outside conference. Especially myself forward. Themselves prove other many threat learn pretty.\nA probably staff push. Drop sing economy cover. Why eight war require even.\nSide arrive speech. Form accept yet assume. People positive hotel full nearly beautiful.\nStudy our little surface first his. Live property attention home responsibility day old.\nDown cause choice reflect give fear. Enter course per continue. Believe him address meeting. Month big talk despite enough city."
+            }
+        ],
+        "embargo_date": "2021-09-23",
+        "resource_type": {
+            "type": "image",
+            "subtype": "image-diagram"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1970-12-30"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1986-05-31/1992-01",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-datamanagementplan"
+                }
+            }
+        ]
+    }
+}

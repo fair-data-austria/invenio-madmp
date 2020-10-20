@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "2020-04-10",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Schneider Inc's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Taylor Adams",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Dillon Inc",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Arua",
+                "point": {
+                    "lat": 86.2793725,
+                    "lon": 77.774906
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Megan Curtis MD",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Brown LLC",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Civil ten top step rock thing. Democrat use environment know approach.\nLot heart yet build specific cultural machine. Actually fight television similar. Carry campaign anyone box present all.\nCrime morning away outside.\nArt light pay foot research fact become. Wide majority around record significant police.\nLevel player here protect market could professional. Weight now among go condition defense. Item thought family idea back.\nChair raise somebody fear relate field couple. None certain family. Political once figure eight air general subject.\nSupport air loss central window break effect. Certain evening toward information bed people have section. Feeling concern accept experience.\nSignificant chance purpose interview. Blue direction forward north response space.\nFrom machine meet sit international although eye. Within responsibility send benefit city. Government apply have shake.\nDegree quickly old door body actually class. Sea concern morning where off. Little hit chair morning anything.\nWrite lawyer strong budget place spring feeling. Throw hope after price station end enjoy keep.\nLine home particularly music girl stand for. Military fire player.\nBoard medical can worry his college within read. Tv above never eat bill. Thus picture fish boy another eight.\nWhether improve thus third number. Quite political certainly sea. Oil bag among. Back property yard area mission deep six.\nSpring myself item no less future board total. Specific free popular cup couple skill decide. Occur box painting agent.\nPressure past admit choice. Action can hear safe.\nWhen win into quality. Adult model throw.\nLaugh first way could. With report thus give nearly.\nLeft out result television. Determine particular kitchen summer shoulder onto.\nStudy majority read table put. Remain painting level oil deep.\nPage modern political responsibility heart office treatment if. Class next democratic drop wish suggest drive.\nDrive area system common case hit. Seven condition admit yet box common material finally. Cold size way there course what.\nFact close kitchen career local tax think. Eight field word pass fill significant. Nearly a edge sister garden.\nAlready their information maybe. Along can lose country present Mr Congress half.\nOrder occur religious or eat best their. Maybe other peace American end campaign off.\nName them TV agency. Product physical break threat idea. Rather ok bag without. Major most thousand walk thought fine save.\nAttorney reduce democratic simple. Each black somebody art cell. Leave cold number late.\nAdmit half he us specific base.\nExactly among control work building hard still issue. Single education mouth billion skin. Week arrive any animal.\nGun book drive take worry most. The discuss three window Democrat environment. Manager me attack prepare trial certainly with parent.\nSport decade east. Own part compare nation ability. Town her grow quickly realize course.\nSeven ago not form firm contain. Director happen forward than would discover couple."
+            }
+        ],
+        "embargo_date": "2021-03-19",
+        "resource_type": {
+            "type": "video",
+            "subtype": ""
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1985-08-07"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1977-01-15/2013-12-15",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "presentation",
+                    "subtype": ""
+                }
+            }
+        ]
+    }
+}

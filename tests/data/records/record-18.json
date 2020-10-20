@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1976-12-18",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Smith-Mcdonald's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "William Paul",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Schmidt, Parsons and Hanna",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Gorgonzola",
+                "point": {
+                    "lat": -75.2711015,
+                    "lon": 166.623775
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Henry Scott",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Davis, Phillips and Graham",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Local manage score fly. Suffer spend figure gas issue good. Fish his about claim.\nModern computer bed its. Most act long in surface future. Grow some choose discuss choose.\nAgent yourself rather spring fly. Drug appear institution police early position.\nAvoid expect his up know. Husband whether between official west service I whether. Laugh new detail ever shake.\nInclude whatever worry sell industry establish rest change. Speak herself job full good with never.\nMother official PM. Even price everything.\nResult live green agency hour far. Production ok there. Religious month various visit identify age cost.\nDifficult catch miss course around challenge. Him today sound few. Reach keep although notice.\nSerious personal explain guess plant build which. Put maybe in above. Stage although sister other night.\nChallenge design deep magazine pay food. Next military affect blood.\nBase view truth go collection medical.\nAbility religious soldier ok debate future. Service will off rate. Responsibility wife art throw.\nOf back store themselves experience most safe. Analysis do center manage nice available prepare. Order manager soon rule rather similar. Every size magazine professor less.\nLate consumer feeling generation. Financial too address catch certain who. Where door expect democratic strategy.\nEver somebody cold business recent fight participant. Relate strategy significant peace land. None out everyone.\nRate certain where human view responsibility. Painting establish factor various.\nAuthor democratic research its baby do. Other institution behind these season writer international.\nFirst ok future exist. Development mother spend weight better state.\nClearly her prove hotel. Though network century despite low class. War detail once next democratic.\nBad pay step evening voice single. Deep officer third gas. Mean whole nothing minute board easy.\nArrive hard use herself PM. Voice offer direction clearly level about or strategy.\nCustomer record measure car fund training. Throughout firm yes include.\nBehavior suggest position together idea human require.\nEvery sell evening likely trial writer pay. Teach well last institution become laugh. Need fish let social.\nStation president can move war employee. Experience commercial card family perform. Mention memory either food establish generation.\nSmile phone Congress dark group Congress fast. Push vote same clear.\nField increase project Congress. Others behind history involve everyone along president. Catch rule entire likely room important. With medical money quality green these learn.\nEveryone accept shoulder kitchen last. Line worker here ready recent. Shoulder safe way next hear two.\nMedical simple institution include step ask. Suggest fly hard consider. Few give fire.\nSister audience wish purpose college girl little. Business claim success environment sell wide buy.\nFloor east almost financial. Always go simple everybody skin today us.\nThree service least mind stuff. Stage coach recently behind."
+            }
+        ],
+        "embargo_date": "2021-06-18",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-preprint"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1998-07-15"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1973-04/1973-07-17",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-datamanagementplan"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "1999-11-01",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Nelson, Oneill and Hart's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Sonia Randall",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Cummings-Griffin",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Vught",
+                "point": {
+                    "lat": 23.602981,
+                    "lon": 137.578221
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Carly Leonard",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Freeman-Tucker",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Show simple same woman mouth. Approach major north nor forget sign yet list.\nEntire day away. Many yourself situation woman drug history others. Provide ok rest how mind artist sign.\nFall five whatever get idea weight should. Decision beautiful close carry success edge media item. Decide firm employee through.\nChance speech economy computer modern speak eye. Process stock local into after always center one. Trouble support impact plant lawyer form. Long drive data knowledge avoid accept half.\nDrop take charge reflect whatever door lawyer. Set much speech beautiful. Which project food life first Democrat.\nTrue outside effort those. Station pick number loss. Always go program.\nBecause be computer significant budget parent.\nYoung decade huge perform entire fact. Five man keep discover.\nTravel enough wait news. Security into everything note become feel skin sport.\nCreate painting head five heavy prove. Often prepare program idea.\nMouth thing fill least wonder bed. Information lawyer fall create every best. Family market risk management small development art.\nNation notice oil other whose us success. Charge than say catch team.\nEast effort hundred chance adult air summer. Economy position four future may under professor artist.\nColor box kid care since. Great according later American window finally ability.\nApply major fill person carry any close entire. Responsibility build shoulder compare public.\nWar law pull film. Recent less within low suffer. Worker success those middle we its as. Suddenly trip these pass final approach.\nBenefit him cause realize outside itself live hot. Challenge least nearly mission drop. Turn prevent on night method pay. Poor best attorney movie strong class remain.\nTonight feel my improve. Billion entire election world. Plant girl contain peace yourself arrive. Similar someone free capital hear he husband.\nFamily eye education month different. Rule market kind could hotel.\nDifference camera by level statement color. Example always half great try high.\nLeft society owner argue clearly nothing. Street or money author factor color doctor.\nAddress smile despite network big region. Bad trade whole small west movement.\nBeat apply feel from idea major section.\nFive total idea hand because too. But professional send film try per occur. Hear performance while house.\nMust back road them camera language. Language physical main drive machine industry model. Language despite toward suffer itself short election seek.\nGirl somebody keep voice phone government in through. Art Republican machine send each claim their evening. Security stuff military party sit enter surface.\nAgreement still painting meet only door. Kitchen quality quite process computer mouth whole. Year often what door professional ground. Create commercial represent from remain everybody information.\nWay check level collection whether. Act when decide wear green source. Dinner wait quality happy director writer thought."
+            }
+        ],
+        "embargo_date": "2021-01-03",
+        "resource_type": {
+            "type": "image",
+            "subtype": "image-other"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "2014-07-18"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "1993-07/2006",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-book"
+                }
+            }
+        ]
+    }
+}

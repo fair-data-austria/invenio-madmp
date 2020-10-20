@@ -1,0 +1,130 @@
+{
+    "access": {
+        "owners": [
+            1
+        ],
+        "created_by": 1,
+        "access_right": "open",
+        "files_restricted": false,
+        "metadata_restricted": false
+    },
+    "metadata": {
+        "dates": [
+            {
+                "type": "Other",
+                "start": "2000-08-14",
+                "description": "Random test date"
+            }
+        ],
+        "titles": [
+            {
+                "lang": "eng",
+                "type": "Other",
+                "title": "Patrick-Graham's gallery"
+            }
+        ],
+        "contact": "info@inveniosoftware.org",
+        "version": "v0.0.1",
+        "creators": [
+            {
+                "name": "Elizabeth Allen",
+                "type": "Personal",
+                "identifiers": {
+                    "Orcid": "0000-0002-1825-0097"
+                },
+                "affiliations": [
+                    {
+                        "name": "Summers-Clark",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "language": "eng",
+        "licenses": [
+            {
+                "uri": "https://opensource.org/licenses/BSD-3-Clause",
+                "scheme": "BSD-3",
+                "license": "Berkeley Software Distribution 3",
+                "identifier": "BSD-3"
+            }
+        ],
+        "subjects": [
+            {
+                "scheme": "no-scheme",
+                "subject": "Romans",
+                "identifier": "subj-1"
+            }
+        ],
+        "locations": [
+            {
+                "place": "Shreveport",
+                "point": {
+                    "lat": 17.9883295,
+                    "lon": -64.494427
+                },
+                "description": "Random place on land for random coordinates..."
+            }
+        ],
+        "references": [
+            {
+                "scheme": "GRID",
+                "identifier": "9999.99988",
+                "reference_string": "Reference to something et al."
+            }
+        ],
+        "identifiers": {
+            "DOI": "10.9999/rdm.9999999",
+            "arXiv": "9999.99999"
+        },
+        "contributors": [
+            {
+                "name": "Nancy Scott DDS",
+                "role": "RightsHolder",
+                "type": "Personal",
+                "affiliations": [
+                    {
+                        "name": "Edwards-Johnson",
+                        "identifiers": {
+                            "ror": "03yrm5c26"
+                        }
+                    }
+                ]
+            }
+        ],
+        "descriptions": [
+            {
+                "lang": "eng",
+                "type": "Abstract",
+                "description": "Ten her whatever wall task production section. Full visit simply send.\nYes between so figure prepare or decade whole. Yet class energy almost executive including.\nDifficult attorney green rise. Few address necessary. Few feel light instead both great involve wide.\nDevelop quite hair address.\nShould write statement often. Benefit kind Democrat design rock wall then.\nWatch wrong it place down direction vote. North investment answer big system who. Wife lot various early various. If friend food finish why.\nFace near family that get industry. Public end letter marriage training current subject.\nClass campaign red appear. Player at tree near.\nForeign situation prepare size wait. City eat law night. Account run control.\nBit enjoy such southern term look car. Senior live ever enjoy better walk.\nSimply able nation body model officer.\nFederal message individual. White star people each everyone once. Attorney measure color weight forward.\nHerself start edge reason bed. Before each least charge class through share. Inside beautiful or size.\nMiss draw figure through. Light case idea grow pull store. Teacher from over task identify.\nExpect physical soon pick. Later heart available try mother.\nOld on position black accept. Ten other general able someone station region pass. Himself position toward maintain perhaps weight he.\nAuthor kid purpose cup according. Energy rather special from go.\nGive professor two million husband. Weight section true positive.\nTask fill call management recent black test. Deal raise price break into.\nThere management follow they. She feeling newspaper wind wrong size she.\nRather what away wear fact. Decade center drive affect as answer interview guy. Start citizen peace skill study agency.\nKnow million I history firm water. Season body order Congress reduce six assume.\nEvening today end short.\nStuff film street develop return leg. About firm edge great. Of free some detail drop ahead program.\nAlong color whose shoulder process join teacher. Glass near type affect.\nPartner lead response without method open shake bit. True watch but water. Issue particular force official song keep rather.\nBox condition area wife simple while leader if. Reason score growth in charge upon country.\nFocus money fear simply cold dark. Most think soldier base big.\nSeem develop reflect drive figure section. Himself magazine member fact. Need she drive color.\nAlways alone I Mrs require grow event. Might only although risk into evening case. Out member after store answer six employee.\nLeg such house fly. Share adult decision read voice. Thank line about tell answer miss.\nAlong protect financial claim fine six total. Wish human young myself strategy.\nFive bit none decision.\nSurface young third section role letter across.\nOutside key including film. Black enough table significant.\nExplain mention woman art follow lead. Degree quite daughter whom television learn. Piece early whether development program."
+            }
+        ],
+        "embargo_date": "2021-09-19",
+        "resource_type": {
+            "type": "publication",
+            "subtype": "publication-softwaredocumentation"
+        },
+        "_internal_notes": [
+            {
+                "note": "RDM record",
+                "user": "inveniouser",
+                "timestamp": "1978-01-25"
+            }
+        ],
+        "_default_preview": "previewer one",
+        "publication_date": "2009/2019",
+        "related_identifiers": [
+            {
+                "scheme": "DOI",
+                "identifier": "10.9999/rdm.9999988",
+                "relation_type": "Requires",
+                "resource_type": {
+                    "type": "publication",
+                    "subtype": "publication-workingpaper"
+                }
+            }
+        ]
+    }
+}

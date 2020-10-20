@@ -7,26 +7,49 @@
 
 """Invenio module for maDMP integration."""
 
-from flask_babelex import gettext as _
+from datetime import datetime
+
+from flask_httpauth import HTTPTokenAuth
 
 from . import config
 
 
-class InveniomaDMP(object):
+class InvenioMaDMP(object):
     """Invenio-maDMP extension."""
 
     def __init__(self, app=None):
         """Extension initialization."""
+        self.auth = None
         if app:
             self.init_app(app)
 
     def init_app(self, app):
         """Flask application initialization."""
         self.init_config(app)
-        app.extensions['invenio-madmp'] = self
+        app.extensions["invenio-madmp"] = self
+        self.auth = HTTPTokenAuth(scheme="Bearer", header="Authorization")
+        self.set_up_rest_auth(app)
+
+        if not hasattr(datetime, "fromisoformat"):
+            from backports.datetime_fromisoformat import MonkeyPatch
+
+            MonkeyPatch.patch_fromisoformat()
 
     def init_config(self, app):
         """Initialize configuration."""
         for k in dir(config):
-            if k.startswith('MADMP_'):
+            if k.startswith("MADMP_"):
                 app.config.setdefault(k, getattr(config, k))
+
+    def set_up_rest_auth(self, app):
+        """Set up the token verification for the REST endpoints."""
+
+        @self.auth.verify_token
+        def verify_token(token):
+            expected_token = app.config["MADMP_COMMUNICATION_TOKEN"]
+            if expected_token is None:
+                return True
+            elif token == expected_token:
+                return True
+
+            return False
