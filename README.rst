@@ -28,13 +28,6 @@ Invenio module for integrating machine-actionable data management plans (maDMPs)
 according to the `Research Data Alliance Common Standard <https://github.com/RDA-DMP-Common/RDA-DMP-Common-Standard>`_.
 
 
-::
-
-  I can help
-        -- Android Minsky
-
-
-
 The aim of this module is to support researchers in depositing their research data
 in accordance with their data management plans (DMPs) by exchanging maDMPs
 with external DMP tools.
