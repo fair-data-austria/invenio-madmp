@@ -29,6 +29,7 @@ class InvenioMaDMP(object):
         app.extensions["invenio-madmp"] = self
         self.auth = HTTPTokenAuth(scheme="Bearer", header="Authorization")
         self.set_up_rest_auth(app)
+        self.register_signal_handlers(app)
 
         if not hasattr(datetime, "fromisoformat"):
             from backports.datetime_fromisoformat import MonkeyPatch
@@ -53,3 +54,8 @@ class InvenioMaDMP(object):
                 return True
 
             return False
+
+    def register_signal_handlers(self, app):
+        """Connect the signals to their configured handlers."""
+        for signal, handler in app.config["MADMP_SIGNAL_HANDLERS"]:
+            signal.connect(handler)
