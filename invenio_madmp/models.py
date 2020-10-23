@@ -312,14 +312,33 @@ class Dataset(db.Model):
         return cls.get_by_record_pid(pid)
 
     @classmethod
-    def get_by_record_pid(cls, record_pid: PersistentIdentifier) -> Optional["Dataset"]:
+    def get_by_record_pid(
+        cls, record_pid: PersistentIdentifier, strict_match: bool = False
+    ) -> Optional["Dataset"]:
         """Get the associated Dataset for the Record with the given PID."""
         if isinstance(record_pid, PersistentIdentifier):
             record_pid_id = record_pid.id
         else:
             record_pid_id = record_pid
+            record_pid = PersistentIdentifier.query.get(record_pid_id)
 
-        return cls.query.filter(cls.record_pid_id == record_pid_id).first()
+        if record_pid_id is None or record_pid is None:
+            return None
+
+        if strict_match:
+            return cls.query.filter(cls.record_pid_id == record_pid_id).first()
+
+        else:
+            # if a loose match is desired, we check for datasets linked to *any* of the
+            # PIDs that are pointing to the same object as the specified PID
+            pid_ids = [
+                pid.id
+                for pid in PersistentIdentifier.query.filter_by(
+                    object_uuid=record_pid.object_uuid
+                ).all()
+            ]
+
+            return cls.query.filter(cls.record_pid_id.in_(pid_ids)).first()
 
     @classmethod
     def get_zombies(cls) -> List["Dataset"]:
