@@ -63,11 +63,33 @@ class DataManagementPlan(db.Model):
         "Dataset", secondary=datamanagementplan_dataset, back_populates="dmps"
     )
 
-    def add_dataset(self, dataset: "Dataset", emit_signal=True):
+    def add_dataset(self, dataset: "Dataset", emit_signal=True, commit=True) -> bool:
         """TODO."""
+        if dataset in self.datasets:
+            return False
+
         self.datasets.append(dataset)
+        if commit:
+            db.session.commit()
+
         if emit_signal:
             dmp_dataset_added.send(self, dmp=self, dataset=dataset)
+
+        return True
+
+    def remove_dataset(self, dataset: "Dataset", emit_signal=True, commit=True) -> bool:
+        """TODO."""
+        if dataset not in self.datasets:
+            return False
+
+        self.datasets.remove(dataset)
+        if commit:
+            db.session.commit()
+
+        if emit_signal:
+            dmp_dataset_removed.send(self, dmp=self, dataset=dataset)
+
+        return True
 
     def delete(self, emit_signal=True, commit=True):
         """Delete the DMP, but do not delete the datasets."""
@@ -115,6 +137,7 @@ class DataManagementPlan(db.Model):
         dmp_id: str,
         datasets: List["Dataset"] = None,
         emit_signal: bool = True,
+        commit: bool = True,
     ) -> "DataManagementPlan":
         """Create and store a DMP with the given properties."""
         dmp = None
@@ -132,6 +155,9 @@ class DataManagementPlan(db.Model):
                 )
                 dmp.datasets.extend(datasets)
                 db.session.add(dmp)
+
+            if commit:
+                db.session.commit()
 
         except IntegrityError:
             # TODO probably indicates a duplicate entry
@@ -225,7 +251,12 @@ class Dataset(db.Model):
         return record
 
     @record.setter
-    def record(self, record: Record, emit_signal=True):
+    def record(self, record: Record):
+        self.set_record(record, emit_signal=True, commit=True)
+
+    def set_record(self, record: Record, emit_signal=True, commit=True):
+        """Change the Dataset's assigned Record PID to one of the Record's PIDs."""
+        old_record = self.record
         old_pid = self.record_pid
         rec_id = record.id
         pids = PersistentIdentifier.query.filter_by(object_uuid=rec_id).all()
@@ -244,6 +275,9 @@ class Dataset(db.Model):
                 new_record=record,
                 new_pid=pid,
             )
+
+        if commit:
+            db.session.commit()
 
     def delete(self, emit_signal=True, commit=True):
         """Delete the dataset, but do not delete associated DMPs or records."""
@@ -312,6 +346,7 @@ class Dataset(db.Model):
         record_pid: PersistentIdentifier,
         dmps: List[DataManagementPlan] = None,
         emit_signal: bool = True,
+        commit: bool = True,
     ) -> "Dataset":
         """Create and store a Dataset with the given properties."""
         dataset = None
@@ -334,6 +369,9 @@ class Dataset(db.Model):
                 )
                 dataset.dmps.extend(dmps)
                 db.session.add(dataset)
+
+            if commit:
+                db.session.commit()
 
         except IntegrityError:
             # TODO probably indicates a duplicate entry
