@@ -18,7 +18,15 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy_utils.types import UUIDType
 
-from .signals import dataset_changed, dmp_changed
+from .signals import (
+    dataset_created,
+    dataset_deleted,
+    dataset_record_pid_changed,
+    dmp_created,
+    dmp_dataset_added,
+    dmp_dataset_removed,
+    dmp_deleted,
+)
 
 datamanagementplan_dataset = db.Table(
     "dmp_datamanagementplan_dataset",
@@ -59,15 +67,17 @@ class DataManagementPlan(db.Model):
         """TODO."""
         self.datasets.append(dataset)
         if emit_signal:
-            dmp_changed.send(self, new_dataset=dataset)
-        # TODO emit signal, like in the setter of Dataset.record
+            dmp_dataset_added.send(self, dmp=self, dataset=dataset)
 
-    def delete(self, commit=True):
+    def delete(self, emit_signal=True, commit=True):
         """Delete the DMP, but do not delete the datasets."""
         for ds in self.datasets:
             ds.dmps.remove(self)
 
         db.session.delete(self)
+
+        if emit_signal:
+            dmp_deleted.send(self, dmp=self)
 
         if commit:
             db.session.commit()
@@ -104,6 +114,7 @@ class DataManagementPlan(db.Model):
         cls,
         dmp_id: str,
         datasets: List["Dataset"] = None,
+        emit_signal: bool = True,
     ) -> "DataManagementPlan":
         """Create and store a DMP with the given properties."""
         dmp = None
@@ -125,6 +136,9 @@ class DataManagementPlan(db.Model):
         except IntegrityError:
             # TODO probably indicates a duplicate entry
             raise
+
+        if emit_signal:
+            dmp_created.send(cls, dmp=dmp)
 
         return dmp
 
@@ -222,9 +236,16 @@ class Dataset(db.Model):
         self.record_pid = pid
 
         if emit_signal:
-            dataset_changed.send(self, old_pid=old_pid, new_pid=pid)
+            dataset_record_pid_changed.send(
+                self,
+                dataset=self,
+                old_record=old_record,
+                old_pid=old_pid,
+                new_record=record,
+                new_pid=pid,
+            )
 
-    def delete(self, commit=True):
+    def delete(self, emit_signal=True, commit=True):
         """Delete the dataset, but do not delete associated DMPs or records."""
         for dmp in self.dmps:
             dmp.datasets.remove(self)
@@ -233,6 +254,9 @@ class Dataset(db.Model):
 
         if commit:
             db.session.commit()
+
+        if emit_signal:
+            dataset_deleted.send(self, dataset=self)
 
     @classmethod
     def get_by_dataset_id(cls, dataset_id: str) -> Optional["Dataset"]:
@@ -287,6 +311,7 @@ class Dataset(db.Model):
         dataset_id: str,
         record_pid: PersistentIdentifier,
         dmps: List[DataManagementPlan] = None,
+        emit_signal: bool = True,
     ) -> "Dataset":
         """Create and store a Dataset with the given properties."""
         dataset = None
@@ -313,6 +338,9 @@ class Dataset(db.Model):
         except IntegrityError:
             # TODO probably indicates a duplicate entry
             raise
+
+        if emit_signal:
+            dataset_created.send(cls, dataset=dataset)
 
         return dataset
 
