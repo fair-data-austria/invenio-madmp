@@ -1,13 +1,14 @@
 """Utilities for mapping between maDMPs and Records."""
 
 
-from typing import List
+from typing import List, Optional
 
 from flask import current_app as app
 from flask_principal import Identity
 from invenio_access.permissions import any_user
 from invenio_db import db
 from invenio_pidstore.models import PersistentIdentifier as PID
+from invenio_records.api import Record
 
 from ..models import DataManagementPlan as DMP
 from ..models import Dataset
@@ -116,7 +117,7 @@ def matching_distributions(dataset_dict):
 
 def convert_dmp(
     madmp_dict: dict, hard_sync: bool = False, identity: Identity = None
-) -> List:
+) -> Optional[DMP]:
     """Map the maDMP's dictionary to a number of Invenio RDM Records."""
     with db.session.no_autoflush:
         # disabling autoflush, because we don't want to flush unfinished parts
@@ -178,7 +179,9 @@ def convert_dmp(
                     #       published in a single ZIP file (i.e. as a single
                     #       record)
 
-                    converter = get_matching_converter(distrib, dataset, madmp_dict)
+                    converter = get_matching_converter_for_dataset(
+                        distrib, dataset, madmp_dict
+                    )
 
                     if converter is None:
                         raise LookupError(
@@ -246,12 +249,84 @@ def convert_dmp(
 from .records.base import BaseRecordConverter  # noqa - fixes circular import issue
 
 
-def get_matching_converter(
+def convert_pid_type_to_dataset_id(dataset_id_dict: dict) -> dict:
+    """Make sure that the specified dataset_id follows the RDA Common Standard."""
+    id_type = dataset_id_dict["type"].strip().lower()
+    if id_type not in ["handle", "doi", "ark", "url"]:
+        id_type = None
+
+    res = {
+        "identifier": dataset_id_dict["identifier"],
+        "type": id_type or "other",
+    }
+
+    return res
+
+
+def convert_record(record: Record) -> Optional[dict]:
+    """Convert the specified Record to a DMP Dataset dictionary."""
+    dataset = Dataset.get_by_record(record)
+    if dataset is None:
+        # if the record doesn't belong to a dataset: do nothing
+        return None
+
+    res_ds = {}
+
+    # convert the record
+    converter = get_matching_converter_for_record(record)
+    res_ds["distribution"] = [converter.convert_record(record)]
+
+    # add information for all PIDs for the record that are known to us
+    pids = []
+    for pid in PID.query.filter(PID.object_uuid == record.id):
+        p = {
+            "identifier": pid.pid_value,
+            "type": pid.pid_type,
+        }
+        pids.append(convert_pid_type_to_dataset_id(p))
+
+    if pids:
+        res_ds["dataset_id"] = pids
+
+    # add metadata information
+    metadata = converter.get_dataset_metadata_model(record)
+    if metadata:
+        res_ds["metadata"] = [metadata]
+
+    # update information for the distribution's host (i.e. about us)
+    host = {
+        "title": app.config["MADMP_HOST_TITLE"],
+        "url": app.config["MADMP_HOST_URL"],
+        "description": app.config["MADMP_HOST_DESCRIPTION"],
+        "availability": app.config["MADMP_HOST_AVAILABILITY"],
+        "backup_frequency": app.config["MADMP_HOST_BACKUP_FREQUENCY"],
+        "backup_type": app.config["MADMP_HOST_BACKUP_TYPE"],
+        "certified_with": app.config["MADMP_HOST_CERTIFIED_WITH"],
+        "geo_location": app.config["MADMP_HOST_GEO_LOCATION"],
+        "support_versioning": app.config["MADMP_HOST_SUPP_VERSIONING"],
+        "storage_type": app.config["MADMP_HOST_STORAGE_TYPE"],
+        "pid_system": app.config["MADMP_HOST_PID_SYSTEM"],
+    }
+    res_ds["distribution"][0]["host"] = {k: v for k, v in host.items() if v is not None}
+
+    return res_ds
+
+
+def get_matching_converter_for_dataset(
     distribution_dict: dict, dataset_dict: dict, dmp_dict: dict
 ) -> BaseRecordConverter:
-    """Get the first matching RecordConverter from the configuration."""
+    """Get the first matching RecordConverter from the configuration for the Dataset."""
     for converter in app.config["MADMP_RECORD_CONVERTERS"]:
-        if converter.matches(distribution_dict, dataset_dict, dmp_dict):
+        if converter.matches_dataset(distribution_dict, dataset_dict, dmp_dict):
+            return converter
+
+    return app.config["MADMP_FALLBACK_RECORD_CONVERTER"]
+
+
+def get_matching_converter_for_record(record: Record) -> BaseRecordConverter:
+    """Get the first matching RecordConverter from the configuration for the Record."""
+    for converter in app.config["MADMP_RECORD_CONVERTERS"]:
+        if converter.matches_record(record):
             return converter
 
     return app.config["MADMP_FALLBACK_RECORD_CONVERTER"]

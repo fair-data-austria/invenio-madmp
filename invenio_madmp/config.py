@@ -13,9 +13,19 @@ from .convert.records.base import BaseRecordConverter
 from .convert.records.rdm_records import RDMRecordConverter
 from .licenses import KNOWN_LICENSES
 
-# for finding matching distributions
-MADMP_HOST_URL = "https://data.tuwien.ac.at"
-MADMP_HOST_TITLE = "TU Data"
+# information regarding dataset distributions' hosts
+# (host url and title are also used for finding matching distributions)
+MADMP_HOST_URL = "https://invenio.cern.ch"
+MADMP_HOST_TITLE = "Invenio RDM"
+MADMP_HOST_DESCRIPTION = "RDM Repository hosted by CERN"
+MADMP_HOST_AVAILABILITY = "99.5"
+MADMP_HOST_BACKUP_FREQUENCY = "weekly"
+MADMP_HOST_BACKUP_TYPE = "tapes"
+MADMP_HOST_CERTIFIED_WITH = "coretrustseal"
+MADMP_HOST_GEO_LOCATION = "CH"
+MADMP_HOST_SUPP_VERSIONING = "yes"
+MADMP_HOST_STORAGE_TYPE = "disks"
+MADMP_HOST_PID_SYSTEM = ["other"]
 
 # the expected token (shared secret) in the REST endpoints
 # 'None' means that the check for authorization is disabled

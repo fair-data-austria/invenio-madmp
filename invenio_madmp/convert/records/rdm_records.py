@@ -1,10 +1,13 @@
 """Record Converter for RDM Records."""
 
 from datetime import datetime
+from typing import Optional
 
 from flask import current_app as app
 from flask_principal import Identity
 from invenio_access.permissions import any_user
+from invenio_jsonschemas import current_jsonschemas
+from invenio_rdm_records.models import BibliographicRecord, BibliographicRecordDraft
 from invenio_rdm_records.permissions import RDMRecordPermissionPolicy
 from invenio_rdm_records.services import (
     BibliographicRecordService,
@@ -222,3 +225,84 @@ class RDMRecordConverter(BaseRecordConverter):
             )
 
         # TODO return value is missing!
+
+    def convert_record(self, record: Record) -> dict:
+        """Convert the Record into a maDMP dataset distribution dictionary."""
+        metadata = record["metadata"]
+
+        # we prefer the english titles, if there are any
+        # the 'empty' list is there to avoid errors with the indexing operator later on
+        all_descrs = metadata["descriptions"]
+        english_descrs = [t for t in all_descrs if t["lang"] == "eng"]
+        all_titles = metadata["titles"]
+        english_titles = [t for t in all_titles if t["lang"] == "eng"]
+        empty = [{"title": None, "description": None}]
+
+        publication_date = parse_date(metadata["publication_date"])
+        embargo_date = parse_date(metadata["embargo_date"])
+        license_start_date = embargo_date or publication_date or datetime.now().date()
+
+        licenses = [
+            {"license_ref": lic["uri"], "start_date": format_date(license_start_date)}
+            for lic in metadata["licenses"]
+        ]
+
+        distribution = {
+            "access_url": None,  # TODO
+            "download_url": None,  # TODO
+            "title": (english_titles + all_titles + empty)[0]["title"],
+            "description": (english_descrs + all_descrs + empty)[0]["description"],
+            "byte_size": None,  # TODO
+            "data_access": record["access"]["access_right"],
+            "license": licenses,
+            "personal_data": None,  # TODO
+            "sensitive_data": None,  # TODO
+            "format": metadata["resource_type"]["type"],  # TODO
+            "available_until": None,  # TODO
+        }
+
+        # filter out the values that haven't been supplied
+        distribution = {k: v for k, v in distribution.items() if v is not None}
+        if not distribution["license"]:
+            del distribution["license"]
+
+        return distribution
+
+    def get_dataset_metadata_model(self, record: Record = None) -> Optional[dict]:
+        """Get the RDA DMP metadata property used by the Record or this Converter."""
+        schema = record.get("$schema") or "records/record-v1.0.0.json"
+        metadata_url = current_jsonschemas.path_to_url(schema)
+
+        if metadata_url is not None:
+            return {
+                "description": "Datacite-based metadata model for Invenio-RDM-Records",
+                "language": "eng",
+                "metadata_standard_id": {
+                    "identifier": metadata_url,
+                    "type": "url",
+                },
+            }
+
+        return None
+
+    def is_draft(self, record: Record) -> bool:
+        """Check if the specified object is a suitable Record."""
+        return isinstance(record, BibliographicRecordDraft)
+
+    def is_record(self, record: Record) -> bool:
+        """Check if the specified object is a suitable Draft."""
+        return isinstance(record, BibliographicRecord)
+
+    def matches_dataset(self, dataset_dict: dict, dmp_dict: dict = None) -> bool:
+        """Check if this converter is suitable for the specified maDMP dataset."""
+        for metadata in dataset_dict.get("metadata", []):
+            standard_id = metadata.get("metadata_standard_id", {})
+            identifier = standard_id.get("identifier")
+            if "schema.datacite.org" in identifier:
+                return True
+
+        return False
+
+    def matches_record(self, record: Record) -> bool:
+        """Check if this converter is suitable for the specified Record."""
+        return self.is_draft(record) or self.is_record(record)

@@ -38,6 +38,32 @@ class BaseRecordConverter:
         """
         raise NotImplementedError
 
+    def convert_record(self, record: Record) -> dict:
+        """Convert the Record into a maDMP dataset distribution dictionary."""
+        raise NotImplementedError
+
+    def get_dataset_metadata_model(self, record: Record = None) -> dict:
+        """Get the RDA DMP metadata property used by the Record or this Converter.
+
+        If no record is specified, the metadata model for which this Converter matches
+        will be returned in the RDA DMP format.
+
+        Example:
+            {
+                "description": "Datacite-based metadata model used by Invenio RDM",
+                "language": "eng",
+                "metadata_standard_id": {
+                    "identifier": https://schema.datacite.org/meta/kernel-4.3/",
+                    "type": "url"
+                }
+            }
+
+        :param record: The Record whose metadata model to report.
+        :return: The metadata model used by the Record or Converter in RDA DMP format.
+        :rtype: dict
+        """
+        raise NotImplementedError
+
     def create_record(self, record_data: dict, identity: Identity) -> Record:
         """Create a new Record (or Draft) from the specified metadata.
 

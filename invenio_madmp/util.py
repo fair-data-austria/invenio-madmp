@@ -22,9 +22,15 @@ def is_identifier_type_allowed(id_type: str, contributor_dict: Dict = None):
     return id_type in ["Orcid", "ror"]
 
 
-def parse_date(date_str):
+def parse_date(date_str, silent=True):
     """Parse the given date string."""
-    return datetime.fromisoformat(date_str)
+    try:
+        return datetime.fromisoformat(date_str)
+    except ValueError:
+        if not silent:
+            raise
+
+    return None
 
 
 def format_date(date, fmt="%Y-%m-%d"):
