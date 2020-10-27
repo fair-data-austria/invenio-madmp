@@ -6,10 +6,10 @@ from typing import Optional, Tuple
 from uuid import UUID
 
 import requests
-from requests.exceptions import ConnectionError
 from flask import current_app as app
 from invenio_pidstore.models import PersistentIdentifier as PID
 from invenio_records.api import Record
+from requests.exceptions import ConnectionError
 from sqlalchemy.orm.exc import NoResultFound
 
 from ..convert.util import convert_record
@@ -32,9 +32,7 @@ def _prepare_endpoint_url(url: str, obj_id: str) -> str:
 
 def _prepare_headers() -> dict:
     """Prepare additional HTTP headers for the requests."""
-    headers = {
-        "Content-Type": "application/json"
-    }
+    headers = {"Content-Type": "application/json"}
 
     if app.config["MADMP_COMMUNICATION_TOKEN"] is not None:
         headers["Authorization"] = "Bearer %s" % app.config["MADMP_COMMUNICATION_TOKEN"]
