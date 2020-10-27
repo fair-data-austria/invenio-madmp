@@ -1,5 +1,6 @@
 """TODO."""
 
+import json
 import re
 from typing import Optional, Tuple
 from uuid import UUID
@@ -30,7 +31,9 @@ def _prepare_endpoint_url(url: str, obj_id: str) -> str:
 
 def _prepare_headers() -> dict:
     """Prepare additional HTTP headers for the requests."""
-    headers = {}
+    headers = {
+        "Content-Type": "application/json"
+    }
 
     if app.config["MADMP_COMMUNICATION_TOKEN"] is not None:
         headers["Authorization"] = "Bearer %s" % app.config["MADMP_COMMUNICATION_TOKEN"]
@@ -99,10 +102,11 @@ def _send_distribution_notification(
             return False
 
     headers = _prepare_headers()
+    dataset_body_json = json.dumps(dataset_body)
     if notification_type == "update":
-        resp = requests.patch(endpoint_url, data=dataset_body, headers=headers)
+        resp = requests.patch(endpoint_url, data=dataset_body_json, headers=headers)
     elif notification_type == "delete":
-        resp = requests.delete(endpoint_url, data=dataset_body, headers=headers)
+        resp = requests.delete(endpoint_url, data=dataset_body_json, headers=headers)
 
     if 200 <= resp.status_code < 300:
         return True
@@ -118,7 +122,8 @@ def _send_dmp_notification(dmp: DataManagementPlan, dataset: Dataset) -> bool:
     endpoint_url = _prepare_endpoint_url(specific_url, dataset.dataset_id)
 
     headers = _prepare_headers()
-    resp = requests.post(endpoint_url, data=dataset_body, headers=headers)
+    dataset_body_json = json.dumps(dataset_body)
+    resp = requests.post(endpoint_url, data=dataset_body_json, headers=headers)
 
     # TODO it's planned that this request will return a dataset_id that should be used
     #      for future communication regarding the dataset
