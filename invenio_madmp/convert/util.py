@@ -123,7 +123,38 @@ def convert_dmp(
     identity: Identity = None,
     validate: bool = True,
 ) -> Optional[DMP]:
-    """Map the maDMP's dictionary to a number of Invenio RDM Records."""
+    """Parse the specified maDMP and update referneced records in Invenio accordingly.
+
+    From the specified maDMP dictionary, all datasets with a distribution hosted by our
+    Invenio instance (i.e. distributions that have a host property whose title or
+    URL match the MADMP_HOST_TITLE or MADMP_HOST_URL config items) will be collected.
+
+    For each of these datasets that do not yet have a corresponding record in Invenio,
+    a new record draft will be created and pre-filled with metadata as parsed by
+    the first matching RecordConverter in MADMP_RECORD_CONVERTERS.
+
+    Datasets that already have a corresponding record in Invenio will be left alone,
+    unless hard_sync is enabled.
+    In this case, the corresponding record's metadata will be updated with the parsed
+    information.
+
+    The specified identity will be used for permission checks in all record-modifying
+    operations.
+
+    Note: It is expected that each dataset has at most one distribution hosted by
+    the same host -- deviations from this assumption may lead to ambiguous references
+    in the communiation between Invenio and the maDMP tool!
+
+    If the validate flag is set, the maDMP dictionary will be validated against the
+    RDA Common Standard JSON Schema before trying to parse it.
+    In the case that it is not valid, a ValueError will be raised, containing a list
+    of all found error messages.
+
+    :param madmp_dict: The maDMP dictionary to parse.
+    :param hard_sync: Whether to enable hard or soft sync.
+    :param identity: The identity to use for record manipulation.
+    :param validate: Whether or not to validate the maDMP before processing.
+    """
     if validate and not validate_dmp({"dmp": madmp_dict}):
         raise ValueError(str(get_error_messages(madmp_dict)))
 
