@@ -12,6 +12,8 @@ from datetime import datetime
 from flask_httpauth import HTTPTokenAuth
 
 from . import config
+from .signals import _signals
+from .util import get_or_import
 
 
 class InvenioMaDMP(object):
@@ -58,4 +60,9 @@ class InvenioMaDMP(object):
     def register_signal_handlers(self, app):
         """Connect the signals to their configured handlers."""
         for signal, handler in app.config["MADMP_SIGNAL_HANDLERS"]:
-            signal.connect(handler)
+            if isinstance(signal, str):
+                # if the signal is a string, we assume it to be the signal's name
+                signal = _signals.signal(signal)
+
+            # we also allow the handler to be an import string instead of a reference
+            signal.connect(get_or_import(handler))
