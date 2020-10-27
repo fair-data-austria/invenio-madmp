@@ -23,14 +23,14 @@ def prepare_sending_new_dataset(sender, **kwargs):
     dataset = kwargs["dataset"]
 
     if dmp is not None and dataset is not None:
-        send_dataset_addition(dmp=dmp, dataset=dataset)
+        send_dataset_addition(dmp=dmp, dataset=dataset, raise_exc=False)
 
 
 def prepare_sending_deleted_dataset(sender, **kwargs):
     """TODO."""
     print("dataset: deleted, signal received")
     dataset = kwargs["dataset"]
-    send_distribution_deletion(dataset=dataset)
+    send_distribution_deletion(dataset=dataset, raise_exc=False)
 
 
 def prepare_sending_distribution_deletion(sender, **kwargs):
@@ -40,14 +40,16 @@ def prepare_sending_distribution_deletion(sender, **kwargs):
     dataset = Dataset.get_by_record(record)
 
     if dataset is not None:
-        send_distribution_deletion(dataset=dataset)
+        # we use the record as keyword arg here, because going via the dataset may not
+        # work -- since the record is deleted, dataset.record will likely return None
+        send_distribution_deletion(record=record, raise_exc=False)
 
 
 def prepare_sending_changed_dataset(sender, **kwargs):
     """TODO."""
     print("dataset: record pid changed, signal received")
     dataset = kwargs["dataset"]
-    send_distribution_update(dataset=dataset)
+    send_distribution_update(dataset=dataset, raise_exc=False)
 
 
 def prepare_sending_distribution_update(sender, **kwargs):
@@ -57,4 +59,4 @@ def prepare_sending_distribution_update(sender, **kwargs):
     dataset = Dataset.get_by_record(record)
 
     if dataset is not None:
-        send_distribution_update(dataset=dataset)
+        send_distribution_update(dataset=dataset, raise_exc=False)

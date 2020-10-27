@@ -6,6 +6,7 @@ from typing import Optional, Tuple
 from uuid import UUID
 
 import requests
+from requests.exceptions import ConnectionError
 from flask import current_app as app
 from invenio_pidstore.models import PersistentIdentifier as PID
 from invenio_records.api import Record
@@ -146,6 +147,7 @@ def send_distribution_update(
     dataset_id: str = None,
     pid_object: PID = None,
     pid_value: str = None,
+    raise_exc: bool = True,
 ) -> bool:
     """TODO."""
     res = _get_record_and_dataset(
@@ -156,7 +158,13 @@ def send_distribution_update(
         return False
     else:
         rec, ds = res
-        return _send_distribution_notification(rec, ds, notification_type="update")
+        try:
+            return _send_distribution_notification(rec, ds, notification_type="update")
+        except ConnectionError:
+            if raise_exc:
+                raise
+            else:
+                return False
 
 
 def send_distribution_deletion(
@@ -166,6 +174,7 @@ def send_distribution_deletion(
     dataset_id: str = None,
     pid_object: PID = None,
     pid_value: str = None,
+    raise_exc: bool = True,
 ) -> bool:
     """TODO."""
     res = _get_record_and_dataset(
@@ -176,7 +185,13 @@ def send_distribution_deletion(
         return False
     else:
         rec, ds = res
-        return _send_distribution_notification(rec, ds, notification_type="delete")
+        try:
+            return _send_distribution_notification(rec, ds, notification_type="delete")
+        except ConnectionError:
+            if raise_exc:
+                raise
+            else:
+                return False
 
 
 def send_dataset_addition(
@@ -188,6 +203,7 @@ def send_dataset_addition(
     dataset_id: str = None,
     pid_object: PID = None,
     pid_value: str = None,
+    raise_exc: bool = True,
 ) -> bool:
     """TODO."""
     if dmp is None:
@@ -207,4 +223,10 @@ def send_dataset_addition(
         return False
     else:
         rec, ds = res
-        return _send_dmp_notification(dmp, ds)
+        try:
+            return _send_dmp_notification(dmp, ds)
+        except ConnectionError:
+            if raise_exc:
+                raise
+            else:
+                return False
