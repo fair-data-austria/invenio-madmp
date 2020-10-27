@@ -18,6 +18,8 @@ from ..util import (
     is_identifier_type_allowed,
     translate_person_details,
 )
+from .validation import get_error_messages
+from .validation import validate as validate_dmp
 
 
 def is_relevant_contributor(role: str) -> bool:
@@ -116,9 +118,15 @@ def matching_distributions(dataset_dict):
 
 
 def convert_dmp(
-    madmp_dict: dict, hard_sync: bool = False, identity: Identity = None
+    madmp_dict: dict,
+    hard_sync: bool = False,
+    identity: Identity = None,
+    validate: bool = True,
 ) -> Optional[DMP]:
     """Map the maDMP's dictionary to a number of Invenio RDM Records."""
+    if validate and not validate_dmp({"dmp": madmp_dict}):
+        raise ValueError(str(get_error_messages(madmp_dict)))
+
     with db.session.no_autoflush:
         # disabling autoflush, because we don't want to flush unfinished parts
         # (this caused issues when Dataset.record_pid_id was not nullable)

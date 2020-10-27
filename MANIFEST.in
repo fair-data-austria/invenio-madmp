@@ -37,3 +37,6 @@ recursive-include tests *.py
 
 # added by check_manifest.py
 recursive-include tests *.json
+
+# added by check-manifest
+recursive-include invenio_madmp *.json
