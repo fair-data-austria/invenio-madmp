@@ -55,6 +55,8 @@ install_requires = [
     "invenio-records>=1.4.0a4",
     "invenio-db>=1.0.6",
     "invenio-accounts>=1.3.0",
+    "jsonschema>=3.2.0",
+    "requests>=2.24.0",
     "sqlalchemy-continuum>=1.3.11",
     'backports-datetime-fromisoformat>=1.0 ; python_version<"3.7"',
 ]
