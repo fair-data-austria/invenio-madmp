@@ -302,9 +302,14 @@ class Dataset(db.Model):
         """Get the associated Dataset for the given Record."""
         # TODO: a record may have multiple PIDs, and the Dataset is only
         #       associated with one of these PIDs
-        pid = PersistentIdentifier.query.filter(
-            PersistentIdentifier.object_uuid == record.id
-        ).first()
+        pid = None
+        if hasattr(record, "pid"):
+            pid = record.pid
+
+        if pid is None:
+            pid = PersistentIdentifier.query.filter(
+                PersistentIdentifier.object_uuid == record.id
+            ).first()
 
         if pid is None:
             return None
