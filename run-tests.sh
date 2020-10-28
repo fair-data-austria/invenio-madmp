@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 # -*- coding: utf-8 -*-
 #
 # Copyright (C) 2020 FAIR Data Austria.
