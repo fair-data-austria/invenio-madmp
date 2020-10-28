@@ -118,7 +118,7 @@ def _send_dmp_notification(dmp: DataManagementPlan, dataset: Dataset) -> bool:
     dataset_body = convert_record(dataset.record)
 
     specific_url = app.config["MADMP_DMP_TOOL_DMP_ENDPOINT_URL"]
-    endpoint_url = _prepare_endpoint_url(specific_url, dataset.dataset_id)
+    endpoint_url = _prepare_endpoint_url(specific_url, dmp.dmp_id)
 
     headers = _prepare_headers()
     dataset_body_json = json.dumps(dataset_body)

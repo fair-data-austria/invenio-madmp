@@ -6,8 +6,9 @@ from typing import Dict
 
 from flask import current_app as app
 from invenio_accounts.models import User
+from invenio_pidstore.errors import PIDDoesNotExistError
 from invenio_pidstore.models import PersistentIdentifier as PID
-from invenio_records.models import RecordMetadata
+from invenio_records.api import Record
 from werkzeug.utils import import_string
 
 from .licenses import License
@@ -93,12 +94,12 @@ def translate_person_details(person_dict: Dict) -> Dict:
     if name:
         m1 = name_pattern_1.match(name)
         m2 = name_pattern_2.match(name)
-        if m1:
-            additional_infos["given_name"] = m1.group(1)
-            additional_infos["family_name"] = m1.group(2)
-        elif m2:
+        if m2:
             additional_infos["given_name"] = m2.group(2)
             additional_infos["family_name"] = m2.group(1)
+        elif m1:
+            additional_infos["given_name"] = m1.group(1)
+            additional_infos["family_name"] = m1.group(2)
 
     return additional_infos
 
@@ -126,12 +127,14 @@ def fetch_unassigned_record(dataset_identifier, distribution_access_url=None):
         match = re.match(p, distribution_access_url)
         if match:
             recid = match.group(1)
-            pid = PID.get("recid", recid)
+            try:
+                pid = PID.get("recid", recid)
+            except PIDDoesNotExistError:
+                pid = None
+
             if pid is not None:
-                rec = RecordMetadata.query.get(
-                    pid.object_uuid
-                )  # TODO may also be a Draft?
-                if rec:
+                rec = Record.get_record(pid.object_uuid)  # TODO may also be a Draft?
+                if rec is not None:
                     return rec
 
     # in case of a DOI, remove the possibly leading "https://doi.org/"
@@ -139,7 +142,7 @@ def fetch_unassigned_record(dataset_identifier, distribution_access_url=None):
 
     pid = PID.query.filter(PID.pid_value == dataset_identifier).one_or_none()
     if pid is not None:
-        rec = RecordMetadata.query.get(pid.object_uuid)  # TODO may be a Draft?
+        rec = Record.get_record(pid.object_uuid)  # TODO may be a Draft?
 
     return rec
 

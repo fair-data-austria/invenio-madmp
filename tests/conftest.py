@@ -27,6 +27,7 @@ from invenio_accounts import InvenioAccounts
 from invenio_config import InvenioConfigDefault
 from invenio_db import InvenioDB, db
 from invenio_indexer import InvenioIndexer
+from invenio_jsonschemas import InvenioJSONSchemas
 from invenio_pidrelations import InvenioPIDRelations
 from invenio_pidstore import InvenioPIDStore
 from invenio_rdm_records.services import BibliographicRecordService
@@ -63,6 +64,7 @@ def base_app(request):
     Babel(app)
     InvenioConfigDefault(app)
     InvenioDB(app)
+    InvenioJSONSchemas(app)
     InvenioRecords(app)
     InvenioPIDStore(app)
     InvenioPIDRelations(app)
@@ -120,6 +122,35 @@ def example_madmps_for_invenio(example_madmps):
 
 
 @pytest.fixture()
+def example_madmps_for_invenio_with_datacite_metadata(example_madmps_for_invenio):
+    """Dictionary with example maDMPs with dataset distros in our Invenio."""
+    for madmp in example_madmps_for_invenio.values():
+        for ds in madmp["dmp"].get("dataset", []):
+            if "metadata" not in ds:
+                ds["metadata"] = []
+
+            has_datacite_metadata = False
+            for metadata in ds.get("metadata", []):
+                identifier = metadata.get("metadata_standard_id", {}).get("identifier")
+                if "datacite.org" in identifier:
+                    has_datacite_metadata = True
+
+            if not has_datacite_metadata:
+                datacite_metadata = {
+                    "description": "Datacite Metadata Schema 4.3",
+                    "language": "eng",
+                    "metadata_standard_id": {
+                        "identifier": "https://schema.datacite.org/meta/kernel-4.3/",
+                        "type": "url",
+                    },
+                }
+
+                ds["metadata"].append(datacite_metadata)
+
+    return example_madmps_for_invenio
+
+
+@pytest.fixture()
 def example_madmps_for_invenio_requiring_users(example_madmps_for_invenio):
     """Only those example maDMPs that have datasets and contributors."""
     madmps = {}
@@ -171,6 +202,7 @@ def example_data(base_app):
         with open(ffn, "r") as rec_file:
             data = json.load(rec_file)
             rec = service.create(identity, data)
+            rec = service.publish(rec.id, identity)
             records.append(rec._record)
 
     # create some datasets

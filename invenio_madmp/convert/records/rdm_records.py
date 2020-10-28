@@ -200,31 +200,40 @@ class RDMRecordConverter(BaseRecordConverter):
         identity: Identity,
     ):
         """Update the metadata of the specified Record with the new data."""
-        new_data = new_record_data.copy()
-        del new_data["access"]["owners"]
-        del new_data["access"]["created_by"]
+        identity.provides.add(any_user)
 
         # because partial updates are currently not working, we use the data from the
         # original record and update the metadata dictionary
         data = original_record.model.data.copy()
-        data["metadata"].update(new_data["metadata"])
-        identity.provides.add(any_user)
+        new_data = new_record_data.copy()
+
+        if "access" in new_data:
+            if "owners" in new_data["access"]:
+                del new_data["access"]["owners"]
+            if "created_by" in new_data["access"]:
+                del new_data["access"]["created_by"]
+
+            data["access"].update(new_data["access"])
+
+        if "metadata" in new_data:
+            data["metadata"].update(new_data["metadata"])
 
         if self.is_draft(original_record):
-            self.record_service.update_draft(
+            result = self.record_service.update_draft(
                 identity=identity,
                 id_=original_record["id"],
                 data=data,
             )
 
         elif self.is_record(original_record):
-            self.record_service.update(
+            result = self.record_service.update(
                 identity=identity,
                 id_=original_record["id"],
                 data=data,
             )
 
-        # TODO return value is missing!
+        if result is not None:
+            return result._record
 
     def convert_record(self, record: Record) -> dict:
         """Convert the Record into a maDMP dataset distribution dictionary."""

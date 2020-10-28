@@ -19,6 +19,7 @@ tests_require = [
     "invenio-config>=1.0.3",
     "invenio-rdm-records>=0.20.8,<0.21",  # 0.21 changed the module structure
     "invenio-records-permissions>=0.10.0",
+    "httpretty>=1.0.2",
     "SQLAlchemy-Utils>=0.33.1,<0.36",  # FIXME without this: ContextualVersionConflict {invenio-files-rest}
     "invenio-search[elasticsearch7]>=1.4.0",
 ]
