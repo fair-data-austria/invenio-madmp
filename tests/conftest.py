@@ -14,6 +14,7 @@ fixtures are available.
 import json
 import os
 import os.path
+import secrets
 import shutil
 import tempfile
 
@@ -30,6 +31,7 @@ from invenio_indexer import InvenioIndexer
 from invenio_jsonschemas import InvenioJSONSchemas
 from invenio_pidrelations import InvenioPIDRelations
 from invenio_pidstore import InvenioPIDStore
+from invenio_rdm_records.models import BibliographicRecord
 from invenio_rdm_records.services import BibliographicRecordService
 from invenio_records import InvenioRecords
 from invenio_search import InvenioSearch
@@ -38,6 +40,22 @@ from sqlalchemy_utils.functions import create_database, database_exists, drop_da
 from invenio_madmp import InvenioMaDMP
 from invenio_madmp.convert.records import RDMRecordConverter
 from invenio_madmp.models import DataManagementPlan, Dataset
+
+
+def create_record(data, identity, service):
+    """Create a record using stripped-down logic from the RDM record service."""
+    record = BibliographicRecord.create(data)
+
+    for component in service.components:
+        if hasattr(component, 'create'):
+            component.create(identity, data=data, record=record)
+
+    record.commit()
+
+    if not record.is_published:
+        record.register()
+
+    return record
 
 
 @pytest.fixture(scope="module")
@@ -60,6 +78,7 @@ def base_app(request):
         MADMP_FALLBACK_RECORD_CONVERTER=RDMRecordConverter(),
         SQLALCHEMY_DATABASE_URI=os.getenv("SQLALCHEMY_DATABASE_URI", "sqlite://"),
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
+        SECRET_KEY=secrets.token_hex(20),
     )
     Babel(app)
     InvenioConfigDefault(app)
@@ -190,40 +209,43 @@ def all_required_accounts(base_app):
 @pytest.fixture()
 def example_data(base_app):
     """Create a collection of example records, datasets and DMPs."""
-    records = []
-    rec_dir = os.path.join(os.path.dirname(__file__), "data", "records")
-    service = BibliographicRecordService()
-    identity = Identity(1)
-    identity.provides.add(any_user)
+    with db.session.no_autoflush:
+        quiet = {"commit": False, "emit_signal": False}
+        records = []
+        rec_dir = os.path.join(os.path.dirname(__file__), "data", "records")
+        service = BibliographicRecordService()
+        identity = Identity(1)
+        identity.provides.add(any_user)
 
-    # create some records from the example data
-    for fn in sorted(f for f in os.listdir(rec_dir) if f.endswith(".json")):
-        ffn = os.path.join(rec_dir, fn)
-        with open(ffn, "r") as rec_file:
-            data = json.load(rec_file)
-            rec = service.create(identity, data)
-            rec = service.publish(rec.id, identity)
-            records.append(rec._record)
+        # create some records from the example data
+        for fn in sorted(f for f in os.listdir(rec_dir) if f.endswith(".json")):
+            ffn = os.path.join(rec_dir, fn)
+            with open(ffn, "r") as rec_file:
+                data = json.load(rec_file)
+                rec = create_record(data, identity, service)
+                records.append(rec)
 
-    # create some datasets
-    datasets = []
-    for i in range(7):
-        ds_id = "dataset-%s" % (i + 1)
-        rec = records[i]
-        rec_pid = rec.pid
-        ds = Dataset.create(ds_id, rec_pid)
-        datasets.append(ds)
+        # create some datasets
+        datasets = []
+        for i in range(7):
+            ds_id = "dataset-%s" % (i + 1)
+            rec = records[i]
+            rec_pid = rec.pid
+            ds = Dataset.create(ds_id, rec_pid, **quiet)
+            datasets.append(ds)
 
-    unused_records = records[7:]
+        unused_records = records[7:]
 
-    # create some DMPs
-    dss = datasets
-    dmp1 = DataManagementPlan.create("dmp-1", [dss[0]])
-    dmp2 = DataManagementPlan.create("dmp-2", [dss[0], dss[1], dss[2]])
-    dmp3 = DataManagementPlan.create("dmp-3", [dss[2], dss[3]])
-    dmp4 = DataManagementPlan.create("dmp-4", [dss[4], dss[5]])
-    unused_datasets = [dss[6]]
-    used_datasets = datasets[:6]
+        # create some DMPs
+        dss = datasets
+        dmp1 = DataManagementPlan.create("dmp-1", [dss[0]], **quiet)
+        dmp2 = DataManagementPlan.create("dmp-2", [dss[0], dss[1], dss[2]], **quiet)
+        dmp3 = DataManagementPlan.create("dmp-3", [dss[2], dss[3]], **quiet)
+        dmp4 = DataManagementPlan.create("dmp-4", [dss[4], dss[5]], **quiet)
+        unused_datasets = [dss[6]]
+        used_datasets = datasets[:6]
+
+    db.session.commit()
 
     return {
         "records": records,
