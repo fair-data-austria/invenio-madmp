@@ -38,8 +38,7 @@ datamanagementplan_dataset = db.Table(
 class DataManagementPlan(db.Model):
     """Data Management Plan.
 
-    Stores the external ID for the DMP, to enable querying for it in the
-    DMP tool.
+    Stores the external ID for the DMP, to enable querying for it in the maDMP tool.
     """
 
     __tablename__ = "dmp_datamanagementplan"
@@ -57,14 +56,22 @@ class DataManagementPlan(db.Model):
         nullable=False,
         unique=True,
     )
-    """The dmp_id used to identify the DMP in the DMP tool."""
+    """The dmp_id used to identify the DMP in the maDMP tool."""
 
     datasets = db.relationship(
         "Dataset", secondary=datamanagementplan_dataset, back_populates="dmps"
     )
 
     def add_dataset(self, dataset: "Dataset", emit_signal=True, commit=True) -> bool:
-        """TODO."""
+        """Add the dataset to the DMP, and emit the `dmp_dataset_added` signal.
+
+        The dataset will only be added if it wasn't included previously.
+        Otherwise, the dataset will not be added, and no signal will be emitted.
+
+        :param emit_signal: Whether or not to emit the `dmp_dataset_added` signal.
+        :param commit: Whether to commit the changes to the database.
+        :return: True, if the dataset was added to the DMP; False otherwise.
+        """
         if dataset in self.datasets:
             return False
 
@@ -78,7 +85,15 @@ class DataManagementPlan(db.Model):
         return True
 
     def remove_dataset(self, dataset: "Dataset", emit_signal=True, commit=True) -> bool:
-        """TODO."""
+        """Remove the dataset from the DMP, and emit the `dmp_dataset_removed` signal.
+
+        The dataset will only be removed if it was included previously.
+        Otherwise, nothing will be done (and no signal will be emitted).
+
+        :param emit_signal: Whether or not to emit the `dmp_dataset_removed` signal.
+        :param commit: Whether to commit the changes to the database.
+        :return: True, if the dataset was removed from the DMP; False otherwise.
+        """
         if dataset not in self.datasets:
             return False
 
@@ -172,8 +187,7 @@ class DataManagementPlan(db.Model):
 class Dataset(db.Model):
     """Dataset as defined in a Data Management Plan.
 
-    Stores the external ID for the dataset, to enable querying for it in the
-    DMP tool.
+    Stores the external ID for the dataset, to enable querying for it in the maDMP tool.
     """
 
     __tablename__ = "dmp_dataset"
@@ -191,7 +205,7 @@ class Dataset(db.Model):
         nullable=False,
         unique=True,
     )
-    """The dataset_id used to identify the dataset in the DMP tool."""
+    """The dataset_id used to identify the dataset in the maDMP tool."""
 
     dmps = db.relationship(
         "DataManagementPlan",
@@ -320,7 +334,14 @@ class Dataset(db.Model):
     def get_by_record_pid(
         cls, record_pid: PersistentIdentifier, strict_match: bool = False
     ) -> Optional["Dataset"]:
-        """Get the associated Dataset for the Record with the given PID."""
+        """Get the associated Dataset for the Record with the given PID.
+
+        If strict_match is disabled, all "sibling" PIDs (i.e. those referencing the same
+        object) of the specified PID will be included in the query.
+        This is intended to be more easily usable, but it may introduce ambiguity when
+        sibling PIDs are linked to different Dataset objects.
+        To be fair though, this case could be considered an error in its own right.
+        """
         if isinstance(record_pid, PersistentIdentifier):
             record_pid_id = record_pid.id
         else:
