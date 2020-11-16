@@ -11,3 +11,8 @@ API Docs
 .. automodule:: invenio_madmp.ext
    :members:
 
+
+Requests
+--------
+
+.. automodule:: invenio_madmp.comm.requests

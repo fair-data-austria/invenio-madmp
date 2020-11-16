@@ -1,4 +1,75 @@
-"""TODO."""
+"""Functions for sending DMP update notifications to the maDMP tool's REST endpoints.
+
+The update notifications are intended to be sent automatically whenever changes are
+made to records, or new datasets (records) are added to existing DMPs.
+They contain information about dataset distributions (i.e. records, from Invenio's
+point of view) hosted in Invenio in the form of partial maDMP JSON objects.
+The messages are sent via HTTP and the message bodies contain the relevant fields of
+maDMP dataset objects.
+
+The maDMP tool's endpoint URLs can be changed in the configuration (e.g.
+`MADMP_DMP_TOOL_DMP_ENDPOINT_URL`).
+
+The following is an example for a notification that could be sent to the maDMP tool's
+dataset REST endpoint (e.g. `PATCH /datasets/4dtr6-jth27`), informing it about recent
+changes made to a record (in this case, "4dtr6-jth27").
+
+.. code-block:: JSON
+
+    {
+        "distribution": [
+            {
+                "access_url": "https://data.tuwien.ac.at/4dtr6-jth27",
+                "download_url": "https://data.tuwien.ac.at/4dtr6-jth27/files",
+                "title": "Schneider Inc. gallery",
+                "description": "Lorem ipsum...",
+                "byte_size": 12345,
+                "data_access": "open",
+                "license": [
+                    {
+                        "license_ref": "https://opensource.org/licenses/BSD-3-Clause",
+                        "start_date": "2021-03-19"
+                    }
+                ],
+                "personal_data": "no",
+                "sensitive_data": "no",
+                "format": "image",
+                "available_until": "2030-10-12",
+                "host": {
+                    "title": "Zenodo",
+                    "url": "https://invenio.cern.ch",
+                    "description": "RDM Repository hosted by CERN",
+                    "availability": "99.5",
+                    "backup_frequency": "weekly",
+                    "backup_type": "tapes",
+                    "certified_with": "coretrustseal",
+                    "geo_location": "CH",
+                    "support_versioning": "yes",
+                    "storage_type": "",
+                    "pid_system": [
+                    "other"
+                    ]
+                }
+            }
+        ],
+        "dataset_id": [
+            {
+                "identifier": "4dtr6-jth27",
+                "type": "other"
+            }
+        ],
+        "metadata": [
+            {
+                "description": "Datacite-based metadata model for Invenio-RDM-Records",
+                "language": "eng",
+                "metadata_standard_id": {
+                    "identifier": "https://data.tuwien.ac.at/schemas/records/v1.0.json",
+                    "type": "url"
+                }
+            }
+        ]
+    }
+"""
 
 import json
 import re
@@ -80,7 +151,7 @@ def _get_record_and_dataset(
 def _send_distribution_notification(
     record: Record, dataset: Dataset, notification_type: str = "update"
 ) -> bool:
-    """The common logic for sending dataset updates to the DMP tool."""
+    """The common logic for sending dataset updates to the maDMP tool."""
     if notification_type not in ["update", "delete"]:
         raise ValueError("invalid notification type: %s" % notification_type)
 
@@ -106,6 +177,8 @@ def _send_distribution_notification(
         resp = requests.patch(endpoint_url, data=dataset_body_json, headers=headers)
     elif notification_type == "delete":
         resp = requests.delete(endpoint_url, data=dataset_body_json, headers=headers)
+    else:
+        raise ValueError("invalid notification type: %s" % notification_type)
 
     if 200 <= resp.status_code < 300:
         return True
@@ -114,7 +187,7 @@ def _send_distribution_notification(
 
 
 def _send_dmp_notification(dmp: DataManagementPlan, dataset: Dataset) -> bool:
-    """The common logic for sending DMP updates to the DMP tool."""
+    """The common logic for sending DMP updates to the maDMP tool."""
     dataset_body = convert_record(dataset.record)
 
     specific_url = app.config["MADMP_DMP_TOOL_DMP_ENDPOINT_URL"]
@@ -147,7 +220,16 @@ def send_distribution_update(
     pid_value: str = None,
     raise_exc: bool = True,
 ) -> bool:
-    """TODO."""
+    """Send a notification to the maDMP tool that a distribution (record) has changed.
+
+    This will send a `PATCH` request to the `MADMP_DMP_TOOL_DATASET_ENDPOINT_URL`.
+
+    Note: Only one of the arguments for identifying the subject of the notification
+    (i.e. the updated record) has to be supplied.
+
+    :param raise_exc: If set to False, connection errors will be suppressed.
+    :return: A boolean indicator for the success of the request.
+    """
     res = _get_record_and_dataset(
         record, record_uuid, dataset, dataset_id, pid_object, pid_value
     )
@@ -174,7 +256,16 @@ def send_distribution_deletion(
     pid_value: str = None,
     raise_exc: bool = True,
 ) -> bool:
-    """TODO."""
+    """Send a notification to the maDMP tool that a distribution (record) was deleted.
+
+    This will send a `DELETE` request to the `MADMP_DMP_TOOL_DATASET_ENDPOINT_URL`.
+
+    Note: Only one of the arguments for identifying the subject of the notification
+    (i.e. the updated record) has to be supplied.
+
+    :param raise_exc: If set to False, connection errors will be suppressed.
+    :return: A boolean indicator for the success of the request.
+    """
     res = _get_record_and_dataset(
         record, record_uuid, dataset, dataset_id, pid_object, pid_value
     )
@@ -203,7 +294,16 @@ def send_dataset_addition(
     pid_value: str = None,
     raise_exc: bool = True,
 ) -> bool:
-    """TODO."""
+    """Send a notification to the maDMP tool that a new dataset was added to a DMP.
+
+    This will send a `POST` request to the `MADMP_DMP_TOOL_DMP_ENDPOINT_URL`.
+
+    Note: Both the DMP and the new dataset have to be specified, but it holds for both
+    that only one of the identification arguments has to be supplied.
+
+    :param raise_exc: If set to False, connection errors will be suppressed.
+    :return: A boolean indicator for the success of the request.
+    """
     if dmp is None:
         if dmp_id is None:
             return False
