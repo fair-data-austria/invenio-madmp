@@ -15,39 +15,25 @@ import json
 import os
 import os.path
 import secrets
-import shutil
-import tempfile
 
 import pytest
-from flask import Flask
-from flask_babelex import Babel
-from flask_principal import Identity
-from invenio_access import InvenioAccess
-from invenio_access.permissions import any_user
-from invenio_accounts import InvenioAccounts
-from invenio_config import InvenioConfigDefault
-from invenio_db import InvenioDB, db
-from invenio_indexer import InvenioIndexer
-from invenio_jsonschemas import InvenioJSONSchemas
-from invenio_pidrelations import InvenioPIDRelations
-from invenio_pidstore import InvenioPIDStore
-from invenio_rdm_records.models import BibliographicRecord
-from invenio_rdm_records.services import BibliographicRecordService
-from invenio_records import InvenioRecords
-from invenio_search import InvenioSearch
-from sqlalchemy_utils.functions import create_database, database_exists, drop_database
+from invenio_access.permissions import system_identity
+from invenio_app.factory import create_app as _create_app
+from invenio_db import db
+from invenio_rdm_records.proxies import current_rdm_records
+from invenio_rdm_records.records.api import RDMRecord
 
-from invenio_madmp import InvenioMaDMP
+from invenio_madmp import config
 from invenio_madmp.convert.records import RDMRecordConverter
 from invenio_madmp.models import DataManagementPlan, Dataset
 
 
 def create_record(data, identity, service):
     """Create a record using stripped-down logic from the RDM record service."""
-    record = BibliographicRecord.create(data)
+    record = RDMRecord.create(data)
 
     for component in service.components:
-        if hasattr(component, 'create'):
+        if hasattr(component, "create"):
             component.create(identity, data=data, record=record)
 
     record.commit()
@@ -67,50 +53,28 @@ def celery_config():
     return {}
 
 
-@pytest.fixture()
-def base_app(request):
-    """Basic Flask application."""
-    instance_path = tempfile.mkdtemp()
-    app = Flask("testapp")
-    app.config.update(
+@pytest.fixture(scope='module')
+def create_app():
+    """Create app fixture for UI+API app."""
+    return _create_app
+
+
+@pytest.fixture(scope="module")
+def app_config(app_config):
+    """Override pytest-invenio app_config fixture."""
+    for config_key in dir(config):
+        app_config[config_key] = getattr(config, config_key, None)
+
+    app_config.update(
         MADMP_HOST_URL="https://test.invenio.cern.ch",
         MADMP_HOST_TITLE="Invenio",
-        MADMP_FALLBACK_RECORD_CONVERTER=RDMRecordConverter(),
+        MADMP_FALLBACK_RECORD_CONVERTER=RDMRecordConverter,
         SQLALCHEMY_DATABASE_URI=os.getenv("SQLALCHEMY_DATABASE_URI", "sqlite://"),
         SQLALCHEMY_TRACK_MODIFICATIONS=False,
         SECRET_KEY=secrets.token_hex(20),
     )
-    Babel(app)
-    InvenioConfigDefault(app)
-    InvenioDB(app)
-    InvenioJSONSchemas(app)
-    InvenioRecords(app)
-    InvenioPIDStore(app)
-    InvenioPIDRelations(app)
-    InvenioAccounts(app)
-    InvenioAccess(app)
-    InvenioIndexer(app)
-    InvenioSearch(app)
-    InvenioMaDMP(app)
 
-    with app.app_context():
-        db_url = str(db.engine.url)
-        if db_url != "sqlite://" and not database_exists(db_url):
-            create_database(db_url)
-        db.create_all()
-
-    def teardown():
-        with app.app_context():
-            db_url = str(db.engine.url)
-            db.session.close()
-            if db_url != "sqlite://":
-                drop_database(db_url)
-            shutil.rmtree(instance_path)
-
-    request.addfinalizer(teardown)
-    app.test_request_context().push()
-
-    return app
+    return app_config
 
 
 @pytest.fixture()
@@ -184,9 +148,9 @@ def example_madmps_for_invenio_requiring_users(example_madmps_for_invenio):
 
 
 @pytest.fixture()
-def all_required_accounts(base_app):
+def all_required_accounts(app):
     """All required user accounts for the example maDMPs."""
-    datastore = base_app.extensions["security"].datastore
+    datastore = app.extensions["security"].datastore
     u1 = datastore.create_user(
         email="TMiksa@sba-research.org", password="ilikecoffee", active=True
     )
@@ -203,26 +167,30 @@ def all_required_accounts(base_app):
     u6 = datastore.create_user(email="cc@example.com", password="password", active=True)
 
     db.session.commit()
-    return [u1, u2, u3, u4, u5, u6]
+    yield [u1, u2, u3, u4, u5, u6]
+
+    # after yield comes the teardown logic, to be called after the test
+    for user in [u1, u2, u3, u4, u5, u6]:
+        datastore.delete_user(user)
+
+    db.session.commit()
 
 
 @pytest.fixture()
-def example_data(base_app):
+def example_data(app):
     """Create a collection of example records, datasets and DMPs."""
     with db.session.no_autoflush:
         quiet = {"commit": False, "emit_signal": False}
         records = []
         rec_dir = os.path.join(os.path.dirname(__file__), "data", "records")
-        service = BibliographicRecordService()
-        identity = Identity(1)
-        identity.provides.add(any_user)
+        service = current_rdm_records.records_service
 
         # create some records from the example data
         for fn in sorted(f for f in os.listdir(rec_dir) if f.endswith(".json")):
             ffn = os.path.join(rec_dir, fn)
             with open(ffn, "r") as rec_file:
                 data = json.load(rec_file)
-                rec = create_record(data, identity, service)
+                rec = create_record(data, system_identity, service)
                 records.append(rec)
 
         # create some datasets

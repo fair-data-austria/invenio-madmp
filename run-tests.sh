@@ -1,55 +1,59 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2020 FAIR Data Austria.
+# Copyright (C) 2019-2020 CERN.
+# Copyright (C) 2019-2020 Northwestern University.
+# Copyright (C)      2021 TU Wien.
 #
-# Invenio-maDMP is free software; you can redistribute it and/or modify it
+# Invenio-RDM-Records is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-start_docker=1
-keep_docker=0
+# Usage:
+#   ./run-tests.sh [-K|--keep-services] [pytest options and args...]
+#
+# Note: the DB, SEARCH and MQ services to use are determined by corresponding environment
+#       variables if they are set -- otherwise, the following defaults are used:
+#       DB=postgresql, SEARCH=elasticsearch and MQ=redis
+#
+# Example for using mysql instead of postgresql:
+#    DB=mysql ./run-tests.sh
 
-while getopts "sSkKh" arg; do
-	case $arg in
-		h)
-			echo "usage: $0 [-s|-S] [-k|-K] [-h]"
-			echo "    -h         display this help message and exit"
-			echo "    -s | -S    start docker containers before tests (default: yes)"
-			echo "    -k | -K    stop docker containers after tests (default: yes)"
-			exit 0
+# Quit on errors
+set -o errexit
+
+# Quit on unbound symbols
+set -o nounset
+
+# Define function for bringing down services
+function cleanup {
+  eval "$(docker-services-cli down --env)"
+}
+
+# Check for arguments
+# Note: "-k" would clash with "pytest"
+keep_services=0
+pytest_args=()
+for arg in $@; do
+	# from the CLI args, filter out some known values and forward the rest to "pytest"
+	# note: we don't use "getopts" here b/c of some limitations (e.g. long options),
+	#       which means that we can't combine short options (e.g. "./run-tests -Kk pattern")
+	case ${arg} in
+		-K|--keep-services)
+			keep_services=1
 			;;
-		s)
-			start_docker=1
-			;;
-		S)
-			start_docker=0
-			;;
-		k)
-			keep_docker=1
-			;;
-		K)
-			keep_docker=0
+		*)
+			pytest_args+=( ${arg} )
 			;;
 	esac
 done
 
-# start docker containers before testing, if requested
-if [[ $start_docker -eq 1 ]]; then
-	docker-services-cli up postgresql es redis
-
-	exit_code=$?
-	[[ $exit_code -ne 0 ]] && exit $exit_code
+if [[ ${keep_services} -eq 0 ]]; then
+	trap cleanup EXIT
 fi
 
-# do the usual stuff
-pydocstyle invenio_madmp tests docs && \
-isort --check-only --diff --recursive invenio_madmp tests && \
-check-manifest --ignore ".travis-*" && \
-sphinx-build -qnNW docs docs/_build/html && \
-pytest
+python -m check_manifest --ignore ".*-requirements.txt"
+python -m sphinx.cmd.build -qnNW docs docs/_build/html
+eval "$(docker-services-cli up --db ${DB:-postgresql} --search ${SEARCH:-elasticsearch} --mq ${MQ:-redis} --env)"
+python -m pytest "${pytest_args[@]}"
 tests_exit_code=$?
-
-# optionally, keep docker containers running (for quicker re-run of tests)
-[[ $keep_docker -eq 0 ]] && docker-services-cli down
-
-exit $tests_exit_code
+exit "$tests_exit_code"

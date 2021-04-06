@@ -5,16 +5,11 @@ from typing import Optional
 
 from flask import current_app as app
 from flask_principal import Identity
-from invenio_access.permissions import any_user
+from invenio_access.permissions import system_identity
 from invenio_jsonschemas import current_jsonschemas
-from invenio_rdm_records.models import BibliographicRecord, BibliographicRecordDraft
-from invenio_rdm_records.permissions import RDMRecordPermissionPolicy
-from invenio_rdm_records.services import (
-    BibliographicRecordService,
-    BibliographicRecordServiceConfig,
-)
+from invenio_rdm_records.proxies import current_rdm_records
+from invenio_rdm_records.records.api import RDMDraft, RDMRecord
 from invenio_records.api import Record
-from invenio_records_permissions.generators import AnyUser
 
 from ...util import (
     find_user,
@@ -27,24 +22,12 @@ from ..util import filter_contributors, map_contact, map_contributor, map_creato
 from .base import BaseRecordConverter
 
 
-class PermissionPolicy(RDMRecordPermissionPolicy):
-    """TODO delet this (https://tinyurl.com/y69derx3)."""
-
-    can_update = [AnyUser()]
-
-
-class ServiceConfig(BibliographicRecordServiceConfig):
-    """TODO delet this (https://tinyurl.com/y69derx3)."""
-
-    permission_policy_cls = PermissionPolicy
-
-
 class RDMRecordConverter(BaseRecordConverter):
     """RecordConverter using the Invenio-RDM-Records metadata model."""
 
-    def __init__(self):
+    def __init__(self, records_service=None):
         """Initialize a new RDMRecordConverter."""
-        self.record_service = BibliographicRecordService(config=ServiceConfig)
+        self.record_service = records_service or current_rdm_records.records_service
 
     def map_access_right(self, distribution_dict):
         """Get the 'access_right' from the distribution."""
@@ -179,29 +162,29 @@ class RDMRecordConverter(BaseRecordConverter):
                 "no registered users found for any email address: %s" % emails
             )
 
-        creator_id = app.config["MADMP_RECORD_CREATOR_USER_ID"] or users[0].id
         record["access"]["owners"] = {u.id for u in users}
-        record["access"]["created_by"] = creator_id
 
         return record
 
-    def create_record(self, record_data: dict, identity: Identity) -> Record:
+    def create_record(
+        self,
+        record_data: dict,
+        identity: Identity = system_identity,
+    ) -> Record:
         """Create a new Draft from the specified metadata."""
-        # note: the BibliographicRecordService will return an IdentifiedRecord,
-        #       which wraps the record/draft and its PID into one object
+        # note: the record service will return a record projection, which is basically
+        #       a safe layer on top of the normal API record
         # note: Service.create() will already commit the changes to DB!
-        draft = self.record_service.create(identity, record_data)
+        draft = self.record_service.create(identity=identity, data=record_data)
         return draft._record
 
     def update_record(
         self,
         original_record: Record,
         new_record_data: dict,
-        identity: Identity,
+        identity: Identity = system_identity,
     ):
         """Update the metadata of the specified Record with the new data."""
-        identity.provides.add(any_user)
-
         # because partial updates are currently not working, we use the data from the
         # original record and update the metadata dictionary
         data = original_record.model.data.copy()
@@ -218,6 +201,7 @@ class RDMRecordConverter(BaseRecordConverter):
         if "metadata" in new_data:
             data["metadata"].update(new_data["metadata"])
 
+        # TODO this might not be the way to go anymore
         if self.is_draft(original_record):
             result = self.record_service.update_draft(
                 identity=identity,
@@ -295,14 +279,16 @@ class RDMRecordConverter(BaseRecordConverter):
         return None
 
     def is_draft(self, record: Record) -> bool:
-        """Check if the specified object is a suitable Record."""
-        return isinstance(record, BibliographicRecordDraft)
+        """Check if the specified object is a suitable draft."""
+        return isinstance(record, RDMDraft)
 
     def is_record(self, record: Record) -> bool:
-        """Check if the specified object is a suitable Draft."""
-        return isinstance(record, BibliographicRecord)
+        """Check if the specified object is a suitable record."""
+        return isinstance(record, RDMRecord)
 
-    def matches_dataset(self, dataset_dict: dict, dmp_dict: dict = None) -> bool:
+    def matches_dataset(
+        self, dataset_dict: dict, dmp_dict: dict = None, distribution_dict: dict = None
+    ) -> bool:
         """Check if this converter is suitable for the specified maDMP dataset."""
         for metadata in dataset_dict.get("metadata", []):
             standard_id = metadata.get("metadata_standard_id", {})

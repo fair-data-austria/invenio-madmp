@@ -16,9 +16,9 @@ history = open("CHANGES.rst").read()
 
 tests_require = [
     "pytest-invenio>=1.4.0",
+    "invenio-app>=1.3.0,<2.0.0",
     "invenio-config>=1.0.3",
-    "invenio-rdm-records>=0.20.8,<0.21",  # 0.21 changed the module structure
-    "invenio-records-permissions>=0.10.0",
+    "invenio-records-permissions>=0.11.0",
     "httpretty>=1.0.2",
     "SQLAlchemy-Utils>=0.33.1,<0.36",  # FIXME without this: ContextualVersionConflict {invenio-files-rest}
     "invenio-search[elasticsearch7]>=1.4.0",
@@ -29,13 +29,16 @@ extras_require = {
         "Sphinx>=3.2.1",
     ],
     "mysql": [
-        "invenio-db[mysql]>=1.0.6",
+        "invenio-db[mysql]>=1.0.9",
     ],
     "postgresql": [
-        "invenio-db[postgresql]>=1.0.6",
+        "invenio-db[postgresql]>=1.0.9",
     ],
     "sqlite": [
-        "invenio-db>=1.0.6",
+        "invenio-db>=1.0.9",
+    ],
+    "rdm": [
+        "invenio-rdm-records>=0.28.12"
     ],
     "tests": tests_require,
 }
@@ -53,8 +56,8 @@ install_requires = [
     "Flask-BabelEx>=0.9.4",
     "Flask-HTTPAuth>=4.1.0",
     "invenio-pidstore>=1.2.1",
-    "invenio-records>=1.4.0a4",
-    "invenio-db>=1.0.6",
+    "invenio-records>=1.5.0a3",
+    "invenio-db>=1.0.9",
     "invenio-accounts>=1.3.0",
     "jsonschema>=3.2.0",
     "requests>=2.24.0",

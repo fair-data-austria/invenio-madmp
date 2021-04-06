@@ -14,7 +14,7 @@ from invenio_madmp.convert import convert_dmp
 
 
 def test_successful_conversion(
-    base_app, example_madmps_for_invenio, all_required_accounts
+    app, example_madmps_for_invenio, all_required_accounts
 ):
     for _, madmp in example_madmps_for_invenio.items():
         dmp = convert_dmp(madmp["dmp"])
@@ -23,7 +23,7 @@ def test_successful_conversion(
         assert dmp.dmp_id == madmp["dmp"]["dmp_id"]["identifier"]
 
 
-def test_no_users(base_app, example_madmps_for_invenio_requiring_users):
+def test_no_users(app, example_madmps_for_invenio_requiring_users):
     assert len(User.query.all()) == 0
 
     problematic_madmps = example_madmps_for_invenio_requiring_users

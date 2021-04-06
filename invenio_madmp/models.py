@@ -11,9 +11,9 @@ import uuid
 from typing import List, Optional
 
 from invenio_db import db
+from invenio_drafts_resources.records.api import Draft
 from invenio_pidstore.models import PersistentIdentifier
-from invenio_rdm_records.models import BibliographicRecordDraft
-from invenio_records import Record
+from invenio_records.api import Record
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy_utils.types import UUIDType
@@ -253,7 +253,8 @@ class Dataset(db.Model):
 
         record = None
         record_uuid = self.record_pid.get_assigned_object()
-        for api_cls in (Record, BibliographicRecordDraft):
+        # TODO make record and draft classes configurable
+        for api_cls in (Record, Draft):
             try:
                 record = api_cls.get_record(record_uuid)
             except NoResultFound:

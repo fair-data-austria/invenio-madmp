@@ -86,42 +86,42 @@ def _register_uris(app, request_callback, dataset_id=None, dmp_id=None):
 
 
 @httpretty.activate
-def test_send_distribution_update(base_app, example_data):
+def test_send_distribution_update(app, example_data):
     """Check if send_distribution_update works as expected under normal conditions."""
     dataset = example_data["datasets"][0]
-    _register_uris(base_app, _auth_checking_handler, dataset_id=dataset.dataset_id)
+    _register_uris(app, _auth_checking_handler, dataset_id=dataset.dataset_id)
     result = send_distribution_update(dataset=dataset)
     assert result
 
 
 @httpretty.activate
-def test_send_distribution_update_no_auth(base_app, example_data):
+def test_send_distribution_update_no_auth(app, example_data):
     """Check if the bearer token is omitted from the header if set to None."""
-    base_app.config["MADMP_COMMUNICATION_TOKEN"] = None
+    app.config["MADMP_COMMUNICATION_TOKEN"] = None
     dataset = example_data["datasets"][0]
-    _register_uris(base_app, _no_auth_handler, dataset_id=dataset.dataset_id)
+    _register_uris(app, _no_auth_handler, dataset_id=dataset.dataset_id)
     result = send_distribution_update(dataset=dataset)
     assert result
 
 
 @httpretty.activate
-def test_send_distribution_update_silent_connection_failure(base_app, example_data):
+def test_send_distribution_update_silent_connection_failure(app, example_data):
     """Check if raise_exc=False really suppresses exceptions."""
     dataset = example_data["datasets"][0]
-    _register_uris(base_app, _failing_handler, dataset_id=dataset.dataset_id)
+    _register_uris(app, _failing_handler, dataset_id=dataset.dataset_id)
     result = send_distribution_update(dataset=dataset, raise_exc=False)
     assert not result
 
 
 @httpretty.activate
-def test_send_distribution_update_connection_failure(base_app, example_data):
+def test_send_distribution_update_connection_failure(app, example_data):
     dataset = example_data["datasets"][0]
-    _register_uris(base_app, _failing_handler, dataset_id=dataset.dataset_id)
+    _register_uris(app, _failing_handler, dataset_id=dataset.dataset_id)
     with pytest.raises(ConnectionError):
         send_distribution_update(dataset=dataset, raise_exc=True)
 
 
-def test_send_distribution_update_no_data():
+def test_send_distribution_update_no_data(app):
     res = send_distribution_update()
     assert not res
 
@@ -132,42 +132,42 @@ def test_send_distribution_update_no_data():
 
 
 @httpretty.activate
-def test_send_distribution_deletion(base_app, example_data):
+def test_send_distribution_deletion(app, example_data):
     """Check if send_distribution_update works as expected under normal conditions."""
     dataset = example_data["datasets"][0]
-    _register_uris(base_app, _auth_checking_handler, dataset_id=dataset.dataset_id)
+    _register_uris(app, _auth_checking_handler, dataset_id=dataset.dataset_id)
     result = send_distribution_deletion(dataset=dataset)
     assert result
 
 
 @httpretty.activate
-def test_send_distribution_deletion_no_auth(base_app, example_data):
+def test_send_distribution_deletion_no_auth(app, example_data):
     """Check if the bearer token is omitted from the header if set to None."""
-    base_app.config["MADMP_COMMUNICATION_TOKEN"] = None
+    app.config["MADMP_COMMUNICATION_TOKEN"] = None
     dataset = example_data["datasets"][0]
-    _register_uris(base_app, _no_auth_handler, dataset_id=dataset.dataset_id)
+    _register_uris(app, _no_auth_handler, dataset_id=dataset.dataset_id)
     result = send_distribution_deletion(dataset=dataset)
     assert result
 
 
 @httpretty.activate
-def test_send_distribution_deletion_silent_connection_failure(base_app, example_data):
+def test_send_distribution_deletion_silent_connection_failure(app, example_data):
     """Check if raise_exc=False really suppresses exceptions."""
     dataset = example_data["datasets"][0]
-    _register_uris(base_app, _failing_handler, dataset_id=dataset.dataset_id)
+    _register_uris(app, _failing_handler, dataset_id=dataset.dataset_id)
     result = send_distribution_deletion(dataset=dataset, raise_exc=False)
     assert not result
 
 
 @httpretty.activate
-def test_send_distribution_deletion_connection_failure(base_app, example_data):
+def test_send_distribution_deletion_connection_failure(app, example_data):
     dataset = example_data["datasets"][0]
-    _register_uris(base_app, _failing_handler, dataset_id=dataset.dataset_id)
+    _register_uris(app, _failing_handler, dataset_id=dataset.dataset_id)
     with pytest.raises(ConnectionError):
         send_distribution_deletion(dataset=dataset, raise_exc=True)
 
 
-def test_send_distribution_deletion_no_data():
+def test_send_distribution_deletion_no_data(app):
     res = send_distribution_deletion()
     assert not res
 
@@ -178,55 +178,55 @@ def test_send_distribution_deletion_no_data():
 
 
 @httpretty.activate
-def test_send_dataset_addition(base_app, example_data):
+def test_send_dataset_addition(app, example_data):
     """Check if send_distribution_update works as expected under normal conditions."""
     dataset = example_data["datasets"][0]
     dmp = dataset.dmps[0]
     dmp_id = dmp.dmp_id
     _register_uris(
-        base_app, _auth_checking_handler, dataset_id=dataset.dataset_id, dmp_id=dmp_id
+        app, _auth_checking_handler, dataset_id=dataset.dataset_id, dmp_id=dmp_id
     )
     result = send_dataset_addition(dmp=dmp, dataset=dataset)
     assert result
 
 
 @httpretty.activate
-def test_send_dataset_addition_no_auth(base_app, example_data):
+def test_send_dataset_addition_no_auth(app, example_data):
     """Check if the bearer token is omitted from the header if set to None."""
-    base_app.config["MADMP_COMMUNICATION_TOKEN"] = None
+    app.config["MADMP_COMMUNICATION_TOKEN"] = None
     dataset = example_data["datasets"][0]
     dmp = dataset.dmps[0]
     _register_uris(
-        base_app, _no_auth_handler, dataset_id=dataset.dataset_id, dmp_id=dmp.dmp_id
+        app, _no_auth_handler, dataset_id=dataset.dataset_id, dmp_id=dmp.dmp_id
     )
     result = send_dataset_addition(dmp=dmp, dataset=dataset)
     assert result
 
 
 @httpretty.activate
-def test_send_dataset_addition_silent_connection_failure(base_app, example_data):
+def test_send_dataset_addition_silent_connection_failure(app, example_data):
     """Check if raise_exc=False really suppresses exceptions."""
     dataset = example_data["datasets"][0]
     dmp = dataset.dmps[0]
     _register_uris(
-        base_app, _failing_handler, dataset_id=dataset.dataset_id, dmp_id=dmp.dmp_id
+        app, _failing_handler, dataset_id=dataset.dataset_id, dmp_id=dmp.dmp_id
     )
     result = send_dataset_addition(dmp=dmp, dataset=dataset, raise_exc=False)
     assert not result
 
 
 @httpretty.activate
-def test_send_dataset_addition_connection_failure(base_app, example_data):
+def test_send_dataset_addition_connection_failure(app, example_data):
     dataset = example_data["datasets"][0]
     dmp = dataset.dmps[0]
     _register_uris(
-        base_app, _failing_handler, dataset_id=dataset.dataset_id, dmp_id=dmp.dmp_id
+        app, _failing_handler, dataset_id=dataset.dataset_id, dmp_id=dmp.dmp_id
     )
     with pytest.raises(ConnectionError):
         send_dataset_addition(dmp=dmp, dataset=dataset, raise_exc=True)
 
 
-def test_send_dataset_addition_no_data():
+def test_send_dataset_addition_no_data(app):
     res = send_dataset_addition()
     assert not res
 

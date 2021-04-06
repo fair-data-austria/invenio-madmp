@@ -1,6 +1,7 @@
 """Base classes for conversions between maDMP dictionaries and Records."""
 
 from flask_principal import Identity
+from invenio_access.permissions import system_identity
 from invenio_drafts_resources.records import Draft
 from invenio_records.api import Record
 
@@ -8,7 +9,9 @@ from invenio_records.api import Record
 class BaseRecordConverter:
     """Converter between datasets/distributions in maDMPs and Records in Invenio."""
 
-    def matches_dataset(self, dataset_dict: dict, dmp_dict: dict = None) -> bool:
+    def matches_dataset(
+        self, dataset_dict: dict, dmp_dict: dict = None, distribution_dict: dict = None
+    ) -> bool:
         """Check if this converter is suitable for the specified maDMP dataset."""
         raise NotImplementedError
 
@@ -64,7 +67,11 @@ class BaseRecordConverter:
         """
         raise NotImplementedError
 
-    def create_record(self, record_data: dict, identity: Identity) -> Record:
+    def create_record(
+        self,
+        record_data: dict,
+        identity: Identity = system_identity,
+    ) -> Record:
         """Create a new Record (or Draft) from the specified metadata.
 
         :param record_data: The metadata to be used for the new Record or Draft.
@@ -86,7 +93,7 @@ class BaseRecordConverter:
         self,
         original_record: Record,
         new_record_data: dict,
-        identity: Identity,
+        identity: Identity = system_identity,
     ) -> Record:
         """Update the metadata of the specified Record with the new data.
 

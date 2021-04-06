@@ -18,7 +18,7 @@ from invenio_madmp.convert.records.rdm_records import RDMRecordConverter
 # --------------------->
 
 
-def test_matches_dataset(example_madmps_for_invenio_with_datacite_metadata):
+def test_matches_dataset(app, example_madmps_for_invenio_with_datacite_metadata):
     """Check that positive suitability (based on metadata schemas) checks work."""
     converter = RDMRecordConverter()
     for dmp in example_madmps_for_invenio_with_datacite_metadata.values():
@@ -28,7 +28,9 @@ def test_matches_dataset(example_madmps_for_invenio_with_datacite_metadata):
                 assert result
 
 
-def test_matches_dataset_different_metadata_schema(example_madmps_for_invenio):
+def test_matches_dataset_different_metadata_schema(
+    app, example_madmps_for_invenio
+):
     """Check that negative suitability (based on metadata schemas) checks work."""
     converter = RDMRecordConverter()
     for dmp in example_madmps_for_invenio.values():
@@ -38,21 +40,21 @@ def test_matches_dataset_different_metadata_schema(example_madmps_for_invenio):
                 assert not result
 
 
-def test_matches_record(example_data):
+def test_matches_record(app, example_data):
     converter = RDMRecordConverter()
     record = example_data["records"][0]
     result = converter.matches_record(record)
     assert result
 
 
-def test_matches_record_different_type():
+def test_matches_record_different_type(app):
     """Check if the record converter notices that a wrong object type doesn't fit."""
     converter = RDMRecordConverter()
     result = converter.matches_record("not a record")
     assert not result
 
 
-def test_update_record(example_data):
+def test_update_record(app, example_data):
     """Check if the RDMRecordConverter can actually update record data."""
     converter = RDMRecordConverter()
     record = example_data["records"][0]
@@ -81,7 +83,7 @@ def test_update_record(example_data):
     assert new_data["metadata"]["publication_date"] == fake_date
 
 
-def test_get_dataset_metadata_model(example_data):
+def test_get_dataset_metadata_model(app, example_data):
     record = example_data["records"][0]
     converter = RDMRecordConverter()
 
@@ -92,13 +94,13 @@ def test_get_dataset_metadata_model(example_data):
     assert metadata.get("metadata_standard_id", {}).get("type")
 
 
-def test_convert_record():
+def test_convert_record(app):
     # TODO prepare an example maDMP for verifying convert_record(), once Invenio's
     #      metadata model has been fixed
     pass
 
 
-def test_convert_dataset():
+def test_convert_dataset(app):
     # TODO prepare an example record for verifying convert_dataset(), once Invenio's
     #      metadata model has been fixed
     pass

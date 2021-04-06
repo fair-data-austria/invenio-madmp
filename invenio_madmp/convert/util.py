@@ -1,11 +1,12 @@
 """Utilities for mapping between maDMPs and Records."""
 
 
+import inspect
 from typing import List, Optional
 
 from flask import current_app as app
 from flask_principal import Identity
-from invenio_access.permissions import any_user
+from invenio_access.permissions import system_identity
 from invenio_db import db
 from invenio_pidstore.models import PersistentIdentifier as PID
 from invenio_records.api import Record
@@ -120,7 +121,7 @@ def matching_distributions(dataset_dict):
 def convert_dmp(
     madmp_dict: dict,
     hard_sync: bool = False,
-    identity: Identity = None,
+    identity: Identity = system_identity,
     validate: bool = True,
 ) -> Optional[DMP]:
     """Parse the specified maDMP and update referneced records in Invenio accordingly.
@@ -161,7 +162,6 @@ def convert_dmp(
     with db.session.no_autoflush:
         # disabling autoflush, because we don't want to flush unfinished parts
         # (this caused issues when Dataset.record_pid_id was not nullable)
-        identity = identity or any_user
         contrib_list = madmp_dict.get("contributor", [])
         contact = map_contact(madmp_dict.get("contact", {}))
         contribs = list(map(map_contributor, contrib_list))
@@ -264,15 +264,12 @@ def convert_dmp(
                         # TODO make the logic for deciding which record to
                         #      create more flexible
                         record_data, converter = records_and_converters[0]
-                        identity = Identity(1)  # TODO find out ID of owner?
-                        identity.provides.add(any_user)
                         rec = converter.create_record(record_data, identity)
                         ds.record_pid = rec.pid
 
                 elif hard_sync:
                     # hard-sync the dataset's associated record
                     record_data, converter = records_and_converters[0]
-                    identity = Identity(1)  # TODO find out ID of owner?
                     converter.update_record(ds.record, record_data, identity)
 
         for old_ds in old_datasets:
@@ -351,21 +348,31 @@ def convert_record(record: Record) -> Optional[dict]:
     return res_ds
 
 
+def _get_converter(converter) -> BaseRecordConverter:
+    """Get an instance of the specified converter."""
+    if inspect.isclass(converter):
+        return converter()
+    else:
+        return converter
+
+
 def get_matching_converter_for_dataset(
     distribution_dict: dict, dataset_dict: dict, dmp_dict: dict
 ) -> BaseRecordConverter:
     """Get the first matching RecordConverter from the configuration for the Dataset."""
-    for converter in app.config["MADMP_RECORD_CONVERTERS"]:
-        if converter.matches_dataset(distribution_dict, dataset_dict, dmp_dict):
-            return converter
+    for candidate in app.config["MADMP_RECORD_CONVERTERS"]:
+        candidate = _get_converter(candidate)
+        if candidate.matches_dataset(distribution_dict, dataset_dict, dmp_dict):
+            return candidate
 
-    return app.config["MADMP_FALLBACK_RECORD_CONVERTER"]
+    return _get_converter(app.config["MADMP_FALLBACK_RECORD_CONVERTER"])
 
 
 def get_matching_converter_for_record(record: Record) -> BaseRecordConverter:
     """Get the first matching RecordConverter from the configuration for the Record."""
-    for converter in app.config["MADMP_RECORD_CONVERTERS"]:
-        if converter.matches_record(record):
-            return converter
+    for candidate in app.config["MADMP_RECORD_CONVERTERS"]:
+        candidate = _get_converter(candidate)
+        if candidate.matches_record(record):
+            return candidate
 
-    return app.config["MADMP_FALLBACK_RECORD_CONVERTER"]
+    return _get_converter(app.config["MADMP_FALLBACK_RECORD_CONVERTER"])

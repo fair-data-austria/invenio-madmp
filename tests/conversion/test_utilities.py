@@ -26,7 +26,7 @@ from invenio_madmp.util import (
 # -------------------->
 
 
-def test_find_by_email(all_required_accounts):
+def test_find_by_email(app, all_required_accounts):
     """Check if users can be found by their email address."""
     all_users = User.query.all()
     assert len(all_users) > 0
@@ -116,7 +116,7 @@ def test_get_or_import_fallback():
 # ------------------------>
 
 
-def test_fetch_unassigned_record_via_url(example_data):
+def test_fetch_unassigned_record_via_url(app, example_data):
     records = example_data["records"]
     record = records[0]
     access_url = "https://data.tuwien.ac.at/records/%s" % record.pid.pid_value
@@ -124,14 +124,14 @@ def test_fetch_unassigned_record_via_url(example_data):
     assert fetched == record
 
 
-def test_fetch_unassigned_record_via_dataset_id(example_data):
+def test_fetch_unassigned_record_via_dataset_id(app, example_data):
     records = example_data["records"]
     record = records[0]
     fetched = fetch_unassigned_record(record.pid.pid_value, None)
     assert fetched == record
 
 
-def test_fetch_unassigned_record_nonexisting(example_data):
+def test_fetch_unassigned_record_nonexisting(app, example_data):
     made_up_id, made_up_url = "non-existing", "https://data.tuwien.ac.at/records/na"
     fetched = fetch_unassigned_record(made_up_id, made_up_url)
     assert fetched is None

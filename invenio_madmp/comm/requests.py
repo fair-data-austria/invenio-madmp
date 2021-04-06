@@ -126,7 +126,7 @@ def _get_record_and_dataset(
         rec = None
     ds = None
 
-    if rec is None:
+    if rec is None and dataset_id is not None:
         ds = dataset or Dataset.get_by_dataset_id(dataset_id)
         if ds is not None:
             rec = ds.record
@@ -145,6 +145,9 @@ def _get_record_and_dataset(
         return None
     else:
         ds = ds or Dataset.get_by_record(rec)
+        if ds is None:
+            return None
+
         return (rec, ds)
 
 
@@ -159,7 +162,7 @@ def _send_distribution_notification(
     if not dataset_body and notification_type == "update":
         return False
 
-    # TODO dataset_id will be replaced by a list
+    # TODO dataset_id will be replaced by a list (in RDA DMP schema)
     specific_url = app.config["MADMP_DMP_TOOL_DATASET_ENDPOINT_URL"]
     generic_url = app.config["MADMP_DMP_TOOL_DATASETS_ENDPOINT_URL"]
     if re.match(r"[\w\-\.]+", dataset.dataset_id):
@@ -320,7 +323,7 @@ def send_dataset_addition(
     if res is None:
         return False
     else:
-        rec, ds = res
+        _, ds = res
         try:
             return _send_dmp_notification(dmp, ds)
         except ConnectionError:

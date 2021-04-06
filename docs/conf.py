@@ -10,6 +10,7 @@
 import os
 
 import sphinx.environment
+from flask import Flask
 
 # -- General configuration ------------------------------------------------
 
@@ -326,3 +327,15 @@ intersphinx_mapping = {
 
 # Autodoc configuraton.
 autoclass_content = "both"
+
+# Push an app context so that LocalProxy in
+# invenio_access.proxies:current_access can be included in the docs.
+
+
+class DummyRDMRecords:
+    records_service = None
+
+
+app = Flask("app")
+app.extensions["invenio-rdm-records"] = DummyRDMRecords()
+app.app_context().push()

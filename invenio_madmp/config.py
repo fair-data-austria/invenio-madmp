@@ -40,17 +40,9 @@ MADMP_DEFAULT_LANGUAGE = "eng"
 MADMP_DEFAULT_CONTACT = "info@invenio.org"
 MADMP_DEFAULT_DATA_ACCESS = "open"
 
-# the ID of the user to be set as record creator
-# 'None' lets the RecordConverter decide
-# TODO change this: instead, combine with MADMP_COMMUNICATION_TOKEN
-#                   on successful auth, set the current_user property according to this
-#                   user right here, and use them as creator in convert_dmp
-#                   (if current_user is not set, parse the creator from the DMP)
-MADMP_RECORD_CREATOR_USER_ID = None
-
 # record converters
 MADMP_RECORD_CONVERTERS: List[BaseRecordConverter] = []
-MADMP_FALLBACK_RECORD_CONVERTER: BaseRecordConverter = RDMRecordConverter()
+MADMP_FALLBACK_RECORD_CONVERTER: BaseRecordConverter = RDMRecordConverter
 
 # list of contributor roles that are considered to be record owners
 # an empty list makes all contributors to record owners, regardless of their roles
